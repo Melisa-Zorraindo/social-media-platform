@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/Melisa-Zorraindo/social-media-platform/issues"
   },
-  "homepage": "https://github.com/Melisa-Zorraindo/social-media-platform#readme"
+  "homepage": "https://github.com/Melisa-Zorraindo/social-media-platform#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  },
+  "devDependencies": {
+    "sass": "^1.54.5"
+  }
 }

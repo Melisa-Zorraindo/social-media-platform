@@ -1,0 +1,15 @@
+$primary: green;
+$text: #fff;
+$h2: bold;
+
+body {
+  background-color: $primary;
+}
+
+h1 {
+  color: $text;
+}
+
+h2 {
+  font-weight: $h2;
+}
