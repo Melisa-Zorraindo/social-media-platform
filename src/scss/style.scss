@@ -1,15 +1,23 @@
-$primary: green;
-$text: #fff;
-$h2: bold;
+$primary: #b20dfd;
+// $primary: #006363;
+/*007b7b*/
+/*009999*/
 
-body {
-  background-color: $primary;
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+.custom-w {
+  max-width: 500px;
 }
 
-h1 {
-  color: $text;
+.btn-interaction {
+  border: none;
+  background-color: transparent;
 }
 
-h2 {
-  font-weight: $h2;
+.text-small {
+  font-size: 0.8rem;
 }
+/* ----------  Google icons  ---------- */
+/* .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+} */
