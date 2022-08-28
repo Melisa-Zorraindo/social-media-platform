@@ -67,6 +67,63 @@
           </form>
         </div>
       </div>
+      <div class="container py-5 bg-light">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <span class="nav-link active" aria-current="page">contacts</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link text-secondary">suggestions</span>
+          </li>
+        </ul>
+        <div class="container bg-body">
+          <div class="row d-flex py-3">
+            <div class="col-2">
+              <img
+                src="/app/img/captura.JPG"
+                class="img-thumbnail border-0"
+                alt="user placeholder"
+              />
+            </div>
+            <div class="col-6">username</div>
+            <div class="col-2">
+              <span class="material-symbols-outlined text-secondary">
+                person_remove
+              </span>
+            </div>
+          </div>
+          <div class="row d-flex py-3">
+            <div class="col-2">
+              <img
+                src="/app/img/captura.JPG"
+                class="img-thumbnail border-0"
+                alt="user placeholder"
+              />
+            </div>
+            <div class="col-6">username</div>
+            <div class="col-2">
+              <span class="material-symbols-outlined text-secondary">
+                person_remove
+              </span>
+            </div>
+          </div>
+          <div class="row d-flex py-3">
+            <div class="col-2">
+              <img
+                src="/app/img/captura.JPG"
+                class="img-thumbnail border-0"
+                alt="user placeholder"
+              />
+            </div>
+            <div class="col-6">username</div>
+            <div class="col-2">
+              <span class="material-symbols-outlined text-secondary">
+                person_remove
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container py-1 bg-light">
         <div class="card my-1">
           <div class="d-flex">
@@ -91,13 +148,13 @@
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> favorite </span>
                   </button>
-                  <span class="text-small">1004</span>
+                  <span class="text-small text-secondary">1004</span>
                 </div>
                 <div class="d-flex flex-column align-items-center">
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> chat_bubble </span>
                   </button>
-                  <span class="text-small">52</span>
+                  <span class="text-small text-secondary">52</span>
                 </div>
               </div>
             </div>
@@ -126,13 +183,13 @@
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> favorite </span>
                   </button>
-                  <span class="text-small">1004</span>
+                  <span class="text-small text-secondary">1004</span>
                 </div>
                 <div class="d-flex flex-column align-items-center">
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> chat_bubble </span>
                   </button>
-                  <span class="text-small">52</span>
+                  <span class="text-small text-secondary">52</span>
                 </div>
               </div>
             </div>
@@ -161,13 +218,13 @@
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> favorite </span>
                   </button>
-                  <span class="text-small">1004</span>
+                  <span class="text-small text-secondary">1004</span>
                 </div>
                 <div class="d-flex flex-column align-items-center">
                   <button type="button" class="btn-interaction text-secondary">
                     <span class="material-symbols-outlined"> chat_bubble </span>
                   </button>
-                  <span class="text-small">52</span>
+                  <span class="text-small text-secondary">52</span>
                 </div>
               </div>
             </div>
@@ -178,28 +235,37 @@
     <footer class="footer">
       <div class="container">
         <nav class="fixed-bottom border-top pt-3 bg-light">
-          <ul class="col d-flex justify-content-around align-items-end ps-0">
-            <li class="list-unstyled">
+          <ul class="nav justify-content-around">
+            <li class="nav-item">
               <span class="material-symbols-outlined text-secondary">
                 home
               </span>
             </li>
-            <li class="list-unstyled">
-              <button type="button" class="btn-interaction">
-                <span
-                  class="material-symbols-outlined text-primary"
-                  id="add-post-btn"
-                >
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-interaction"
+                aria-label="add post"
+                id="add-post-btn"
+              >
+                <span class="material-symbols-outlined text-primary">
                   add_circle
                 </span>
               </button>
             </li>
-            <li class="list-unstyled">
-              <span class="material-symbols-outlined text-secondary">
-                contacts
-              </span>
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-interaction"
+                aria-label="contacts"
+                id="contacts-btn"
+              >
+                <span class="material-symbols-outlined text-secondary">
+                  contacts
+                </span>
+              </button>
             </li>
-            <li class="list-unstyled">
+            <li class="nav-item">
               <span class="material-symbols-outlined text-secondary">
                 settings
               </span>
