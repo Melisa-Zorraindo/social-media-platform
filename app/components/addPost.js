@@ -34,7 +34,7 @@ export function displayAddPostWindow() {
             </button>
           </div>
           <div>
-            <button type="submit" class="btn btn-outline-primary">
+            <button type="button" class="btn btn-outline-primary">
               close
             </button>
             <button type="submit" class="btn btn-primary">post</button>
