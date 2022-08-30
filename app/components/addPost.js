@@ -13,7 +13,7 @@ export function displayAddPostWindow() {
         <div class="form-floating">
           <textarea
             name=""
-            id="user-post"
+            id="user-post-mobile"
             class="form-control w-100 h-100"
             placeholder="share your thoughts"
           ></textarea>

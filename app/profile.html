@@ -37,7 +37,7 @@
             <div class="form-floating">
               <textarea
                 name=""
-                id="user-post"
+                id="user-post-desktop"
                 class="form-control w-100 h-100"
                 placeholder="share your thoughts"
               ></textarea>
@@ -67,6 +67,224 @@
           </form>
         </div>
       </div>
+
+      <!--- starts copy --->
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-home"
+            type="button"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+          >
+            Home
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+          >
+            Profile
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-contact"
+            type="button"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+          >
+            Contact
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="pills-home"
+          role="tabpanel"
+          aria-labelledby="pills-home-tab"
+        >
+          ...
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-profile"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+        >
+          ...
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-contact"
+          role="tabpanel"
+          aria-labelledby="pills-contact-tab"
+        >
+          ...
+        </div>
+      </div>
+      <!---finish copy-->
+
+      <!---my solution-->
+      <div class="container py-5 bg-light" role="navigation">
+        <ul class="nav nav-tabs" id="contacts-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="contact-list-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#contact-list"
+              type="button"
+              role="tab"
+              aria-controls="contact-list"
+              aria-selected="true"
+            >
+              contacts
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="suggested-contacts-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#suggested-contacts"
+              type="button"
+              role="tab"
+              aria-controls="suggested-contacts"
+              aria-selected="false"
+            >
+              suggestions
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="contact-tab-contents">
+          <div
+            class="tab-pane fade show active"
+            id="contact-list"
+            role="tabpanel"
+            aria-labelledby="contact-list-tab"
+          >
+            <ul class="container bg-body">
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_remove
+                  </span>
+                </div>
+              </li>
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_remove
+                  </span>
+                </div>
+              </li>
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_remove
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="suggested-contacts"
+            role="tabpanel"
+            aria-labelledby="suggested-contacts-tab"
+          >
+            <ul class="container bg-body">
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_add
+                  </span>
+                </div>
+              </li>
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_add
+                  </span>
+                </div>
+              </li>
+              <li class="row d-flex py-3">
+                <div class="col-2">
+                  <img
+                    src="/app/img/captura.JPG"
+                    class="img-fluid"
+                    alt="user placeholder"
+                  />
+                </div>
+                <div class="col-6">username</div>
+                <div class="col-2">
+                  <span class="material-symbols-outlined text-secondary">
+                    person_add
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!---end of my solution-->
 
       <div class="container py-1 bg-light">
         <div class="card my-1">
