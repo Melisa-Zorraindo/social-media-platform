@@ -9,10 +9,10 @@ ADD_POST_BTN.addEventListener("click", () => {
   updateNavbarStyles(ADD_POST_BTN);
 });
 
-/* CONTACT_LIST_BTN.addEventListener("click", () => {
+CONTACT_LIST_BTN.addEventListener("click", () => {
   displayContactsWindow();
   updateNavbarStyles(CONTACT_LIST_BTN);
-}); */
+});
 
 function updateNavbarStyles(elem) {
   NAVBAR.forEach((item) => {
