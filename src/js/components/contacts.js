@@ -49,7 +49,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -64,7 +64,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -79,7 +79,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -103,7 +103,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -118,7 +118,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -133,7 +133,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
-               src="/app/img/captura.JPG"
+               src="/src/img/captura.JPG"
                class="img-fluid"
                alt="user placeholder"
              />
