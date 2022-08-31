@@ -45,7 +45,7 @@ export function displayContactsWindow() {
        role="tabpanel"
        aria-labelledby="contact-list-tab"
      >
-       <ul class="container bg-body">
+       <ul class="container bg-body border-start border-end border-bottom">
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
@@ -99,7 +99,7 @@ export function displayContactsWindow() {
        role="tabpanel"
        aria-labelledby="suggested-contacts-tab"
      >
-       <ul class="container bg-body">
+       <ul class="container bg-body border-start border-end border-bottom">
          <li class="row d-flex py-3">
            <div class="col-2">
              <img
