@@ -47,7 +47,7 @@ export function displayContactsWindow() {
      >
        <ul class="container bg-body border-start border-end border-bottom">
          <li class="row d-flex py-3">
-           <div class="col-2">
+           <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
@@ -62,7 +62,7 @@ export function displayContactsWindow() {
            </div>
          </li>
          <li class="row d-flex py-3">
-           <div class="col-2">
+         <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
@@ -77,7 +77,7 @@ export function displayContactsWindow() {
            </div>
          </li>
          <li class="row d-flex py-3">
-           <div class="col-2">
+         <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
@@ -101,7 +101,7 @@ export function displayContactsWindow() {
      >
        <ul class="container bg-body border-start border-end border-bottom">
          <li class="row d-flex py-3">
-           <div class="col-2">
+         <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
@@ -116,7 +116,7 @@ export function displayContactsWindow() {
            </div>
          </li>
          <li class="row d-flex py-3">
-           <div class="col-2">
+         <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
@@ -131,7 +131,7 @@ export function displayContactsWindow() {
            </div>
          </li>
          <li class="row d-flex py-3">
-           <div class="col-2">
+         <div class="col col-md-1 col-2">
              <img
                src="/src/img/captura.JPG"
                class="img-fluid"
