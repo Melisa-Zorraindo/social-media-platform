@@ -4,58 +4,410 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socials | Login</title>
+    <title>Socials | Profile</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
     <link rel="stylesheet" href="/dist/css/style.css" />
   </head>
-  <body class="d-flex flex-column justify-content-between min-vh-100">
-    <main>
-      <h1 class="text-center m-5">Log in</h1>
-      <form action="/src/html/profile.html">
-        <div class="container-md custom-w">
-          <div class="input-group my-3">
-            <span class="input-group-text">@</span>
-            <input
-              type="text"
-              class="form-control py-3"
-              id="username"
-              placeholder="username"
-              aria-label="username"
-              required
-            />
+  <body>
+    <header class="border-bottom">
+      <div class="container mt-2">
+        <div class="row">
+          <div class="col col-3 d-none d-lg-block">
+            <a href="#"><img src="/src/img/socials-logo.png" alt="logo" /></a>
           </div>
-          <div class="input-group my-1">
-            <span class="input-group-text material-symbols-outlined">
-              key
-            </span>
-            <input
-              type="password"
-              class="form-control py-3"
-              id="password"
-              placeholder="password"
-              aria-label="password"
-              required
-            />
-          </div>
-          <div class="d-sm-flex justify-content-between">
-            <div>
-              <input type="checkbox" name="" id="remember" />
-              <label for="remember">Remember me</label>
+          <div class="col col-lg-9 col-md-12 d-flex justify-content-between">
+            <div class="col col-md-2 col-sm-3 col-3">
+              <a href="/src/html/profile.html" class="text-decoration-none">
+                <img
+                  src="/src/img/captura.JPG"
+                  class="img-fluid"
+                  alt="user placeholder"
+                />
+              </a>
             </div>
-            <a href="#">Forgot your password?</a>
-          </div>
-          <div class="d-grid my-5">
-            <button type="submit" class="btn btn-primary">log in</button>
-            <p class="text-center py-1">
-              Not registered yet? <a href="#">Sign up</a>
-            </p>
+            <div class="col col-md-4 col-8">
+              <div class="input-group my-0">
+                <span
+                  class="input-group-text material-symbols-outlined search-custom-h"
+                  >search</span
+                >
+                <input
+                  type="search"
+                  class="form-control search-custom-h"
+                  id="search-bar"
+                  placeholder="search"
+                  aria-label="search"
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+      </div>
+    </header>
+    <main class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 d-none d-lg-block">
+            <div class="container py-5 bg-light">
+              <ul class="container bg-body card" id="contacts-desktop">
+                <li class="list-unstyled">
+                  <h2 class="h5 text-primary">contacts</h2>
+                </li>
+                <li class="row d-flex py-3 list-unstyled">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_remove
+                    </span>
+                  </div>
+                </li>
+                <li class="row d-flex py-3">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_remove
+                    </span>
+                  </div>
+                </li>
+                <li class="row d-flex py-3">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_remove
+                    </span>
+                  </div>
+                </li>
+              </ul>
+              <ul
+                class="container bg-body card"
+                id="suggested-contacts-desktop"
+              >
+                <li class="list-unstyled">
+                  <h2 class="h5 text-primary">suggestions</h2>
+                </li>
+                <li class="row d-flex py-3 list-unstyled">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_add
+                    </span>
+                  </div>
+                </li>
+                <li class="row d-flex py-3">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_add
+                    </span>
+                  </div>
+                </li>
+                <li class="row d-flex py-3">
+                  <div class="col-xl-2 col-lg-3 col-2">
+                    <img
+                      src="/src/img/captura.JPG"
+                      class="img-fluid"
+                      alt="user placeholder"
+                    />
+                  </div>
+                  <div class="col-6">username</div>
+                  <div class="col-2">
+                    <span class="material-symbols-outlined text-secondary">
+                      person_add
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="col col-lg-12">
+              <div class="container py-5 bg-light d-none d-lg-block">
+                <div class="card my-1 border-0">
+                  <form action="">
+                    <div class="form-floating">
+                      <textarea
+                        name=""
+                        id="user-post-desktop"
+                        class="form-control w-100 h-100"
+                        placeholder="share your thoughts"
+                      ></textarea>
+                      <label for="user-post">share your thoughts</label>
+                    </div>
+                    <div class="d-flex mt-3 mb-1 justify-content-between">
+                      <div class="d-flex">
+                        <button
+                          type="button"
+                          class="btn-interaction text-secondary"
+                        >
+                          <span class="material-symbols-outlined">
+                            add_photo_alternate
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-interaction text-secondary"
+                        >
+                          <span class="material-symbols-outlined">
+                            add_reaction
+                          </span>
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          type="submit"
+                          class="btn btn-outline-primary d-lg-none"
+                        >
+                          close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          post
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col col-lg-12 mb-5">
+              <div class="container py-1 bg-light">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
+                  <div class="d-flex">
+                    <div class="col col-md-1 col-sm-2 col-2">
+                      <img
+                        src="/src/img/captura.JPG"
+                        class="img-thumbnail border-0"
+                        alt="user placeholder"
+                      />
+                    </div>
+                    <div>
+                      <p class="fw-bold text-primary mb-0 ps-2">username</p>
+                      <p class="text-secondary ps-2">date & time</p>
+                      <p class="ps-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
+                        accusamus sed tempora pariatur cum autem aperiam minus
+                        explicabo, saepe odit quaerat doloremque!
+                      </p>
+                      <div class="d-flex gap-5">
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              favorite
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">1004</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              chat_bubble
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">52</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
+                  <div class="d-flex">
+                    <div class="col col-md-1 col-sm-2 col-2">
+                      <img
+                        src="/src/img/captura.JPG"
+                        class="img-thumbnail border-0"
+                        alt="user placeholder"
+                      />
+                    </div>
+                    <div>
+                      <p class="fw-bold text-primary mb-0 ps-2">username</p>
+                      <p class="text-secondary ps-2">date & time</p>
+                      <p class="ps-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
+                        accusamus sed tempora pariatur cum autem aperiam minus
+                        explicabo, saepe odit quaerat doloremque!
+                      </p>
+                      <img
+                        src="/src/img/elliott-engelmann-4xEfxMShEUM-unsplash.jpg"
+                        class="img-fluid"
+                        alt="joshua tree national park"
+                      />
+                      <div class="d-flex gap-5">
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              favorite
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">1004</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              chat_bubble
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">52</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
+                  <div class="d-flex">
+                    <div class="col col-md-1 col-sm-2 col-2">
+                      <img
+                        src="/src/img/captura.JPG"
+                        class="img-thumbnail border-0"
+                        alt="user placeholder"
+                      />
+                    </div>
+                    <div>
+                      <p class="fw-bold text-primary mb-0 ps-2">username</p>
+                      <p class="text-secondary ps-2">date & time</p>
+                      <p class="ps-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
+                        accusamus sed tempora pariatur cum autem aperiam minus
+                        explicabo, saepe odit quaerat doloremque!
+                      </p>
+                      <div class="d-flex gap-5">
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              favorite
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">1004</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              chat_bubble
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">52</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-    <footer class="text-center">Copyright 2022</footer>
+    <footer class="footer d-lg-none">
+      <div class="container">
+        <nav class="fixed-bottom border-top pt-3 bg-light" id="navbar">
+          <ul class="nav justify-content-around">
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-interaction"
+                aria-label="home"
+                id="home-btn"
+              >
+                <a href="/index.html">
+                  <span class="material-symbols-outlined text-primary">
+                    home
+                  </span></a
+                >
+              </button>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-interaction text-secondary"
+                aria-label="add post"
+                id="add-post-btn"
+              >
+                <span class="material-symbols-outlined"> add_circle </span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-interaction"
+                aria-label="contacts"
+                id="contacts-btn"
+              >
+                <span class="material-symbols-outlined text-secondary">
+                  contacts
+                </span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <span class="material-symbols-outlined text-secondary">
+                settings
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/src/js/profile.js" type="module"></script>
   </body>
 </html>

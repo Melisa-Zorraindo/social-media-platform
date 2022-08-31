@@ -50,8 +50,8 @@
         </div>
       </div>
     </header>
-    <main class="bg-light vh-100">
-      <div class="container mb-5">
+    <main class="bg-light">
+      <div class="container">
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="container py-5 bg-light">
@@ -209,7 +209,7 @@
                 </div>
               </div>
             </div>
-            <div class="col col-lg-12">
+            <div class="col col-lg-12 mb-5">
               <div class="container py-1 bg-light">
                 <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
                   <div class="d-flex">
@@ -256,7 +256,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
                   <div class="d-flex">
                     <div class="col col-md-1 col-sm-2 col-2">
                       <img
@@ -306,7 +306,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
                   <div class="d-flex">
                     <div class="col col-md-1 col-sm-2 col-2">
                       <img
@@ -357,14 +357,23 @@
         </div>
       </div>
     </main>
-    <footer class="footer">
+    <footer class="footer d-lg-none">
       <div class="container">
         <nav class="fixed-bottom border-top pt-3 bg-light">
           <ul class="nav justify-content-around">
             <li class="nav-item">
-              <span class="material-symbols-outlined text-secondary">
-                home
-              </span>
+              <button
+                type="button"
+                class="btn-interaction"
+                aria-label="home"
+                id="home-btn"
+              >
+                <a href="/index.html">
+                  <span class="material-symbols-outlined text-secondary">
+                    home
+                  </span></a
+                >
+              </button>
             </li>
             <li class="nav-item">
               <button
