@@ -49,12 +49,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">iman alcón</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_remove
@@ -64,12 +64,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/karina-lago-G7Y2mEMcsvI-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">lucas castillo</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_remove
@@ -79,12 +79,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">teodora milhavi</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_remove
@@ -103,12 +103,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/rick-gebhardt-3faX71BaNe0-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">rick wandel</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_add
@@ -118,12 +118,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">marcia maccarthy</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_add
@@ -133,12 +133,12 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/captura.JPG"
+               src="../img/jacob-townsend-4OzZru1zewE-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
            </div>
-           <div class="col-6">username</div>
+           <div class="col-6">adam farmer</div>
            <div class="col-2">
              <span class="material-symbols-outlined text-secondary">
                person_add
