@@ -16,13 +16,16 @@
       <div class="container mt-2">
         <div class="row">
           <div class="col col-3 d-none d-lg-block">
-            <a href="../html/home.html"
-              ><img src="../img/socials-logo.png" alt="logo"
+            <a href="../../src/html/home.html"
+              ><img src="../../src/img/socials-logo.png" alt="logo"
             /></a>
           </div>
-          <div class="col col-9 d-flex gap-3">
+          <div class="col col-lg-9 col-md-12 d-flex justify-content-between">
             <div class="col col-md-2 col-sm-3 col-3">
-              <a href="profile.html" class="text-decoration-none">
+              <a
+                href="../../src/html/profile.html"
+                class="text-decoration-none"
+              >
                 <img
                   src="../img/captura.JPG"
                   class="img-fluid"
@@ -30,23 +33,20 @@
                 />
               </a>
             </div>
-            <div>
-              <div class="d-flex">
-                <h1 class="h3 text-primary mb-0">username</h1>
-                <button
-                  type="button"
-                  class="btn-interaction"
-                  aria-label="edit user"
-                  id="edit-user-btn"
+            <div class="col col-md-4 col-8">
+              <div class="input-group my-0">
+                <span
+                  class="input-group-text material-symbols-outlined search-custom-h"
+                  >search</span
                 >
-                  <span class="material-symbols-outlined text-secondary">
-                    draw
-                  </span>
-                </button>
+                <input
+                  type="search"
+                  class="form-control search-custom-h"
+                  id="search-bar"
+                  placeholder="search"
+                  aria-label="search"
+                />
               </div>
-
-              <p class="my-0 text-black">user info</p>
-              <p class="my-0 text-black">user info</p>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@
             </div>
             <div class="col col-lg-12 mb-5">
               <div class="container py-1 bg-light">
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
                   <div class="d-flex">
                     <div class="col col-md-1 col-sm-2 col-2">
                       <img
@@ -258,7 +258,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
                   <div class="d-flex">
                     <div class="col col-md-1 col-sm-2 col-2">
                       <img
@@ -308,7 +308,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1">
                   <div class="d-flex">
                     <div class="col col-md-1 col-sm-2 col-2">
                       <img
@@ -361,7 +361,7 @@
     </main>
     <footer class="footer d-lg-none">
       <div class="container">
-        <nav class="fixed-bottom border-top pt-3 bg-light">
+        <nav class="fixed-bottom border-top pt-3 bg-light" id="navbar">
           <ul class="nav justify-content-around">
             <li class="nav-item">
               <button
@@ -371,7 +371,7 @@
                 id="home-btn"
               >
                 <a href="../../src/html/home.html">
-                  <span class="material-symbols-outlined text-secondary">
+                  <span class="material-symbols-outlined text-primary">
                     home
                   </span></a
                 >
@@ -380,13 +380,11 @@
             <li class="nav-item">
               <button
                 type="button"
-                class="btn-interaction"
+                class="btn-interaction text-secondary"
                 aria-label="add post"
                 id="add-post-btn"
               >
-                <span class="material-symbols-outlined text-primary">
-                  add_circle
-                </span>
+                <span class="material-symbols-outlined"> add_circle </span>
               </button>
             </li>
             <li class="nav-item">
