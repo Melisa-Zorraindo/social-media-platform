@@ -49,7 +49,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
            <div class="col col-md-1 col-2">
              <img
-               src="../img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
+               src="src/img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -64,7 +64,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/karina-lago-G7Y2mEMcsvI-unsplash.png"
+               src="src/img/karina-lago-G7Y2mEMcsvI-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -79,7 +79,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
+               src="src/img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -103,7 +103,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/rick-gebhardt-3faX71BaNe0-unsplash.png"
+               src="src/img/rick-gebhardt-3faX71BaNe0-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -118,7 +118,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
+               src="src/img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
@@ -133,7 +133,7 @@ export function displayContactsWindow() {
          <li class="row d-flex py-3">
          <div class="col col-md-1 col-2">
              <img
-               src="../img/jacob-townsend-4OzZru1zewE-unsplash.png"
+               src="src/img/jacob-townsend-4OzZru1zewE-unsplash.png"
                class="img-fluid"
                alt="user placeholder"
              />
