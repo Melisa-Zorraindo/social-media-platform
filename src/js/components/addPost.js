@@ -16,6 +16,8 @@ export function displayAddPostWindow() {
             id="user-post-mobile"
             class="form-control w-100 h-100"
             placeholder="share your thoughts"
+            minlength="10"
+            required
           ></textarea>
           <label for="user-post">share your thoughts</label>
         </div>
