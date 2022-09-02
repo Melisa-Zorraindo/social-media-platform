@@ -9,7 +9,7 @@ export function displayAddPostWindow() {
   //render post window
   POST_WINDOW.innerHTML = `
     <div class="card my-5 border-0">
-      <form action="">
+      <form action="" class="p-3">
         <div class="form-floating">
           <textarea
             name=""

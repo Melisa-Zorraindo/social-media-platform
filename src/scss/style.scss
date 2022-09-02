@@ -1,4 +1,10 @@
+$custom-font: "Poppins", sans-serif;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  font-family: $custom-font;
+}
 
 .custom-w {
   max-width: 500px;
