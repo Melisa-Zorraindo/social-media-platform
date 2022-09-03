@@ -1,0 +1,27 @@
+{
+  "name": "social-media-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melisa-Zorraindo/social-media-platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melisa-Zorraindo/social-media-platform/issues"
+  },
+  "homepage": "https://github.com/Melisa-Zorraindo/social-media-platform#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  },
+  "devDependencies": {
+    "sass": "^1.54.5"
+  }
+}
