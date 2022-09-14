@@ -1,3 +1,5 @@
+import { authenticateUser } from "./api.mjs";
+
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
 
@@ -51,7 +53,7 @@ export function validateForm(event) {
     checkPasswordLength(PASSWORD_FIELD.value) &&
     checkPasswordsMatch(PASSWORD_FIELD.value, PASSWORD_REPEAT_FIELD.value)
   ) {
-    console.log("validation success");
+    authenticateUser();
   } else {
     if (checkUsername(USERNAME_FIELD.value)) {
       USERNAME_FIELD.classList.remove("border-danger");
