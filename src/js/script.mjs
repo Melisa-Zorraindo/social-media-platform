@@ -1,5 +1,5 @@
-import { displayAddPostWindow } from "./components/addPost.js";
-import { displayContactsWindow } from "./components/contacts.js";
+import { displayAddPostWindow } from "./components/addPost.mjs";
+import { displayContactsWindow } from "./components/contacts.mjs";
 
 const ADD_POST_BTN = document.querySelector("#add-post-btn");
 const CONTACT_LIST_BTN = document.querySelector("#contacts-btn");
