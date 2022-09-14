@@ -25,9 +25,9 @@
     <main>
       <div class="container">
         <h1 class="text-center m-5">Register new user</h1>
-        <form action="profile.html">
+        <form action="profile.html" id="registration-form">
           <div class="container-md custom-w">
-            <div class="input-group my-3">
+            <div class="input-group mt-3">
               <span class="input-group-text">@</span>
               <input
                 type="text"
@@ -35,10 +35,12 @@
                 id="username"
                 placeholder="username"
                 aria-label="username"
-                required
               />
             </div>
-            <div class="input-group my-3">
+            <p class="mt-1 ps-1 text-small" id="username-error">
+              Must not contain punctuation symbols apart from underscore (_)
+            </p>
+            <div class="input-group mt-3">
               <span class="input-group-text material-symbols-outlined">
                 mail
               </span>
@@ -48,11 +50,13 @@
                 id="email"
                 placeholder="email"
                 aria-label="email"
-                pattern="^[\w\-.]+@(stud.)?noroff.no$"
-                required
               />
             </div>
-            <div class="input-group my-3">
+            <p class="mt-1 ps-1 text-small" id="email-error">
+              Only users with @noroff.no or @stud.noroff.no email can register
+              profile
+            </p>
+            <div class="input-group mt-3">
               <span class="input-group-text material-symbols-outlined">
                 key
               </span>
@@ -62,28 +66,38 @@
                 id="password"
                 placeholder="password"
                 aria-label="password"
-                required
               />
             </div>
-            <!-- <div class="input-group my-1">
+            <p class="mt-1 ps-1 text-small" id="pass-error">
+              Must be at least 8 characters long
+            </p>
+            <div class="input-group my-1">
               <span class="input-group-text material-symbols-outlined">
                 key
               </span>
               <input
                 type="password"
                 class="form-control py-3"
-                id="password"
+                id="password-repeat"
                 placeholder="repeat password"
                 aria-label="password"
-                required
               />
-            </div> -->
+            </div>
+            <p
+              class="mt-1 ps-1 text-small text-danger hidden"
+              id="pass-match-error"
+            >
+              Passwords don't match
+            </p>
             <div class="d-grid my-5">
-              <button type="submit" class="btn btn-primary">sign up</button>
+              <button type="submit" class="btn btn-primary" id="sign-up">
+                sign up
+              </button>
             </div>
           </div>
         </form>
       </div>
     </main>
+    <script src="/src/js/auth/authentication.mjs" type="module"></script>
   </body>
 </html>
