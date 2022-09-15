@@ -1,4 +1,5 @@
 import { authenticateUser } from "./api.mjs";
+import { handleSubmission } from "./authentication.mjs";
 
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
@@ -41,7 +42,8 @@ PASSWORD_REPEAT_FIELD.addEventListener("keyup", () => {
 });
 
 /**
- * Calls API if values entered pass validation
+ * If values entered pass validation,
+ * it calls API to register new user
  * @param {*} event
  */
 export function validateForm(event) {
@@ -54,6 +56,7 @@ export function validateForm(event) {
     checkPasswordsMatch(PASSWORD_FIELD.value, PASSWORD_REPEAT_FIELD.value)
   ) {
     authenticateUser();
+    handleSubmission();
   } else {
     if (checkUsername(USERNAME_FIELD.value)) {
       USERNAME_FIELD.classList.remove("border-danger");

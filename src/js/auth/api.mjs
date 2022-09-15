@@ -4,6 +4,9 @@ const PASSWORD_FIELD = document.querySelector("#password");
 
 const BASE_URL = "https://nf-api.onrender.com";
 
+/**
+ * Calls API to register a new user
+ */
 export async function authenticateUser() {
   const options = {
     method: "POST",
@@ -23,6 +26,7 @@ export async function authenticateUser() {
     );
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
