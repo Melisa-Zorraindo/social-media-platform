@@ -25,6 +25,10 @@
     <main>
       <div class="container" id="new-user-page">
         <h1 class="text-center m-5">Register new user</h1>
+        <p
+          class="text-center text-light text-bg-danger"
+          id="signup-error-message"
+        ></p>
         <form id="registration-form">
           <div class="container-md custom-w">
             <div class="input-group mt-3">
@@ -89,15 +93,16 @@
             >
               Passwords don't match
             </p>
-            <div class="d-grid my-5">
+            <div class="d-grid mt-5 mb-1">
               <button type="submit" class="btn btn-primary" id="sign-up">
                 sign up
               </button>
             </div>
+            <p class="text-center">or <a href="./index.html">log in</a></p>
           </div>
         </form>
       </div>
     </main>
-    <script src="/src/js/auth/singup/signup.mjs" type="module"></script>
+    <script src="src/js/auth/singup/signup.mjs" type="module"></script>
   </body>
 </html>

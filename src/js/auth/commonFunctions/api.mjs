@@ -1,6 +1,10 @@
+import { handleSubmission } from "../singup/submission.mjs";
+
 const USERNAME_FIELD = document.querySelector("#username");
 const EMAIL_FIELD = document.querySelector("#email");
 const PASSWORD_FIELD = document.querySelector("#password");
+
+const SIGNUP_ERROR_MESSAGE = document.querySelector("#signup-error-message");
 
 const BASE_URL = "https://nf-api.onrender.com";
 
@@ -24,8 +28,12 @@ export async function authenticateUser() {
       `${BASE_URL}/api/v1/social/auth/register`,
       options
     );
-    const data = await response.json();
-    return data;
+    const { status, message } = await response.json();
+    if (status === 200) {
+      handleSubmission();
+    } else {
+      SIGNUP_ERROR_MESSAGE.innerHTML = message;
+    }
   } catch (error) {
     console.log(error);
   }
