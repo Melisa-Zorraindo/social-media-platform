@@ -1,5 +1,12 @@
-import { authenticateUser } from "./api.mjs";
-import { handleSubmission } from "./authentication.mjs";
+import { authenticateUser } from "../commonFunctions/api.mjs";
+import {
+  checkUsername,
+  checkEmail,
+  checkPasswordLength,
+  checkPasswordsMatch,
+  removeError,
+  displayError,
+} from "../commonFunctions/errorHandling.mjs";
 
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
@@ -43,7 +50,7 @@ PASSWORD_REPEAT_FIELD.addEventListener("keyup", () => {
  * it calls API to register new user
  * @param {*} event
  */
-export function validateForm(event) {
+export function validateSignup(event) {
   event.preventDefault();
 
   if (
@@ -85,67 +92,24 @@ export function validateForm(event) {
   }
 }
 
-/**
- * Checks if username entered matches
- * the regEx pattern
- * @param {string} username
- * @returns true if patterns match, false if don't
- */
-function checkUsername(username) {
-  const pattern = /^[\w]+$/;
-  const patternMatches = pattern.test(username.trim());
-  return patternMatches;
-}
+const NEW_USER_PAGE_CONTAINER = document.querySelector("#new-user-page");
 
 /**
- * Checks if email entered matches
- * regEx patter
- * @param {string} email
- * @returns true if patterns match, false if don't
+ * Renders a success message for the user
+ * and instructions if redirection fails
+ * Redirects the user to the login page in 5 seconds
  */
-function checkEmail(email) {
-  const pattern = /^[\w\-.]+@(stud.)?noroff.no$/;
-  const patternMatches = pattern.test(email);
-  return patternMatches;
-}
+function handleSubmission() {
+  NEW_USER_PAGE_CONTAINER.innerHTML = "";
 
-/**
- * Checks the password entered is at least 8 characters long
- * @param {string} password
- * @returns true if password is long enough, false if don't
- */
-function checkPasswordLength(password) {
-  return password.trim().length >= 8;
-}
+  NEW_USER_PAGE_CONTAINER.innerHTML = `<h1 class="text-center m-5">Welcome to Socials</h1>
+                                       <p class="text-center">You'll be now redirected to the login page</p>
+                                       <p class="text-center">
+                                            Please <a href="index.html">click here</a> if you're not redirected
+                                            within 5 seconds
+                                       </p>`;
 
-/**
- * Checks if passwords entered are the same
- * @param {string} passwordOne
- * @param {string} passwordTwo
- * @returns true if passwords are the same, false if not
- */
-function checkPasswordsMatch(passwordOne, passwordTwo) {
-  return passwordOne === passwordTwo;
-}
-
-/**
- * Updates field styles to convey
- * field is free of errors
- * @param {HTMLInputElement} inputFieldOne
- * @param {HTMLParagraphElement} inputFieldTwo
- */
-function removeError(inputFieldOne, inputFieldTwo) {
-  inputFieldOne.classList.remove("border-danger");
-  inputFieldTwo.classList.remove("text-danger");
-}
-
-/**
- * Changes field styles to convey
- * field contains errors
- * @param {HTMLInputElement} inputFieldOne
- * @param {HTMLParagraphElement} inputFieldTwo
- */
-function displayError(inputFieldOne, inputFieldTwo) {
-  inputFieldOne.classList.add("border-danger");
-  inputFieldTwo.classList.add("text-danger");
+  setTimeout(() => {
+    window.location.assign("index.html");
+  }, 5000);
 }

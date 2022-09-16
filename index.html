@@ -21,19 +21,23 @@
   <body class="d-flex flex-column justify-content-between min-vh-100">
     <main>
       <h1 class="text-center m-5">Log in</h1>
-      <form action="profile.html">
+      <form id="login-form">
         <div class="container-md custom-w">
-          <div class="input-group my-3">
-            <span class="input-group-text">@</span>
+          <div class="input-group mt-3">
+            <span class="input-group-text material-symbols-outlined">
+              mail
+            </span>
             <input
-              type="text"
+              type="email"
               class="form-control py-3"
-              id="username"
-              placeholder="username"
-              aria-label="username"
-              required
+              id="login-email"
+              placeholder="email"
+              aria-label="email"
             />
           </div>
+          <p class="mt-1 ps-1 text-small" id="login-email-error">
+            Only users with @noroff.no or @stud.noroff.no email
+          </p>
           <div class="input-group my-1">
             <span class="input-group-text material-symbols-outlined">
               key
@@ -41,7 +45,7 @@
             <input
               type="password"
               class="form-control py-3"
-              id="password"
+              id="login-password"
               placeholder="password"
               aria-label="password"
               required
@@ -55,7 +59,9 @@
             <a href="#">Forgot your password?</a>
           </div>
           <div class="d-grid my-5">
-            <button type="submit" class="btn btn-primary">log in</button>
+            <button type="submit" class="btn btn-primary" id="login-button">
+              log in
+            </button>
             <p class="text-center py-1">
               Not registered yet? <a href="new-user.html">Sign up</a>
             </p>
@@ -64,5 +70,6 @@
       </form>
     </main>
     <footer class="text-center">Copyright 2022</footer>
+    <script src="/src/js/auth/login/login.mjs" type="module"></script>
   </body>
 </html>
