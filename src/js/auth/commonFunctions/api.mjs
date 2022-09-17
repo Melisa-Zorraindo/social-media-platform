@@ -42,6 +42,8 @@ export async function authenticateUser() {
 const LOGIN_EMAIL = document.querySelector("#login-email");
 const LOGIN_PASSWORD = document.querySelector("#login-password");
 
+const LOGIN_ERROR_MESSAGE = document.querySelector("#login-error-message");
+
 /**
  * Calls API to get token authorisation
  * for later API requests
@@ -65,9 +67,10 @@ export async function authoriseUser() {
     );
     const data = await response.json();
     if (response.status === 200) {
-      const { accessToken } = data;
-      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("accessToken", data.accessToken);
       window.location.assign("profile.html");
+    } else {
+      LOGIN_ERROR_MESSAGE.innerHTML = data.message;
     }
   } catch (error) {
     console.log(error);
