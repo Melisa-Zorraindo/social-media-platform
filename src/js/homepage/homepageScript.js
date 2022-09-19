@@ -24,8 +24,6 @@ if (key) {
       timeStyle: "short",
     }).format(DATE);
 
-    const MEDIA = media || " ";
-
     LIST_OF_POSTS_CONTAINER.innerHTML += `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
     <div class="d-flex">
       <div class="col col-md-1 col-sm-2 col-2">
@@ -46,7 +44,7 @@ if (key) {
          ${body}
         </p>
         <img
-          src="${MEDIA}"
+          src="${media}"
           class="img-fluid"
           alt=" "
         />
@@ -91,6 +89,4 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
   event.preventDefault();
 
   createPost(key, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
-
-  console.log("test");
 });
