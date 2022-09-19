@@ -66,11 +66,13 @@ export async function authoriseUser() {
       options
     );
     const data = await response.json();
+    const { name, accessToken, message } = data;
     if (response.status === 200) {
-      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("accessToken", accessToken);
+      // localStorage.setItem("username", name);
       window.location.assign("profile.html");
     } else {
-      LOGIN_ERROR_MESSAGE.innerHTML = data.message;
+      LOGIN_ERROR_MESSAGE.innerHTML = message;
     }
   } catch (error) {
     console.log(error);
@@ -91,8 +93,54 @@ export async function fetchPosts(accessToken) {
       options
     );
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fecthProfilePosts(accessToken) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`,
+      options
+    );
+    const data = await response.json();
+    console.log(data);
+    // return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createPost(accessToken, postText, mediaUrl) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      title: " ",
+      body: postText,
+      tags: [" "],
+      media: mediaUrl,
+    }),
+  };
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/v1/social/posts/`, options);
+    const data = await response.json();
+    console.log(data);
+    window.location.assign("home.html");
   } catch (error) {
     console.log(error);
   }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="see what people are saying" />
-    <title>Socials | Profile</title>
+    <title>Socials | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -180,38 +180,23 @@
                         id="user-post-desktop"
                         class="form-control w-100 h-100"
                         placeholder="share your thoughts"
-                        minlength="10"
-                        required
                       ></textarea>
                       <label for="user-post">share your thoughts</label>
                     </div>
                     <div class="d-flex mt-3 mb-1 justify-content-between">
-                      <div class="d-flex">
-                        <button
-                          type="button"
-                          class="btn-interaction text-secondary"
-                        >
-                          <span class="material-symbols-outlined">
+                      <div class="input-group">
+                          <span class="material-symbols-outlined input-group-text">
                             add_photo_alternate
                           </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-interaction text-secondary"
-                        >
-                          <span class="material-symbols-outlined">
-                            add_reaction
-                          </span>
+                        <input type="text" placeholder="enter url" class="text-small form-control" id="media-upload">
                         </button>
                       </div>
                       <div>
                         <button
                           type="submit"
-                          class="btn btn-outline-primary d-lg-none"
+                          class="btn btn-primary"
+                          id="create-post-button-desktop"
                         >
-                          close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
                           post
                         </button>
                       </div>

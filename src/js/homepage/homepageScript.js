@@ -1,4 +1,5 @@
 import { fetchPosts } from "../auth/commonFunctions/api.mjs";
+import { createPost } from "../auth/commonFunctions/api.mjs";
 
 const key = localStorage.getItem("accessToken");
 if (key) {
@@ -10,8 +11,9 @@ if (key) {
   LIST_OF_POSTS.forEach((post) => {
     const {
       author: { avatar, name },
-      created,
       body,
+      created,
+      media,
       _count: { reactions, comments },
     } = post;
 
@@ -21,6 +23,8 @@ if (key) {
       dateStyle: "medium",
       timeStyle: "short",
     }).format(DATE);
+
+    const MEDIA = media || " ";
 
     LIST_OF_POSTS_CONTAINER.innerHTML += `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
     <div class="d-flex">
@@ -41,6 +45,11 @@ if (key) {
         <p class="ps-2">
          ${body}
         </p>
+        <img
+          src="${MEDIA}"
+          class="img-fluid"
+          alt=" "
+        />
         <div class="d-flex gap-5">
           <div class="d-flex flex-column align-items-center">
             <button
@@ -71,3 +80,17 @@ if (key) {
   </div>`;
   });
 }
+
+const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
+const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
+const CREATE_POST_BUTTON = document.querySelector(
+  "#create-post-button-desktop"
+);
+
+CREATE_POST_BUTTON.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  createPost(key, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
+
+  console.log("test");
+});
