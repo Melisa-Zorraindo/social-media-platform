@@ -15,7 +15,7 @@ export async function authenticateUser() {
   const options = {
     method: "POST",
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify({
       name: USERNAME_FIELD.value,
@@ -52,7 +52,7 @@ export async function authoriseUser() {
   const options = {
     method: "POST",
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify({
       email: LOGIN_EMAIL.value,
@@ -72,6 +72,27 @@ export async function authoriseUser() {
     } else {
       LOGIN_ERROR_MESSAGE.innerHTML = data.message;
     }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchPosts(accessToken) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`,
+      options
+    );
+    const data = await response.json();
+    // console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
