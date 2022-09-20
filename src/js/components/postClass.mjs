@@ -19,13 +19,13 @@ export class Post {
       timeStyle: "short",
     }).format(date);
 
-    (this.avatar = avatar),
-      (this.username = name),
-      (this.body = body),
-      (this.created = formattedDate),
-      (this.media = media),
-      (this.reactions = reactions),
-      (this.comments = comments);
+    this.avatar = avatar;
+    this.username = name;
+    this.body = body;
+    this.created = formattedDate;
+    this.media = media;
+    this.reactions = reactions;
+    this.comments = comments;
   }
 
   template() {
