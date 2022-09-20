@@ -175,7 +175,7 @@
             <div class="col col-lg-12">
               <div class="container py-5 bg-light d-none d-lg-block">
                 <div class="card my-1 border-0">
-                  <form action="">
+                  <form action="" class="p-3">
                     <div class="form-floating">
                       <textarea
                         name=""
@@ -186,32 +186,25 @@
                       <label for="user-post">share your thoughts</label>
                     </div>
                     <div class="d-flex mt-3 mb-1 justify-content-between">
-                      <div class="d-flex">
-                        <button
-                          type="button"
-                          class="btn-interaction text-secondary"
+                      <div class="input-group">
+                        <span
+                          class="material-symbols-outlined input-group-text"
                         >
-                          <span class="material-symbols-outlined">
-                            add_photo_alternate
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-interaction text-secondary"
-                        >
-                          <span class="material-symbols-outlined">
-                            add_reaction
-                          </span>
-                        </button>
+                          add_photo_alternate
+                        </span>
+                        <input
+                          type="text"
+                          placeholder="enter url"
+                          class="text-small form-control"
+                          id="media-upload"
+                        />
                       </div>
                       <div>
                         <button
                           type="submit"
-                          class="btn btn-outline-primary d-lg-none"
+                          class="btn btn-primary"
+                          id="create-post-button-desktop"
                         >
-                          close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
                           post
                         </button>
                       </div>
@@ -224,7 +217,74 @@
               <div
                 class="container py-1 bg-light"
                 id="logged-user-posts-container"
-              ></div>
+              >
+            
+              <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                <div class="row">
+                  <div class="col col-md-1 col-sm-2 col-2">
+                    <img
+                      src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
+                      class="img-fluid rounded-circle p-1"
+                      alt="user image"
+                    />
+                  </div>
+                  <div class="col col-md-10 col-sm-9 col-9">
+                    <p class="fw-bold text-primary mb-0 ps-2">
+                      melisa_zorraindo
+                    </p>
+                    <p class="text-secondary ps-2 text-small">
+                    19 Aug 2022, 18:00
+                    </p>
+                    <p class="ps-2">
+                     this is just for experimenting purposes
+                    </p>
+                    <img
+                      src="/src/img/elliott-engelmann-4xEfxMShEUM-unsplash.jpg"
+                      class="img-fluid"
+                      alt=" "
+                    />
+                    <div class="row my-2">
+                      <div class="col d-flex justify-content-start gap-5">
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                          type="button"
+                          class="btn-interaction text-secondary"
+                        >
+                          <span class="material-symbols-outlined">
+                            favorite
+                          </span>
+                        </button>
+                        <span class="text-small text-secondary">1004</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center">
+                          <button
+                            type="button"
+                            class="btn-interaction text-secondary"
+                          >
+                            <span class="material-symbols-outlined">
+                              chat_bubble
+                            </span>
+                          </button>
+                          <span class="text-small text-secondary">54</span>
+                        </div>
+                        <div class="dropdown">
+                          <button class="btn-interaction text-secondary" type="button" id="more-actions" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined">
+                              more_horiz
+                          </span>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                            <li><button class="dropdown-item text-small" type="button">edit post</button></li>
+                            <li><button class="dropdown-item text-small" type="button">delete post</button></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>

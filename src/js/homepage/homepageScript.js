@@ -2,29 +2,29 @@ import { fetchPosts } from "../auth/commonFunctions/api.mjs";
 import { createPost } from "../auth/commonFunctions/api.mjs";
 
 const key = localStorage.getItem("accessToken");
-if (key) {
-  const LIST_OF_POSTS = await fetchPosts(key);
-  const LIST_OF_POSTS_CONTAINER = document.querySelector(
-    "#list-of-posts-container"
-  );
 
-  LIST_OF_POSTS.forEach((post) => {
-    const {
-      author: { avatar, name },
-      body,
-      created,
-      media,
-      _count: { reactions, comments },
-    } = post;
+const LIST_OF_POSTS = await fetchPosts(key);
+const LIST_OF_POSTS_CONTAINER = document.querySelector(
+  "#list-of-posts-container"
+);
 
-    const DATE = new Date(created);
+LIST_OF_POSTS.forEach((post) => {
+  const {
+    author: { avatar, name },
+    body,
+    created,
+    media,
+    _count: { reactions, comments },
+  } = post;
 
-    const FORMATTED_DATE = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    }).format(DATE);
+  const DATE = new Date(created);
 
-    LIST_OF_POSTS_CONTAINER.innerHTML += `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+  const FORMATTED_DATE = new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(DATE);
+
+  LIST_OF_POSTS_CONTAINER.innerHTML += `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
     <div class="d-flex">
       <div class="col col-md-1 col-sm-2 col-2">
         <img
@@ -76,8 +76,7 @@ if (key) {
     </div>
   </div>
   </div>`;
-  });
-}
+});
 
 const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
