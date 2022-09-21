@@ -23,14 +23,14 @@ export function displayAddPostWindow() {
         </div>
         <div class="d-flex mt-3 mb-1 justify-content-between">
           <div class="d-flex">
-            <button type="button" class="btn-interaction text-secondary">
+            <button type="button" class="btn-custom text-secondary">
               <span class="material-symbols-outlined">
                 add_photo_alternate
               </span>
             </button>
             <button
               type="button"
-              class="btn btn-interaction text-secondary"
+              class="btn btn-custom text-secondary"
             >
               <span class="material-symbols-outlined"> add_reaction </span>
             </button>

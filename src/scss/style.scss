@@ -1,10 +1,6 @@
-$custom-font: "Poppins", sans-serif;
-
+@import "buttons.scss";
+@import "variables.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
-body {
-  font-family: $custom-font;
-}
 
 .custom-w {
   max-width: 500px;
@@ -14,11 +10,6 @@ body {
   height: 2rem;
 }
 
-.btn-interaction {
-  border: none;
-  background-color: transparent;
-}
-
 .text-small {
-  font-size: 0.8rem;
+  font-size: $font-size-sm;
 }
