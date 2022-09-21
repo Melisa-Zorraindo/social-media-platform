@@ -6,8 +6,27 @@ import { Post } from "../components/postClass.mjs";
 const listOfPosts = await fetchPosts(key);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
-const posts = listOfPosts.map(new Post());
-posts.forEach((post) => post.render(listOfPostsContainer));
+listOfPosts.forEach((post) => {
+  const {
+    author: { avatar, name },
+    created,
+    body,
+    media,
+    _count: { reactions, comments },
+  } = post;
+
+  const postItem = new Post(
+    avatar,
+    name,
+    created,
+    body,
+    media,
+    reactions,
+    comments
+  );
+
+  postItem.render(listOfPostsContainer);
+});
 
 const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
