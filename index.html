@@ -19,50 +19,56 @@
     <link rel="stylesheet" href="dist/css/style.css" />
   </head>
   <body class="d-flex flex-column justify-content-between min-vh-100">
-    <main>
-      <h1 class="text-center m-5">Log in</h1>
-      <form action="profile.html">
-        <div class="container-md custom-w">
-          <div class="input-group my-3">
-            <span class="input-group-text">@</span>
-            <input
-              type="text"
-              class="form-control py-3"
-              id="username"
-              placeholder="username"
-              aria-label="username"
-              required
-            />
-          </div>
-          <div class="input-group my-1">
-            <span class="input-group-text material-symbols-outlined">
-              key
-            </span>
-            <input
-              type="password"
-              class="form-control py-3"
-              id="password"
-              placeholder="password"
-              aria-label="password"
-              required
-            />
-          </div>
-          <div class="d-sm-flex justify-content-between">
-            <div>
-              <input type="checkbox" name="" id="remember" />
-              <label for="remember">Remember me</label>
+    <div class="container">
+      <main>
+        <h1 class="text-center m-5">Log in</h1>
+        <form action="profile.html">
+          <div class="container-md custom-w">
+            <div class="input-group my-3">
+              <span class="input-group-text">@</span>
+              <input
+                type="text"
+                class="form-control py-3"
+                id="username"
+                placeholder="username"
+                aria-label="username"
+                required
+              />
             </div>
-            <a href="#" class="link-info">Forgot your password?</a>
+            <div class="input-group my-1">
+              <span class="input-group-text material-symbols-outlined">
+                key
+              </span>
+              <input
+                type="password"
+                class="form-control py-3"
+                id="password"
+                placeholder="password"
+                aria-label="password"
+                required
+              />
+            </div>
+            <div class="d-sm-flex justify-content-between">
+              <div>
+                <input type="checkbox" name="" id="remember" />
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#" class="link-info">Forgot your password?</a>
+            </div>
+            <div class="d-grid my-5">
+              <button type="submit" class="btn btn-primary">log in</button>
+              <p class="text-center py-1">
+                Not registered yet? <a href="#" class="link-info">Sign up</a>
+              </p>
+            </div>
           </div>
-          <div class="d-grid my-5">
-            <button type="submit" class="btn btn-primary">log in</button>
-            <p class="text-center py-1">
-              Not registered yet? <a href="#" class="link-info">Sign up</a>
-            </p>
-          </div>
-        </div>
-      </form>
-    </main>
-    <footer class="text-center">Copyright 2022</footer>
+        </form>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-center">Copyright 2022</p>
+      </div>
+    </footer>
   </body>
 </html>
