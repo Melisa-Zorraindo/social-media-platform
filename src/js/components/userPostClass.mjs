@@ -21,8 +21,8 @@ export class UserPost {
     this.id = id;
   }
 
-  template() {
-    return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+  cardTemplate() {
+    return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3" id="post-edit-window">
                 <div class="row">
                     <div class="col col-md-2">
                         <img
@@ -81,8 +81,15 @@ export class UserPost {
                                         more_horiz
                                     </span>
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><button class="dropdown-item">edit post</button></li>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><button
+                                             class="dropdown-item"
+                                             type="button"
+                                             id="open-edition-modal"
+                                             >
+                                                edit post
+                                            </button>
+                                        </li>
                                         <li><button class="dropdown-item" id="delete-button">delete post</button></li>
                                     </ul>
                                 </div>
@@ -93,12 +100,72 @@ export class UserPost {
             </div>`;
   }
 
+  modaltemplate() {
+    const documentScreen = document.querySelector("main");
+
+    documentScreen.innerHTML = `<div class="container custom-w mt-5 py-3">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="">
+                                        Edit post
+                                        </h5>
+                                        <button
+                                        type="button"
+                                        class="btn-close"
+                                        aria-label="Close"
+                                        ></button>
+                                    </div>
+                                    <div>
+                                        <form action="" class="p-2">
+                                            <div class="form-floating">
+                                                <textarea
+                                                    name=""
+                                                    class="form-control h-100"
+                                                    placeholder="share your thoughts"
+                                                ></textarea>
+                                                <label for="user-post">${this.body}</label>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row mt-2">
+                                                    <div class="col input-group">
+                                                        <span
+                                                            class="material-symbols-outlined input-group-text"
+                                                        >
+                                                            add_photo_alternate
+                                                        </span>
+                                                        <input
+                                                            type="text"
+                                                            placeholder=${this.media}
+                                                            class="text-small form-control"
+                                                        />
+                                                    </div>
+                                                    <div class="col">
+                                                        <button
+                                                        type="button"
+                                                        class="btn btn-primary"
+                                                        id="edit-button"
+                                                        >
+                                                        Save changes
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>`;
+  }
+
   render(container) {
-    const postHTML = parser(this.template());
+    const postHTML = parser(this.cardTemplate());
 
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
       this.removePost();
     });
+
+    postHTML
+      .querySelector("#open-edition-modal")
+      .addEventListener("click", () => {
+        this.modaltemplate();
+      });
 
     container.append(postHTML.documentElement);
   }
@@ -106,5 +173,9 @@ export class UserPost {
   removePost() {
     console.log(this.id);
     deletePost(accessToken, this.id);
+  }
+
+  editPost() {
+    console.log(this.id);
   }
 }

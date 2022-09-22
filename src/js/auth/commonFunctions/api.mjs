@@ -132,6 +132,12 @@ export async function createPost(accessToken, postText, mediaUrl) {
   }
 }
 
+/**
+ * Makes a DELETE request to
+ * remove a post from the API
+ * @param {string} accessToken
+ * @param {number} id
+ */
 export async function deletePost(accessToken, id) {
   const options = {
     method: "DELETE",
@@ -157,3 +163,5 @@ export async function deletePost(accessToken, id) {
     console.log(error);
   }
 }
+
+// export async function editPost() {}
