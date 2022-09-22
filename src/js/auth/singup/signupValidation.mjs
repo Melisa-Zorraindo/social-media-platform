@@ -60,7 +60,7 @@ export function validateSignup(event) {
     checkPasswordsMatch(PASSWORD_FIELD.value, PASSWORD_REPEAT_FIELD.value)
   ) {
     authenticateUser();
-    // handleSubmission();
+    handleSubmission();
   } else {
     if (checkUsername(USERNAME_FIELD.value)) {
       removeError(USERNAME_FIELD, USERNAME_ERROR);

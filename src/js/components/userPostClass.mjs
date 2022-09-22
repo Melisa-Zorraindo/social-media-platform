@@ -1,4 +1,6 @@
 import parser from "../tools/parser.mjs";
+import { accessToken } from "./storedKeys.mjs";
+import { deletePost } from "../auth/commonFunctions/api.mjs";
 
 export class UserPost {
   constructor(avatar, username, created, body, media, reactions, comments, id) {
@@ -49,7 +51,7 @@ export class UserPost {
                                 <div class="d-flex flex-column align-items-center">
                                     <button
                                     type="button"
-                                    class="btn-interaction text-secondary"
+                                    class="btn btn-interaction text-secondary"
                                     >
                                         <span class="material-symbols-outlined">
                                             favorite
@@ -60,7 +62,7 @@ export class UserPost {
                                 <div class="d-flex flex-column align-items-center">
                                     <button
                                         type="button"
-                                        class="btn-interaction text-secondary"
+                                        class="btn btn-interaction text-secondary"
                                     >
                                         <span class="material-symbols-outlined">
                                         chat_bubble
@@ -68,15 +70,21 @@ export class UserPost {
                                     </button>
                                     <span class="text-small text-secondary">${this.comments}</span>
                                 </div>
-                                <div>
-                                    <button
-                                        type="button"
-                                        class="btn-interaction text-secondary"
-                                    >
-                                    <span class="material-symbols-outlined" id="delete-button">
-                                        delete
+                                <div class="dropup">
+                                    <button 
+                                    class="btn btn-interaction text-secondary" 
+                                    type="button"
+                                    id="more actions"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <span class="material-symbols-outlined">
+                                        more_horiz
                                     </span>
                                     </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><button class="dropdown-item">edit post</button></li>
+                                        <li><button class="dropdown-item" id="delete-button">delete post</button></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -97,5 +105,6 @@ export class UserPost {
 
   removePost() {
     console.log(this.id);
+    deletePost(accessToken, this.id);
   }
 }

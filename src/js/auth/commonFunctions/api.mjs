@@ -46,7 +46,8 @@ const LOGIN_ERROR_MESSAGE = document.querySelector("#login-error-message");
 
 /**
  * Calls API to get token authorisation
- * for later API requests
+ * for later API requests and the usernaname
+ * and save them in local storage
  */
 export async function authoriseUser() {
   const options = {
@@ -69,7 +70,7 @@ export async function authoriseUser() {
     const { name, accessToken, message } = data;
     if (response.status === 200) {
       localStorage.setItem("accessToken", accessToken);
-      // localStorage.setItem("username", name);
+      localStorage.setItem("username", name);
       window.location.assign("profile.html");
     } else {
       LOGIN_ERROR_MESSAGE.innerHTML = message;
@@ -79,6 +80,12 @@ export async function authoriseUser() {
   }
 }
 
+/**
+ * Makes a GET request to fetch
+ * all posts from API
+ * @param {string} accessToken
+ * @returns
+ */
 export async function fetchPosts(accessToken) {
   const options = {
     method: "GET",
@@ -95,27 +102,6 @@ export async function fetchPosts(accessToken) {
     const data = await response.json();
     // console.log(data);
     return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function fecthProfilePosts(accessToken) {
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  };
-
-  try {
-    const response = await fetch(
-      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`,
-      options
-    );
-    const data = await response.json();
-    console.log(data);
-    // return data;
   } catch (error) {
     console.log(error);
   }
@@ -141,6 +127,32 @@ export async function createPost(accessToken, postText, mediaUrl) {
     const data = await response.json();
     console.log(data);
     window.location.assign("home.html");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deletePost(accessToken, id) {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}`,
+      options
+    );
+    const data = await response.json();
+    console.log(data);
+    if (response.status === 200) {
+      location.reload();
+    } else {
+      alert("An error ocurred, try later");
+    }
   } catch (error) {
     console.log(error);
   }
