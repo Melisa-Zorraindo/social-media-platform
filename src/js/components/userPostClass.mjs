@@ -1,7 +1,7 @@
 import parser from "../tools/parser.mjs";
 
-export class Post {
-  constructor(avatar, username, created, body, media, reactions, comments) {
+export class UserPost {
+  constructor(avatar, username, created, body, media, reactions, comments, id) {
     const date = new Date(created);
 
     const formattedDate = new Intl.DateTimeFormat("en-GB", {
@@ -16,6 +16,7 @@ export class Post {
     this.media = media;
     this.reactions = reactions;
     this.comments = comments;
+    this.id = id;
   }
 
   template() {
@@ -67,6 +68,16 @@ export class Post {
                                     </button>
                                     <span class="text-small text-secondary">${this.comments}</span>
                                 </div>
+                                <div>
+                                    <button
+                                        type="button"
+                                        class="btn-interaction text-secondary"
+                                    >
+                                    <span class="material-symbols-outlined" id="delete-button">
+                                        delete
+                                    </span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -77,6 +88,14 @@ export class Post {
   render(container) {
     const postHTML = parser(this.template());
 
+    postHTML.querySelector("#delete-button").addEventListener("click", () => {
+      this.removePost();
+    });
+
     container.append(postHTML.documentElement);
+  }
+
+  removePost() {
+    console.log(this.id);
   }
 }

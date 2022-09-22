@@ -1,6 +1,6 @@
 import { fetchPosts } from "../auth/commonFunctions/api.mjs";
 import { createPost } from "../auth/commonFunctions/api.mjs";
-import { accessToken } from "../components/apiKey.mjs";
+import { accessToken } from "../components/storedKeys.mjs";
 import { Post } from "../components/postClass.mjs";
 
 const listOfPosts = await fetchPosts(accessToken);

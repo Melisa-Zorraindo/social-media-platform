@@ -1,5 +1,5 @@
 import { createPost } from "../auth/commonFunctions/api.mjs";
-import { accessToken } from "./apiKey.mjs";
+import { accessToken } from "./storedKeys.mjs";
 
 export function displayAddPostWindow() {
   const MAIN = document.querySelector("main");

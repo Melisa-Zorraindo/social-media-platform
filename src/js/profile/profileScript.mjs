@@ -1,12 +1,14 @@
 import { fetchPosts } from "../auth/commonFunctions/api.mjs";
 import { createPost } from "../auth/commonFunctions/api.mjs";
-import { accessToken, loggedUser } from "../components/apiKey.mjs";
-import { Post } from "../components/postClass.mjs";
+import { accessToken, loggedUser } from "../components/storedKeys.mjs";
+import { UserPost } from "../components/userPostClass.mjs";
 
 const allPosts = await fetchPosts(accessToken);
 const loggedUserPosts = allPosts.filter(({ author: { name } }) => {
   return name === loggedUser;
 });
+
+console.log(loggedUserPosts);
 
 const loggedUserPostsContainer = document.querySelector(
   "#logged-user-posts-container"
@@ -19,16 +21,18 @@ loggedUserPosts.forEach((post) => {
     created,
     media,
     _count: { reactions, comments },
+    id,
   } = post;
 
-  const postItem = new Post(
+  const postItem = new UserPost(
     avatar,
     name,
     created,
     body,
     media,
     reactions,
-    comments
+    comments,
+    id
   );
 
   postItem.render(loggedUserPostsContainer);
@@ -45,10 +49,3 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
 
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
 });
-
-/* const DELETE_POST_BUTTON = document.querySelectorAll("#delete-post-button");
-DELETE_POST_BUTTON.forEach((button) => {
-  button.addEventListener("click", () => {
-    console.log(postId);
-  });
-}); */
