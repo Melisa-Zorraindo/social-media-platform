@@ -22,136 +22,139 @@ export class UserPost {
   }
 
   cardTemplate() {
-    return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3" id="post-edit-window">
-                <div class="row">
-                    <div class="col col-md-2">
-                        <img
-                        src=${this.avatar}
-                        class="img-fluid rounded-circle p-1"
-                        alt="user image"
-                        />
-                    </div>
-                    <div class="col col-md-10 col-sm-9 col-9">
-                        <p class="fw-bold text-primary mb-0 ps-2">
-                        ${this.username}
-                        </p>
-                        <p class="text-secondary ps-2 text-small">
-                        ${this.date}
-                        </p>
-                        <p class="ps-2">
-                        ${this.body}
-                        </p>
-                        <img
-                        src=${this.media}
-                        class="img-fluid"
-                        alt=" "
-                        />
-                        <div class="row my-2">
-                            <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
-                                <div class="d-flex flex-column align-items-center">
-                                    <button
-                                    type="button"
-                                    class="btn btn-interaction text-secondary"
-                                    >
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                    </button>
-                                    <span class="text-small text-secondary">${this.reactions}</span>
-                                </div>
-                                <div class="d-flex flex-column align-items-center">
-                                    <button
-                                        type="button"
-                                        class="btn btn-interaction text-secondary"
-                                    >
-                                        <span class="material-symbols-outlined">
-                                        chat_bubble
-                                        </span>
-                                    </button>
-                                    <span class="text-small text-secondary">${this.comments}</span>
-                                </div>
-                                <div class="dropup">
-                                    <button 
-                                    class="btn btn-interaction text-secondary" 
-                                    type="button"
-                                    id="more actions"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <span class="material-symbols-outlined">
-                                        more_horiz
-                                    </span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><button
-                                             class="dropdown-item"
-                                             type="button"
-                                             id="open-edition-modal"
-                                             >
-                                                edit post
-                                            </button>
-                                        </li>
-                                        <li><button class="dropdown-item" id="delete-button">delete post</button></li>
-                                    </ul>
-                                </div>
+    return `
+                <div class="modal fade"
+                  id="edit-post-modal-window"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="editPostModalWindow"
+                  aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit post</h5>
+                                <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="p-2" id="edit-user-post">
+                                    <div class="form-floating">
+                                        <textarea
+                                            name=""
+                                            class="form-control h-100"
+                                            placeholder="share your thoughts"
+                                        ></textarea>
+                                        <label for="user-post" id="label"></label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="col input-group">
+                                            <span
+                                            class="material-symbols-outlined input-group-text"
+                                            >
+                                                add_photo_alternate
+                                            </span>
+                                            <input
+                                                type="text"
+                                                placeholder=""
+                                                class="text-small form-control"
+                                                id="input"
+                                            />
+                                        </div>
+                                        <button type="button"
+                                        class="btn btn-primary"
+                                        id="save-update">
+                                          Save
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>`;
-  }
-
-  modaltemplate() {
-    const documentScreen = document.querySelector("main");
-
-    documentScreen.innerHTML = `<div class="container custom-w mt-5 py-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h5 class="">
-                                        Edit post
-                                        </h5>
-                                        <button
-                                        type="button"
-                                        class="btn-close"
-                                        aria-label="Close"
-                                        ></button>
+                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <img
+                                        src=${this.avatar}
+                                        class="img-fluid rounded-circle p-1"
+                                        alt="user image"
+                                        />
                                     </div>
-                                    <div>
-                                        <form action="" class="p-2">
-                                            <div class="form-floating">
-                                                <textarea
-                                                    name=""
-                                                    class="form-control h-100"
-                                                    placeholder="share your thoughts"
-                                                ></textarea>
-                                                <label for="user-post">${this.body}</label>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row mt-2">
-                                                    <div class="col input-group">
-                                                        <span
-                                                            class="material-symbols-outlined input-group-text"
-                                                        >
-                                                            add_photo_alternate
+                                    <div class="col col-md-10 col-sm-9 col-9">
+                                        <p class="fw-bold text-primary mb-0 ps-2">
+                                        ${this.username}
+                                        </p>
+                                        <p class="text-secondary ps-2 text-small">
+                                        ${this.date}
+                                        </p>
+                                        <p class="ps-2">
+                                        ${this.body}
+                                        </p>
+                                        <img
+                                        src=${this.media}
+                                        class="img-fluid"
+                                        alt=" "
+                                        />
+                                        <div class="row my-2">
+                                            <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <button
+                                                    type="button"
+                                                    class="btn btn-interaction text-secondary"
+                                                    >
+                                                        <span class="material-symbols-outlined">
+                                                            favorite
                                                         </span>
-                                                        <input
-                                                            type="text"
-                                                            placeholder=${this.media}
-                                                            class="text-small form-control"
-                                                        />
-                                                    </div>
-                                                    <div class="col">
-                                                        <button
+                                                    </button>
+                                                    <span class="text-small text-secondary">${this.reactions}</span>
+                                                </div>
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <button
                                                         type="button"
-                                                        class="btn btn-primary"
-                                                        id="edit-button"
-                                                        >
-                                                        Save changes
-                                                        </button>
-                                                    </div>
+                                                        class="btn btn-interaction text-secondary"
+                                                    >
+                                                        <span class="material-symbols-outlined">
+                                                        chat_bubble
+                                                        </span>
+                                                    </button>
+                                                    <span class="text-small text-secondary">${this.comments}</span>
+                                                </div>
+                                                <div class="dropup">
+                                                    <button 
+                                                    class="btn btn-interaction text-secondary" 
+                                                    type="button"
+                                                    id="more actions"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <span class="material-symbols-outlined">
+                                                        more_horiz
+                                                    </span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <li><button
+                                                            class="dropdown-item"
+                                                            type="button"
+                                                            id="edit-button"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#edit-post-modal-window"
+                                                            >
+                                                                edit post
+                                                            </button>
+                                                        </li>
+                                                        <li><button class="dropdown-item" id="delete-button">delete post</button></li>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>`;
+                                </div>
+                            </div>`;
   }
 
   render(container) {
@@ -161,11 +164,20 @@ export class UserPost {
       this.removePost();
     });
 
-    postHTML
-      .querySelector("#open-edition-modal")
-      .addEventListener("click", () => {
-        this.modaltemplate();
+    postHTML.querySelector("#edit-button").addEventListener("click", () => {
+      const label = document.querySelector("#label");
+      const input = document.querySelector("#input");
+      const saveButton = document.querySelector("#save-update");
+
+      label.innerHTML = `${this.body}`;
+      input.setAttribute("placeholder", this.media);
+
+      saveButton.addEventListener("click", () => {
+        console.log(label.innerHTML);
+        console.log(input.placeholder);
+        console.log(this.id);
       });
+    });
 
     container.append(postHTML.documentElement);
   }
