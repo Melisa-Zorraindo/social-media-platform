@@ -120,7 +120,7 @@ export class UserPost {
                                             edited ${this.updated}
                                             </p>
                                         </div>
-                                        <a href="#" class="text-body" id="view-post">
+                                        <a href="#" class="text-decoration-none text-body" id="view-post">
                                             <p class="ps-2">
                                                 ${this.body}
                                             </p>
@@ -135,7 +135,7 @@ export class UserPost {
                                                 <div class="d-flex flex-column align-items-center">
                                                     <button
                                                     type="button"
-                                                    class="btn btn-interaction text-secondary"
+                                                    class="btn btn-custom text-secondary"
                                                     >
                                                         <span class="material-symbols-outlined">
                                                             favorite
@@ -146,7 +146,7 @@ export class UserPost {
                                                 <div class="d-flex flex-column align-items-center">
                                                     <button
                                                         type="button"
-                                                        class="btn btn-interaction text-secondary"
+                                                        class="btn btn-custom text-secondary"
                                                     >
                                                         <span class="material-symbols-outlined">
                                                         chat_bubble
@@ -156,7 +156,7 @@ export class UserPost {
                                                 </div>
                                                 <div class="dropup">
                                                     <button 
-                                                    class="btn btn-interaction text-secondary" 
+                                                    class="btn btn-custom text-secondary" 
                                                     type="button"
                                                     id="more actions"
                                                     data-bs-toggle="dropdown"

@@ -1,29 +1,16 @@
-$custom-font: "Poppins", sans-serif;
-$link-decoration: none;
-
+@import "buttons";
+@import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
-body {
-  font-family: $custom-font;
-}
 
 .custom-w {
   max-width: 500px;
 }
 
-.search-custom-h {
-  height: 2rem;
-}
-
-.btn-interaction {
-  border: none;
-  background-color: transparent;
-}
-
 .text-small {
-  font-size: 0.8rem;
+  font-size: $font-size-sm;
 }
 
+//might not need it
 .hidden {
   display: none;
 }

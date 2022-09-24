@@ -35,7 +35,7 @@ export class Post {
                         <p class="text-secondary ps-2 text-small">
                         ${this.date}
                         </p>
-                        <a href="" class="text-body">
+                        <a href="" class="text-decoration-none text-body">
                             <p class="ps-2">
                             ${this.body}
                             </p>
@@ -50,7 +50,7 @@ export class Post {
                                 <div class="d-flex flex-column align-items-center">
                                     <button
                                     type="button"
-                                    class="btn-interaction text-secondary"
+                                    class="btn-custom text-secondary"
                                     >
                                         <span class="material-symbols-outlined">
                                             favorite
@@ -61,7 +61,7 @@ export class Post {
                                 <div class="d-flex flex-column align-items-center">
                                     <button
                                         type="button"
-                                        class="btn-interaction text-secondary"
+                                        class="btn-custom text-secondary"
                                     >
                                         <span class="material-symbols-outlined">
                                         chat_bubble
