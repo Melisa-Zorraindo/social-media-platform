@@ -8,8 +8,6 @@ const loggedUserPosts = allPosts.filter(({ author: { name } }) => {
   return name === loggedUser;
 });
 
-console.log(loggedUserPosts);
-
 const loggedUserPostsContainer = document.querySelector(
   "#logged-user-posts-container"
 );

@@ -1,6 +1,10 @@
 import parser from "../tools/parser.mjs";
 import { accessToken } from "./storedKeys.mjs";
-import { deletePost, updatePost } from "../auth/commonFunctions/api.mjs";
+import {
+  deletePost,
+  updatePost,
+  viewSpecificPost,
+} from "../auth/commonFunctions/api.mjs";
 
 export class UserPost {
   constructor(
@@ -108,7 +112,7 @@ export class UserPost {
                                         ${this.username}
                                         </p>
                                         <div class="d-sm-flex">
-                                            <p class="text-secondary ps-2 text-small">
+                                            <p class="text-secondary ps-2 mb-0 text-small">
                                             ${this.date}
                                             </p>
                                             <p class="text-secondary ps-2  text-small">
@@ -116,7 +120,7 @@ export class UserPost {
                                             edited ${this.updated}
                                             </p>
                                         </div>
-                                        <a href="" class="text-body">
+                                        <a href="#" class="text-body" id="view-post">
                                             <p class="ps-2">
                                                 ${this.body}
                                             </p>
@@ -206,15 +210,23 @@ export class UserPost {
       });
     });
 
+    postHTML.querySelector("#view-post").addEventListener("click", () => {
+      this.displayPost(this.id);
+    });
+
     container.append(postHTML.documentElement);
   }
 
   removePost() {
-    console.log(this.id);
     deletePost(accessToken, this.id);
   }
 
   editPost(editedText, editedPhoto, id) {
     updatePost(accessToken, editedText, editedPhoto, id);
+  }
+
+  async displayPost(id) {
+    const singlePost = await viewSpecificPost(accessToken, id);
+    console.log(singlePost);
   }
 }
