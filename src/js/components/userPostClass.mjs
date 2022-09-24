@@ -3,13 +3,28 @@ import { accessToken } from "./storedKeys.mjs";
 import { deletePost, updatePost } from "../auth/commonFunctions/api.mjs";
 
 export class UserPost {
-  constructor(avatar, username, created, body, media, reactions, comments, id) {
+  constructor(
+    avatar,
+    username,
+    created,
+    body,
+    media,
+    reactions,
+    comments,
+    id,
+    updated
+  ) {
     const date = new Date(created);
+    const editionDate = new Date(updated);
 
     const formattedDate = new Intl.DateTimeFormat("en-GB", {
       dateStyle: "medium",
       timeStyle: "short",
     }).format(date);
+
+    const formattedEditionDate = new Intl.DateTimeFormat("en-GB", {
+      dateStyle: "medium",
+    }).format(editionDate);
 
     this.avatar = avatar;
     this.username = username;
@@ -19,6 +34,7 @@ export class UserPost {
     this.reactions = reactions;
     this.comments = comments;
     this.id = id;
+    this.updated = formattedEditionDate;
   }
 
   cardTemplate() {
@@ -91,9 +107,15 @@ export class UserPost {
                                         <p class="fw-bold text-primary mb-0 ps-2">
                                         ${this.username}
                                         </p>
-                                        <p class="text-secondary ps-2 text-small">
-                                        ${this.date}
-                                        </p>
+                                        <div class="d-sm-flex">
+                                            <p class="text-secondary ps-2 text-small">
+                                            ${this.date}
+                                            </p>
+                                            <p class="text-secondary ps-2  text-small">
+                                            <b>·</b>
+                                            edited ${this.updated}
+                                            </p>
+                                        </div>
                                         <p class="ps-2">
                                         ${this.body}
                                         </p>

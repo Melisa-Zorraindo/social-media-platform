@@ -22,6 +22,7 @@ loggedUserPosts.forEach((post) => {
     media,
     _count: { reactions, comments },
     id,
+    updated,
   } = post;
 
   const postItem = new UserPost(
@@ -32,7 +33,8 @@ loggedUserPosts.forEach((post) => {
     media,
     reactions,
     comments,
-    id
+    id,
+    updated
   );
 
   postItem.render(loggedUserPostsContainer);
