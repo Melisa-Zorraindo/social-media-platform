@@ -1,6 +1,6 @@
 import parser from "../tools/parser.mjs";
 import { accessToken } from "./storedKeys.mjs";
-import { deletePost } from "../auth/commonFunctions/api.mjs";
+import { deletePost, updatePost } from "../auth/commonFunctions/api.mjs";
 
 export class UserPost {
   constructor(avatar, username, created, body, media, reactions, comments, id) {
@@ -23,7 +23,7 @@ export class UserPost {
 
   cardTemplate() {
     return `
-                <div class="modal fade"
+                <div class="modal .modal-fullscreen-sm-down fade"
                   id="edit-post-modal-window"
                   data-bs-backdrop="static"
                   data-bs-keyboard="false"
@@ -49,8 +49,9 @@ export class UserPost {
                                             name=""
                                             class="form-control h-100"
                                             placeholder="share your thoughts"
+                                            id="edit-post-textarea"
                                         ></textarea>
-                                        <label for="user-post" id="label"></label>
+                                        <label for="user-post"></label>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="col input-group">
@@ -165,17 +166,19 @@ export class UserPost {
     });
 
     postHTML.querySelector("#edit-button").addEventListener("click", () => {
-      const label = document.querySelector("#label");
-      const input = document.querySelector("#input");
+      const editPostTextarea = document.querySelector("#edit-post-textarea");
+      const editPostPhoto = document.querySelector("#input");
       const saveButton = document.querySelector("#save-update");
 
-      label.innerHTML = `${this.body}`;
-      input.setAttribute("placeholder", this.media);
+      editPostTextarea.innerHTML = this.body;
+      editPostPhoto.value = this.media;
 
       saveButton.addEventListener("click", () => {
-        console.log(label.innerHTML);
-        console.log(input.placeholder);
-        console.log(this.id);
+        const editedText = editPostTextarea.value;
+        const editedPhoto = editPostPhoto.value;
+        const postIdentifier = this.id;
+
+        this.editPost(editedText, editedPhoto, postIdentifier);
       });
     });
 
@@ -187,7 +190,7 @@ export class UserPost {
     deletePost(accessToken, this.id);
   }
 
-  editPost() {
-    console.log(this.id);
+  editPost(editedText, editedPhoto, id) {
+    updatePost(accessToken, editedText, editedPhoto, id);
   }
 }

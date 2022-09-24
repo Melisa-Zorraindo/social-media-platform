@@ -164,4 +164,30 @@ export async function deletePost(accessToken, id) {
   }
 }
 
-// export async function editPost() {}
+export async function updatePost(accessToken, editedContent, editedMedia, id) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      title: " ",
+      body: `${editedContent}`,
+      tags: [" "],
+      media: `${editedMedia}`,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}`,
+      options
+    );
+    const data = await response.json();
+    console.log(data);
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
