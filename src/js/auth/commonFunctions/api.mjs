@@ -100,7 +100,6 @@ export async function fetchPosts(accessToken) {
       options
     );
     const data = await response.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -126,7 +125,7 @@ export async function createPost(accessToken, postText, mediaUrl) {
     const response = await fetch(`${BASE_URL}/api/v1/social/posts/`, options);
     const data = await response.json();
     console.log(data);
-    window.location.assign("home.html");
+    location.reload();
   } catch (error) {
     console.log(error);
   }

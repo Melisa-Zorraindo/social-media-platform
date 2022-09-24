@@ -61,6 +61,69 @@
     </header>
     <main class="bg-light">
       <div class="container">
+        <div
+          class="modal fade"
+          id="create-post-mobile"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="createPostMobileLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create a post</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="" class="p-2">
+                  <div class="form-floating">
+                    <textarea
+                      name=""
+                      id="user-post-mobile"
+                      class="form-control h-100"
+                      placeholder="share your thoughts"
+                      required
+                    ></textarea>
+                    <label for="user-post">share your thoughts</label>
+                  </div>
+                  <div class="container">
+                    <div class="row mt-3 mb-1">
+                      <div class="input-group">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          add_photo_alternate
+                        </span>
+                        <input
+                          type="text"
+                          placeholder="enter url"
+                          class="text-small form-control"
+                          id="media-upload-mobile"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="create-post-button-mobile"
+                    >
+                      Create post
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="py-5 bg-light">
@@ -243,6 +306,8 @@
                 class="btn-interaction text-secondary"
                 aria-label="add post"
                 id="add-post-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#create-post-mobile"
               >
                 <span class="material-symbols-outlined"> add_circle </span>
               </button>

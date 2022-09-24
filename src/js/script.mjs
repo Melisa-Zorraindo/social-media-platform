@@ -1,4 +1,4 @@
-import { displayAddPostWindow } from "./components/addPost.mjs";
+import { addPostWindow } from "./components/addPost.mjs";
 import { displayContactsWindow } from "./components/contacts.mjs";
 
 const ADD_POST_BTN = document.querySelector("#add-post-btn");
@@ -7,11 +7,7 @@ const HOME_BTN = document.querySelector("#home-btn");
 const NAVBAR = [ADD_POST_BTN, CONTACT_LIST_BTN];
 
 ADD_POST_BTN.addEventListener("click", () => {
-  displayAddPostWindow();
-  updateNavbarStyles(ADD_POST_BTN);
-  HOME_BTN.firstChild.nextSibling.firstChild.nextSibling.classList.add(
-    "text-secondary"
-  );
+  addPostWindow();
 });
 
 CONTACT_LIST_BTN.addEventListener("click", () => {
