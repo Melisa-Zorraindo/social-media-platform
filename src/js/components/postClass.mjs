@@ -35,9 +35,11 @@ export class Post {
                         <p class="text-secondary ps-2 text-small">
                         ${this.date}
                         </p>
-                        <p class="ps-2">
-                        ${this.body}
-                        </p>
+                        <a href="" class="text-body">
+                            <p class="ps-2">
+                            ${this.body}
+                            </p>
+                        </a>
                         <img
                         src=${this.media}
                         class="img-fluid"

@@ -116,9 +116,11 @@ export class UserPost {
                                             edited ${this.updated}
                                             </p>
                                         </div>
-                                        <p class="ps-2">
-                                        ${this.body}
-                                        </p>
+                                        <a href="" class="text-body">
+                                            <p class="ps-2">
+                                                ${this.body}
+                                            </p>
+                                        </a>
                                         <img
                                         src=${this.media}
                                         class="img-fluid"
