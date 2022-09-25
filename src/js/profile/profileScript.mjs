@@ -65,8 +65,10 @@ loggedUserPosts.forEach((post) => {
     body,
     created,
     media,
-    _count: { reactions, comments },
+    _count: { reactions: totalReactions, comments: totalComments },
     id,
+    comments,
+    reactions,
     updated,
   } = post;
 
@@ -76,8 +78,10 @@ loggedUserPosts.forEach((post) => {
     created,
     body,
     media,
-    reactions,
+    totalReactions,
+    totalComments,
     comments,
+    reactions,
     id,
     updated
   );

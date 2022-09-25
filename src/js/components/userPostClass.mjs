@@ -13,6 +13,8 @@ export class UserPost {
     created,
     body,
     media,
+    totalReactions,
+    totalComments,
     reactions,
     comments,
     id,
@@ -35,13 +37,15 @@ export class UserPost {
     this.date = formattedDate;
     this.body = body;
     this.media = media;
+    this.totalReactions = totalReactions;
+    this.totalComments = totalComments;
     this.reactions = reactions;
     this.comments = comments;
     this.id = id;
     this.updated = formattedEditionDate;
   }
 
-  cardTemplate() {
+  postTemplate() {
     return `
                 <div class="modal .modal-fullscreen-sm-down fade"
                   id="edit-post-modal-window"
@@ -141,7 +145,7 @@ export class UserPost {
                                                             favorite
                                                         </span>
                                                     </button>
-                                                    <span class="text-small text-secondary">${this.reactions}</span>
+                                                    <span class="text-small text-secondary">${this.totalReactions}</span>
                                                 </div>
                                                 <div class="d-flex flex-column align-items-center">
                                                     <button
@@ -152,7 +156,7 @@ export class UserPost {
                                                         chat_bubble
                                                         </span>
                                                     </button>
-                                                    <span class="text-small text-secondary">${this.comments}</span>
+                                                    <span class="text-small text-secondary">${this.totalComments}</span>
                                                 </div>
                                                 <div class="dropup">
                                                     <button 
@@ -186,8 +190,65 @@ export class UserPost {
                             </div>`;
   }
 
+  specificPostTemplate(symbol = "", comments = "") {
+    return `    
+   <div class="container my-5">
+
+    <div class="bg-light py-2">
+    <a href="profile.html" class="text-decoration-none">
+    <span class="material-symbols-outlined text-primary fw-bold">
+    arrow_back
+    </span></a></div>
+    
+
+    <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3 custom-w">
+                <div class="row">
+                    <div class="col col-md-2">
+                        <img
+                        src=${this.avatar}
+                        class="img-fluid rounded-circle p-1"
+                        alt="user image"
+                        />
+                    </div>
+                    <div class="col col-md-10 col-sm-9 col-9">
+                        <p class="fw-bold text-primary mb-0 ps-2">
+                        ${this.username}
+                        </p>
+                        <div class="d-sm-flex">
+                            <p class="text-secondary ps-2 mb-0 text-small">
+                            ${this.date}
+                            </p>
+                            <p class="text-secondary ps-2  text-small">
+                            <b>·</b>
+                            edited ${this.updated}
+                            </p>
+                        </div>
+                        <a href="#" class="text-decoration-none text-body" id="view-post">
+                            <p class="ps-2">
+                                ${this.body}
+                            </p>
+                        </a>
+                        <img
+                        src=${this.media}
+                        class="img-fluid"
+                        alt=" "
+                        />
+                        <div class="row my-2">
+                            <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
+                                    <span class="text-small text-secondary">${symbol}</span>
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="text-small text-secondary">${comments}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>`;
+  }
+
   render(container) {
-    const postHTML = parser(this.cardTemplate());
+    const postHTML = parser(this.postTemplate());
 
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
       this.removePost();
@@ -226,7 +287,13 @@ export class UserPost {
   }
 
   async displayPost(id) {
-    const singlePost = await viewSpecificPost(accessToken, id);
-    console.log(singlePost);
+    const { symbol = "", comments } = await viewSpecificPost(accessToken, id);
+
+    const main = document.querySelector("main");
+
+    main.innerHTML = "";
+
+    const specificPost = parser(this.specificPostTemplate(symbol, comments));
+    main.append(specificPost.documentElement);
   }
 }
