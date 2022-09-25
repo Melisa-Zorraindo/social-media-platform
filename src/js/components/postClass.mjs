@@ -1,4 +1,5 @@
 import parser from "../tools/parser.mjs";
+import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "./storedKeys.mjs";
 import { viewSpecificPost } from "../auth/commonFunctions/api.mjs";
 
@@ -19,14 +20,9 @@ export class Post {
     const date = new Date(created);
     const editionDate = new Date(updated);
 
-    const formattedDate = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    }).format(date);
+    const formattedDate = formatDate(date);
 
-    const formattedEditionDate = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "medium",
-    }).format(editionDate);
+    const formattedEditionDate = formatDate(editionDate);
 
     this.avatar = avatar;
     this.username = username;
