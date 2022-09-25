@@ -192,16 +192,16 @@ export class UserPost {
 
   specificPostTemplate(symbol = "", comments = "") {
     return `    
-   <div class="container my-5">
+   <div class="container my-5 custom-w">
 
     <div class="bg-light py-2">
-    <a href="profile.html" class="text-decoration-none">
+    <a href="home.html" class="text-decoration-none">
     <span class="material-symbols-outlined text-primary fw-bold">
     arrow_back
     </span></a></div>
     
 
-    <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3 custom-w">
+    <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
                 <div class="row">
                     <div class="col col-md-2">
                         <img
@@ -223,7 +223,7 @@ export class UserPost {
                             edited ${this.updated}
                             </p>
                         </div>
-                        <a href="#" class="text-decoration-none text-body" id="view-post">
+                        <a href="#" class="text-decoration-none text-body">
                             <p class="ps-2">
                                 ${this.body}
                             </p>

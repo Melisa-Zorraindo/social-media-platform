@@ -12,7 +12,11 @@ listOfPosts.forEach((post) => {
     created,
     body,
     media,
-    _count: { reactions, comments },
+    _count: { reactions: totalReactions, comments: totalComments },
+    id,
+    comments,
+    reactions,
+    updated,
   } = post;
 
   const postItem = new Post(
@@ -21,8 +25,12 @@ listOfPosts.forEach((post) => {
     created,
     body,
     media,
+    totalReactions,
+    totalComments,
     reactions,
-    comments
+    comments,
+    id,
+    updated
   );
 
   postItem.render(listOfPostsContainer);
