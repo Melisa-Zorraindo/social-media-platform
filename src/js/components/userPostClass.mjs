@@ -195,7 +195,7 @@ export class UserPost {
    <div class="container my-5 custom-w">
 
     <div class="bg-light py-2">
-    <a href="home.html" class="text-decoration-none">
+    <a href="profile.html" class="text-decoration-none">
     <span class="material-symbols-outlined text-primary fw-bold">
     arrow_back
     </span></a></div>
