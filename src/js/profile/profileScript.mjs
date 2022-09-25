@@ -23,7 +23,7 @@ header.innerHTML = `<div class="container mt-2">
                             ><img src="src/img/socials-logo.png" alt="logo"
                           /></a>
                         </div>
-                        <div class="col col-9 d-flex gap-3">
+                        <div class="col col-9 d-sm-flex">
                           <div class="col col-sm-1 col-2">
                             <a href="profile.html" class="text-decoration-none">
                               <img
@@ -33,9 +33,9 @@ header.innerHTML = `<div class="container mt-2">
                               />
                             </a>
                           </div>
-                          <div>
+                          <div class="ms-sm-5">
                             <div class="d-flex">
-                              <h1 class="h3 text-primary mb-0">${name}</h1>
+                              <h1 class="h4 text-primary mb-0">${name}</h1>
                               <button
                                 type="button"
                                 class="btn-custom"
@@ -43,7 +43,7 @@ header.innerHTML = `<div class="container mt-2">
                                 id="edit-user-btn"
                               >
                                 <span class="material-symbols-outlined text-secondary">
-                                  draw
+                                  edit
                                 </span>
                               </button>
                             </div>
