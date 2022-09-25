@@ -151,8 +151,7 @@ export async function deletePost(accessToken, id) {
       `${BASE_URL}/api/v1/social/posts/${id}`,
       options
     );
-    const data = await response.json();
-    console.log(data);
+    await response.json();
     if (response.status === 200) {
       location.reload();
     } else {
