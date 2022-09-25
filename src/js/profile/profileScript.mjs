@@ -59,35 +59,39 @@ const loggedUserPostsContainer = document.querySelector(
   "#logged-user-posts-container"
 );
 
-loggedUserPosts.forEach((post) => {
-  const {
-    author: { avatar, name },
-    body,
-    created,
-    media,
-    _count: { reactions: totalReactions, comments: totalComments },
-    id,
-    comments,
-    reactions,
-    updated,
-  } = post;
+function renderUserPosts(arr) {
+  arr.forEach((post) => {
+    const {
+      author: { avatar, name },
+      body,
+      created,
+      media,
+      _count: { reactions: totalReactions, comments: totalComments },
+      id,
+      comments,
+      reactions,
+      updated,
+    } = post;
 
-  const postItem = new UserPost(
-    avatar,
-    name,
-    created,
-    body,
-    media,
-    totalReactions,
-    totalComments,
-    comments,
-    reactions,
-    id,
-    updated
-  );
+    const postItem = new UserPost(
+      avatar,
+      name,
+      created,
+      body,
+      media,
+      totalReactions,
+      totalComments,
+      comments,
+      reactions,
+      id,
+      updated
+    );
 
-  postItem.render(loggedUserPostsContainer);
-});
+    postItem.render(loggedUserPostsContainer);
+  });
+}
+
+renderUserPosts(loggedUserPosts);
 
 const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
