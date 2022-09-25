@@ -6,35 +6,39 @@ import { Post } from "../components/postClass.mjs";
 const listOfPosts = await fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
-listOfPosts.forEach((post) => {
-  const {
-    author: { avatar, name },
-    created,
-    body,
-    media,
-    _count: { reactions: totalReactions, comments: totalComments },
-    id,
-    comments,
-    reactions,
-    updated,
-  } = post;
+function renderListOfPosts(arr) {
+  arr.forEach((post) => {
+    const {
+      author: { avatar, name },
+      created,
+      body,
+      media,
+      _count: { reactions: totalReactions, comments: totalComments },
+      id,
+      comments,
+      reactions,
+      updated,
+    } = post;
 
-  const postItem = new Post(
-    avatar,
-    name,
-    created,
-    body,
-    media,
-    totalReactions,
-    totalComments,
-    reactions,
-    comments,
-    id,
-    updated
-  );
+    const postItem = new Post(
+      avatar,
+      name,
+      created,
+      body,
+      media,
+      totalReactions,
+      totalComments,
+      reactions,
+      comments,
+      id,
+      updated
+    );
 
-  postItem.render(listOfPostsContainer);
-});
+    postItem.render(listOfPostsContainer);
+  });
+}
+
+renderListOfPosts(listOfPosts);
 
 const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
@@ -47,3 +51,27 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
 
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
 });
+
+const topSearchBar = document.querySelector("#top-search-bar");
+
+topSearchBar.addEventListener("keyup", () => {
+  let query = topSearchBar.value;
+  searchPosts(query);
+});
+
+const sideSearchBar = document.querySelector("#side-search-bar");
+
+sideSearchBar.addEventListener("keyup", () => {
+  let query = sideSearchBar.value;
+  searchPosts(query);
+});
+
+function searchPosts(queryString) {
+  const filteredPosts = listOfPosts.filter(({ body }) => {
+    return body.toLowerCase().includes(queryString.toLowerCase());
+  });
+
+  listOfPostsContainer.innerHTML = "";
+
+  renderListOfPosts(filteredPosts);
+}
