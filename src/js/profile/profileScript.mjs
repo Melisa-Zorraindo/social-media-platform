@@ -1,6 +1,5 @@
-import { fetchPosts } from "../auth/commonFunctions/api.mjs";
-import { createPost } from "../auth/commonFunctions/api.mjs";
-import { accessToken, loggedUser } from "../components/storedKeys.mjs";
+import { fetchPosts, createPost } from "../commonFunctions/api.mjs";
+import { accessToken, loggedUser } from "../constants/storedKeys.mjs";
 import { UserPost } from "../components/userPostClass.mjs";
 
 //fetch only the logged user's posts to display in their timeline

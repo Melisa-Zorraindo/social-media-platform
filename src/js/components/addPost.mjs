@@ -1,5 +1,5 @@
-import { createPost } from "../auth/commonFunctions/api.mjs";
-import { accessToken } from "./storedKeys.mjs";
+import { createPost } from "../commonFunctions/api.mjs";
+import { accessToken } from "../constants/storedKeys.mjs";
 
 export function addPostWindow() {
   const POST_FIELD_MOBILE = document.querySelector("#user-post-mobile");

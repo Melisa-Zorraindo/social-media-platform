@@ -1,12 +1,11 @@
-import { handleSubmission } from "../singup/submission.mjs";
+import { BASE_URL } from "../constants/apiUrl.mjs";
+import { handleSubmission } from "../auth/singup/submission.mjs";
 
 const USERNAME_FIELD = document.querySelector("#username");
 const EMAIL_FIELD = document.querySelector("#email");
 const PASSWORD_FIELD = document.querySelector("#password");
 
 const SIGNUP_ERROR_MESSAGE = document.querySelector("#signup-error-message");
-
-const BASE_URL = "https://nf-api.onrender.com";
 
 /**
  * Calls API to register a new user

@@ -1,11 +1,11 @@
 import parser from "../tools/parser.mjs";
 import formatDate from "../tools/dateStyler.mjs";
-import { accessToken } from "./storedKeys.mjs";
+import { accessToken } from "../constants/storedKeys.mjs";
 import {
   deletePost,
   updatePost,
   viewSpecificPost,
-} from "../auth/commonFunctions/api.mjs";
+} from "../commonFunctions/api.mjs";
 
 export class UserPost {
   constructor(
