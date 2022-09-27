@@ -67,8 +67,11 @@ sideSearchBar.addEventListener("keyup", () => {
 });
 
 function searchPosts(queryString) {
-  const filteredPosts = listOfPosts.filter(({ body }) => {
-    return body.toLowerCase().includes(queryString.toLowerCase());
+  const filteredPosts = listOfPosts.filter(({ body, author: { name } }) => {
+    return (
+      body.toLowerCase().includes(queryString.toLowerCase()) ||
+      name.toLowerCase().includes(queryString.toLowerCase())
+    );
   });
 
   listOfPostsContainer.innerHTML = "";
