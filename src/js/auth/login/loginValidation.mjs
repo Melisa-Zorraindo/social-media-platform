@@ -1,9 +1,9 @@
-import { authoriseUser } from "../commonFunctions/api.mjs";
+import { authoriseUser } from "../../commonFunctions/api.mjs";
 import {
   checkEmail,
   displayError,
   removeError,
-} from "../commonFunctions/errorHandling.mjs";
+} from "../../commonFunctions/errorHandling.mjs";
 
 const LOGIN_EMAIL_FIELD = document.querySelector("#login-email");
 const LOGIN_EMAIL_ERROR = document.querySelector("#login-email-error");
