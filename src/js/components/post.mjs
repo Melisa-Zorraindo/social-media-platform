@@ -7,7 +7,7 @@ import {
   viewSpecificPost,
 } from "../commonFunctions/api.mjs";
 
-export class UserPost {
+export class Post {
   constructor(
     avatar,
     username,
@@ -41,7 +41,65 @@ export class UserPost {
     this.updated = formattedEditionDate;
   }
 
-  postTemplate() {
+  generalPostTemplate() {
+    return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                  <div class="row">
+                      <div class="col col-md-2">
+                          <img
+                          src=${this.avatar}
+                          class="img-fluid rounded-circle p-1"
+                          alt="user image"
+                          />
+                      </div>
+                      <div class="col col-md-10 col-sm-9 col-9">
+                          <p class="fw-bold text-primary mb-0 ps-2">
+                          ${this.username}
+                          </p>
+                          <p class="text-secondary ps-2 text-small">
+                          ${this.date}
+                          </p>
+                          <a href="#" class="text-decoration-none text-body">
+                              <p class="ps-2" id="view-single-post">
+                              ${this.body}
+                              </p>
+                          </a>
+                          <img
+                          src=${this.media}
+                          class="img-fluid"
+                          alt=" "
+                          />
+                          <div class="row my-2">
+                              <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
+                                  <div class="d-flex flex-column align-items-center">
+                                      <button
+                                      type="button"
+                                      class="btn-custom text-secondary"
+                                      >
+                                          <span class="material-symbols-outlined">
+                                              add_reaction
+                                          </span>
+                                      </button>
+                                      <span class="text-small text-secondary">${this.totalReactions}</span>
+                                  </div>
+                                  <div class="d-flex flex-column align-items-center">
+                                      <button
+                                          type="button"
+                                          class="btn-custom text-secondary"
+                                      >
+                                          <span class="material-symbols-outlined">
+                                          chat_bubble
+                                          </span>
+                                      </button>
+                                      <span class="text-small text-secondary">${this.totalComments}</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>`;
+  }
+
+  userPostTemplate() {
     return `
                 <div class="modal .modal-fullscreen-sm-down fade"
                   id="edit-post-modal-window"
@@ -186,65 +244,77 @@ export class UserPost {
                             </div>`;
   }
 
-  specificPostTemplate(symbol = "", comments = "") {
+  specificPostTemplate(symbol, comments = "") {
     return `    
-   <div class="container my-5 custom-w">
-
-    <div class="bg-light py-2">
-    <a href="profile.html" class="text-decoration-none">
-    <span class="material-symbols-outlined text-primary fw-bold">
-    arrow_back
-    </span></a></div>
-    
-
-    <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                <div class="row">
-                    <div class="col col-md-2">
-                        <img
-                        src=${this.avatar}
-                        class="img-fluid rounded-circle p-1"
-                        alt="user image"
-                        />
-                    </div>
-                    <div class="col col-md-10 col-sm-9 col-9">
-                        <p class="fw-bold text-primary mb-0 ps-2">
-                        ${this.username}
-                        </p>
-                        <div class="d-sm-flex">
-                            <p class="text-secondary ps-2 mb-0 text-small">
-                            ${this.date}
-                            </p>
-                            <p class="text-secondary ps-2  text-small">
-                            <b>·</b>
-                            edited ${this.updated}
-                            </p>
-                        </div>
-                        <a href="#" class="text-decoration-none text-body">
-                            <p class="ps-2">
-                                ${this.body}
-                            </p>
-                        </a>
-                        <img
-                        src=${this.media}
-                        class="img-fluid"
-                        alt=" "
-                        />
-                        <div class="row my-2">
-                            <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
-                                    <span class="text-small text-secondary">${symbol}</span>
-                                <div class="d-flex flex-column align-items-center">
-                                    <span class="text-small text-secondary">${comments}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>`;
+     <div class="container my-5 custom-w">
+  
+      <div class="bg-light py-2">
+      <a href="home.html" class="text-decoration-none">
+      <span class="material-symbols-outlined text-primary fw-bold">
+      arrow_back
+      </span></a></div>
+      
+  
+      <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
+                  <div class="row">
+                      <div class="col col-md-2">
+                          <img
+                          src=${this.avatar}
+                          class="img-fluid rounded-circle p-1"
+                          alt="user image"
+                          />
+                      </div>
+                      <div class="col col-md-10 col-sm-9 col-9">
+                          <p class="fw-bold text-primary mb-0 ps-2">
+                          ${this.username}
+                          </p>
+                          <div class="d-sm-flex">
+                              <p class="text-secondary ps-2 mb-0 text-small">
+                              ${this.date}
+                              </p>
+                              <p class="text-secondary ps-2  text-small">
+                              <b>·</b>
+                              edited ${this.updated}
+                              </p>
+                          </div>
+                          <a href="#" class="text-decoration-none text-body">
+                              <p class="ps-2">
+                                  ${this.body}
+                              </p>
+                          </a>
+                          <img
+                          src=${this.media}
+                          class="img-fluid"
+                          alt=" "
+                          />
+                          <div class="row my-2">
+                              <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
+                                      <span class="text-small text-secondary">${symbol}</span>
+                                  <div class="d-flex flex-column align-items-center">
+                                      <span class="text-small text-secondary">${comments}</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>`;
   }
 
-  render(container) {
-    const postHTML = parser(this.postTemplate());
+  renderGeneralTimeline(container) {
+    const postHTML = parser(this.generalPostTemplate());
+
+    postHTML
+      .querySelector("#view-single-post")
+      .addEventListener("click", () => {
+        this.displayPost(this.id);
+      });
+
+    container.append(postHTML.documentElement);
+  }
+
+  renderUserTimeline(container) {
+    const postHTML = parser(this.userPostTemplate());
 
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
       this.removePost();
@@ -283,7 +353,7 @@ export class UserPost {
   }
 
   async displayPost(id) {
-    const { symbol = "", comments } = await viewSpecificPost(accessToken, id);
+    const { symbol, comments } = await viewSpecificPost(accessToken, id);
 
     const main = document.querySelector("main");
 

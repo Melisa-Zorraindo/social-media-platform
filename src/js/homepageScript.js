@@ -1,6 +1,6 @@
-import { fetchPosts, createPost } from "../commonFunctions/api.mjs";
-import { accessToken } from "../constants/storedKeys.mjs";
-import { Post } from "../components/postClass.mjs";
+import { fetchPosts, createPost } from "./commonFunctions/api.mjs";
+import { accessToken } from "./constants/storedKeys.mjs";
+import { Post } from "./components/post.mjs";
 
 const listOfPosts = await fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
@@ -33,7 +33,7 @@ function renderListOfPosts(arr) {
       updated
     );
 
-    postItem.render(listOfPostsContainer);
+    postItem.renderGeneralTimeline(listOfPostsContainer);
   });
 }
 

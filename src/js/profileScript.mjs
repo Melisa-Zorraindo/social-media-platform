@@ -1,6 +1,6 @@
-import { fetchPosts, createPost } from "../commonFunctions/api.mjs";
-import { accessToken, loggedUser } from "../constants/storedKeys.mjs";
-import { UserPost } from "../components/userPostClass.mjs";
+import { fetchPosts, createPost } from "./commonFunctions/api.mjs";
+import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
+import { Post } from "./components/post.mjs";
 
 //fetch only the logged user's posts to display in their timeline
 const allPosts = await fetchPosts(accessToken);
@@ -72,7 +72,7 @@ function renderUserPosts(arr) {
       updated,
     } = post;
 
-    const postItem = new UserPost(
+    const postItem = new Post(
       avatar,
       name,
       created,
@@ -86,7 +86,7 @@ function renderUserPosts(arr) {
       updated
     );
 
-    postItem.render(loggedUserPostsContainer);
+    postItem.renderUserTimeline(loggedUserPostsContainer);
   });
 }
 
