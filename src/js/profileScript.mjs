@@ -1,3 +1,4 @@
+import { renderProfileHeader } from "./components/userHeader.mjs";
 import { fetchPosts, createPost } from "./commonFunctions/api.mjs";
 import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
@@ -10,48 +11,12 @@ const loggedUserPosts = allPosts.filter(({ author: { name } }) => {
 
 //destructure user to display information in the header
 const {
-  author: { name },
+  author: { avatar, name },
 } = loggedUserPosts[0];
 
 //render header
 const header = document.querySelector("#header");
-header.innerHTML = `<div class="container mt-2">
-                      <div class="row">
-                        <div class="col col-3 d-none d-lg-block">
-                          <a href="home.html"
-                            ><img src="src/img/socials-logo.png" alt="logo"
-                          /></a>
-                        </div>
-                        <div class="col col-9 d-sm-flex">
-                          <div class="col col-sm-1 col-2">
-                            <a href="profile.html" class="text-decoration-none">
-                              <img
-                                src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
-                                class="img-fluid"
-                                alt="user placeholder"
-                              />
-                            </a>
-                          </div>
-                          <div class="ms-sm-5">
-                            <div class="d-flex">
-                              <h1 class="h4 text-primary mb-0">${name}</h1>
-                              <button
-                                type="button"
-                                class="btn-custom"
-                                aria-label="edit user"
-                                id="edit-user-btn"
-                              >
-                                <span class="material-symbols-outlined text-secondary">
-                                  edit
-                                </span>
-                              </button>
-                            </div>
-                            <p class="my-0 text-black fw-light">🐱 lover</p>
-                            <p class="my-0 text-black fw-light">🌎 wanderer</p>
-                          </div>
-                        </div>
-                      </div>
-                      </div>`;
+renderProfileHeader(header, avatar, name);
 
 //render user's posts
 const loggedUserPostsContainer = document.querySelector(
@@ -59,7 +24,7 @@ const loggedUserPostsContainer = document.querySelector(
 );
 
 function renderUserPosts(arr) {
-  arr.forEach((post) => {
+  arr.map((post) => {
     const {
       author: { avatar, name },
       body,
@@ -102,4 +67,16 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
   event.preventDefault();
 
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
+});
+
+const POST_FIELD_MOBILE = document.querySelector("#user-post-mobile");
+const MEDIA_UPLOAD_MOBILE = document.querySelector("#media-upload-mobile");
+const CREATE_POST_BUTTON_MOBILE = document.querySelector(
+  "#create-post-button-mobile"
+);
+
+CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });

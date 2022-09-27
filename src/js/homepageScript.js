@@ -6,7 +6,7 @@ const listOfPosts = await fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
 function renderListOfPosts(arr) {
-  arr.forEach((post) => {
+  arr.map((post) => {
     const {
       author: { avatar, name },
       created,
@@ -49,6 +49,18 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
   event.preventDefault();
 
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
+});
+
+const POST_FIELD_MOBILE = document.querySelector("#user-post-mobile");
+const MEDIA_UPLOAD_MOBILE = document.querySelector("#media-upload-mobile");
+const CREATE_POST_BUTTON_MOBILE = document.querySelector(
+  "#create-post-button-mobile"
+);
+
+CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
 
 const topSearchBar = document.querySelector("#top-search-bar");
