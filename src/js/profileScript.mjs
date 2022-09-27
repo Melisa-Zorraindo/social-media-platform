@@ -22,9 +22,6 @@ if (avatar.length === 0) {
   avatar = assignedProfilePicture;
 }
 
-console.log(assignedProfilePicture);
-console.log(avatar);
-
 //render header
 const header = document.querySelector("#header");
 renderProfileHeader(header, avatar, name);
@@ -36,7 +33,7 @@ const loggedUserPostsContainer = document.querySelector(
 
 function renderUserPosts(arr) {
   arr.map((post) => {
-    const {
+    let {
       author: { avatar, name },
       body,
       created,
@@ -47,6 +44,10 @@ function renderUserPosts(arr) {
       reactions,
       updated,
     } = post;
+
+    if (avatar.length === 0) {
+      avatar = assignedProfilePicture;
+    }
 
     const postItem = new Post(
       avatar,
