@@ -2,6 +2,7 @@ import { renderProfileHeader } from "./components/userHeader.mjs";
 import { fetchPosts, createPost } from "./commonFunctions/api.mjs";
 import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
+import { getRandomImage } from "./tools/imagePicker.mjs";
 
 //fetch only the logged user's posts to display in their timeline
 const allPosts = await fetchPosts(accessToken);
@@ -10,9 +11,19 @@ const loggedUserPosts = allPosts.filter(({ author: { name } }) => {
 });
 
 //destructure user to display information in the header
-const {
+let {
   author: { avatar, name },
 } = loggedUserPosts[0];
+
+//select avatar randomly if user's avatar is an empty string
+let assignedProfilePicture = getRandomImage();
+
+if (avatar.length === 0) {
+  avatar = assignedProfilePicture;
+}
+
+console.log(assignedProfilePicture);
+console.log(avatar);
 
 //render header
 const header = document.querySelector("#header");
