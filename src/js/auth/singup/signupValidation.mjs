@@ -1,4 +1,4 @@
-import { authenticateUser } from "../commonFunctions/api.mjs";
+import { authenticateUser } from "../../commonFunctions/api.mjs";
 import {
   checkUsername,
   checkEmail,
@@ -6,7 +6,7 @@ import {
   checkPasswordsMatch,
   removeError,
   displayError,
-} from "../commonFunctions/errorHandling.mjs";
+} from "../../commonFunctions/errorHandling.mjs";
 
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
