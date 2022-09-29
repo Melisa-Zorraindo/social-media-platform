@@ -217,3 +217,24 @@ export async function viewSpecificPost(accessToken, id) {
     console.log(error);
   }
 }
+
+export async function viewProfile(accessToken, name) {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
