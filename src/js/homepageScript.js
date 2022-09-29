@@ -1,9 +1,26 @@
-import { fetchPosts, createPost } from "./commonFunctions/api.mjs";
+import { renderHomepageHeader } from "./components/homepageHeader.mjs";
+import { fetchPosts, createPost, viewProfile } from "./commonFunctions/api.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
+import { getRandomImage } from "./tools/imagePicker.mjs";
 
 const listOfPosts = await fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
+
+//destructure user to display information in the header
+const signedInUser = localStorage.getItem("username");
+let { avatar } = await viewProfile(accessToken, signedInUser);
+
+//select avatar randomly if user's avatar is an empty string
+let assignedProfilePicture = getRandomImage();
+
+if (avatar.length === 0) {
+  avatar = assignedProfilePicture;
+}
+
+//render header
+const header = document.querySelector("#header");
+renderHomepageHeader(header, avatar);
 
 function renderListOfPosts(arr) {
   arr.map((post) => {
