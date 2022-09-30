@@ -35,7 +35,7 @@ export function renderHomepageHeader(container, profilePicture) {
   firstNestedCol.classList.add("col", "col-sm-1", "col-2");
   secondCol.append(firstNestedCol);
 
-  const anchorProfile = document.createElement("div");
+  const anchorProfile = document.createElement("a");
   anchorProfile.setAttribute("href", "profile.html");
   anchorProfile.classList.add("text-decoration-none");
   firstNestedCol.append(anchorProfile);

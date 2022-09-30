@@ -41,7 +41,7 @@ const loggedUserPostsContainer = document.querySelector(
 );
 
 //display if user has yet to publish to timeline
-let promptToPublishMessage = `<div class="text-center"> <p> Your timeline is empty</p> <p> Share what your thinking by clicking on the plus button </p> </div>`;
+let promptToPublishMessage = `<div class="text-center"> <p> Your timeline is empty</p> <p> Share with your followers what you're thinking </p> </div>`;
 
 if (posts.length === 0) {
   loggedUserPostsContainer.innerHTML = promptToPublishMessage;

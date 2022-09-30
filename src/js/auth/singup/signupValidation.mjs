@@ -7,6 +7,7 @@ import {
   removeError,
   displayError,
 } from "../../commonFunctions/errorHandling.mjs";
+import { handleSubmission } from "./submission.mjs";
 
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
