@@ -1,11 +1,7 @@
 import parser from "../tools/parser.mjs";
 import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
-import {
-  deletePost,
-  updatePost,
-  viewSpecificPost,
-} from "../commonFunctions/api.mjs";
+import { deletePost, updatePost } from "../commonFunctions/api.mjs";
 
 export class Post {
   constructor(
@@ -58,7 +54,7 @@ export class Post {
                           <p class="text-secondary ps-2 text-small">
                           ${this.date}
                           </p>
-                          <a href="#" class="text-decoration-none text-body">
+                          <a href="specific-post.html?id=${this.id}" class="text-decoration-none text-body">
                               <p class="ps-2" id="view-single-post">
                               ${this.body}
                               </p>
@@ -178,7 +174,7 @@ export class Post {
                                             edited ${this.updated}
                                             </p>
                                         </div>
-                                        <a href="#" class="text-decoration-none text-body" id="view-post">
+                                        <a href="specific-post.html?id=${this.id}" class="text-decoration-none text-body" id="view-post">
                                             <p class="ps-2">
                                                 ${this.body}
                                             </p>
@@ -244,70 +240,85 @@ export class Post {
                             </div>`;
   }
 
-  specificPostTemplate(symbol, comments) {
-    symbol = this.symbol || "";
-    comments = this.comments || "";
+  renderSinglePost(container) {
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("container");
+    container.append(cardContainer);
 
-    return `    
-     <div class="container my-5 custom-w">
-  
-      <div class="bg-light py-2">
-      <a href="home.html" class="text-decoration-none">
-      <span class="material-symbols-outlined text-primary fw-bold">
-      arrow_back
-      </span></a></div>
-      
-  
-      <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                  <div class="row">
-                      <div class="col col-md-2">
-                          <img
-                          src=${this.avatar}
-                          class="img-fluid rounded-circle p-1"
-                          alt="user image"
-                          />
-                      </div>
-                      <div class="col col-md-10 col-sm-9 col-9">
-                          <p class="fw-bold text-primary mb-0 ps-2">
-                          ${this.username}
-                          </p>
-                          <div class="d-sm-flex">
-                              <p class="text-secondary ps-2 mb-0 text-small">
-                              ${this.date}
-                              </p>
-                              <p class="text-secondary ps-2  text-small">
-                              <b>·</b>
-                              edited ${this.updated}
-                              </p>
-                          </div>
-                          <a href="#" class="text-decoration-none text-body">
-                              <p class="ps-2">
-                                  ${this.body}
-                              </p>
-                          </a>
-                          <img
-                          src=${this.media}
-                          class="img-fluid"
-                          alt=" "
-                          />
-                          <div class="row my-2">
-                                <span class="text-small text-secondary">${symbol}</span>
-                                <span class="text-small text-secondary">${comments}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              </div>`;
+    const card = document.createElement("div");
+    card.classList.add("card", "my-lg-3", "my-md-2", "my-sm-1", "my-1", "pe-3");
+    cardContainer.append(card);
+
+    const row = document.createElement("div");
+    row.classList.add("row");
+    card.append(row);
+
+    const firstCol = document.createElement("div");
+    firstCol.classList.add("col", "col-md-2");
+    row.append(firstCol);
+
+    const profilePic = document.createElement("img");
+    profilePic.setAttribute("src", this.avatar);
+    profilePic.setAttribute("alt", "profile picture");
+    profilePic.classList.add("img-fluid", "rounded-circle", "p-1");
+    firstCol.append(profilePic);
+
+    const secondCol = document.createElement("div");
+    secondCol.classList.add("col", "col-md-10", "col-sm-9", "col-9");
+    row.append(secondCol);
+
+    const name = document.createElement("p");
+    name.classList.add("fw-bold", "text-primary", "mb-0", "ps-2");
+    name.innerHTML = this.username;
+    secondCol.append(name);
+
+    const dates = document.createElement("div");
+    dates.classList.add("d-sm-flex");
+    secondCol.append(dates);
+
+    const published = document.createElement("p");
+    published.classList.add("text-secondary", "ps-2", "mb-0", "text-small");
+    published.innerHTML = this.date;
+    dates.append(published);
+
+    const edited = document.createElement("p");
+    edited.innerHTML = this.updated;
+    if (edited.innerHTML === published.innerHTML) {
+      edited.classList.add("hidden");
+    } else {
+      edited.classList.add("text-secondary", "ps-2", "text-small");
+      edited.innerHTML = `<b> · </b> edited ${this.updated}`;
+    }
+    dates.append(edited);
+
+    const postBody = document.createElement("p");
+    postBody.classList.add("ps-2");
+    postBody.innerHTML = this.body;
+    secondCol.append(postBody);
+
+    const image = document.createElement("img");
+    image.setAttribute("src", this.media);
+    image.setAttribute("alt", "image uploaded by user");
+    image.classList.add("img-fluid");
+    secondCol.append(image);
+
+    const emojis = document.createElement("div");
+    emojis.classList.add("text-small", "my-2", "border-bottom");
+    this.reactions.map(({ body }) => {
+      emojis.innerHTML = body;
+    });
+    secondCol.append(emojis);
+
+    const opinions = document.createElement("div");
+    opinions.classList.add("text-small", "my-2");
+    this.comments.map(({ symbol }) => {
+      opinions.innerHTML = symbol;
+    });
+    secondCol.append(opinions);
   }
 
   renderGeneralTimeline(container) {
     const postHTML = parser(this.generalPostTemplate());
-
-    postHTML
-      .querySelector("#view-single-post")
-      .addEventListener("click", () => {
-        this.displayPost(this.id);
-      });
 
     container.append(postHTML.documentElement);
   }
@@ -336,10 +347,6 @@ export class Post {
       });
     });
 
-    postHTML.querySelector("#view-post").addEventListener("click", () => {
-      this.displayPost(this.id);
-    });
-
     container.append(postHTML.documentElement);
   }
 
@@ -349,16 +356,5 @@ export class Post {
 
   editPost(editedText, editedPhoto, id) {
     updatePost(accessToken, editedText, editedPhoto, id);
-  }
-
-  async displayPost(id) {
-    const { symbol, comments } = await viewSpecificPost(accessToken, id);
-
-    const main = document.querySelector("main");
-
-    main.innerHTML = "";
-
-    const specificPost = parser(this.specificPostTemplate(symbol, comments));
-    main.append(specificPost.documentElement);
   }
 }

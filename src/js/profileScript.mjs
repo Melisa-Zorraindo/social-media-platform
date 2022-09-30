@@ -33,7 +33,6 @@ if (loggedUserPosts.length === 0) {
 
 //destructure user to display information in the header
 let { avatar, name, posts } = userInformation;
-console.log(posts);
 
 //render user's posts
 const loggedUserPostsContainer = document.querySelector(
