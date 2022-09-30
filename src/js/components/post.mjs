@@ -101,7 +101,7 @@ export class Post {
 
   userPostTemplate() {
     return `
-                <div class="modal .modal-fullscreen-sm-down fade"
+                <div class="modal fade"
                   id="edit-post-modal-window"
                   data-bs-backdrop="static"
                   data-bs-keyboard="false"
@@ -109,7 +109,7 @@ export class Post {
                   aria-labelledby="editPostModalWindow"
                   aria-hidden="true"
                 >
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-fullscreen-sm-down">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Edit post</h5>
@@ -244,7 +244,10 @@ export class Post {
                             </div>`;
   }
 
-  specificPostTemplate(symbol, comments = "") {
+  specificPostTemplate(symbol, comments) {
+    symbol = this.symbol || "";
+    comments = this.comments || "";
+
     return `    
      <div class="container my-5 custom-w">
   
@@ -288,12 +291,8 @@ export class Post {
                           alt=" "
                           />
                           <div class="row my-2">
-                              <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
-                                      <span class="text-small text-secondary">${symbol}</span>
-                                  <div class="d-flex flex-column align-items-center">
-                                      <span class="text-small text-secondary">${comments}</span>
-                                  </div>
-                              </div>
+                                <span class="text-small text-secondary">${symbol}</span>
+                                <span class="text-small text-secondary">${comments}</span>
                           </div>
                       </div>
                   </div>
