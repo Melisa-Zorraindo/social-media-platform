@@ -242,7 +242,7 @@ export class Post {
 
   renderSinglePost(container) {
     const cardContainer = document.createElement("div");
-    cardContainer.classList.add("container");
+    cardContainer.classList.add("container", "mt-5");
     container.append(cardContainer);
 
     const card = document.createElement("div");

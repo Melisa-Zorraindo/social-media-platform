@@ -1,3 +1,4 @@
+import { renderSinglePostHeader } from "./singlePostHeader.mjs";
 import { viewSpecificPost } from "../commonFunctions/api.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
 import { Post } from "../components/post.mjs";
@@ -43,3 +44,7 @@ const postItem = new Post(
 const main = document.querySelector("main");
 
 postItem.renderSinglePost(main);
+
+//render header
+const header = document.querySelector("#header");
+renderSinglePostHeader(header, avatar, name);

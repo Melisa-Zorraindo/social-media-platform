@@ -27,7 +27,13 @@ export function renderProfileHeader(
   anchorHome.append(logoImage);
 
   const secondCol = document.createElement("div");
-  secondCol.classList.add("col", "col-9", "d-sm-flex");
+  secondCol.classList.add(
+    "col",
+    "col-9",
+    "d-sm-flex",
+    "justify-content-between",
+    "align-items-start"
+  );
   row.append(secondCol);
 
   const firstNestedCol = document.createElement("div");
