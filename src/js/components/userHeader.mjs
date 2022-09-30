@@ -31,7 +31,7 @@ export function renderProfileHeader(
     "col",
     "col-9",
     "d-sm-flex",
-    "justify-content-between",
+    "justify-content-start",
     "align-items-start"
   );
   row.append(secondCol);

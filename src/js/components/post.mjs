@@ -299,20 +299,24 @@ export class Post {
     const image = document.createElement("img");
     image.setAttribute("src", this.media);
     image.setAttribute("alt", "image uploaded by user");
-    image.classList.add("img-fluid");
+    if (image.src === "") {
+      image.classList.add("hidden");
+    } else {
+      image.classList.add("img-fluid");
+    }
     secondCol.append(image);
 
     const emojis = document.createElement("div");
     emojis.classList.add("text-small", "my-2", "border-bottom");
     this.reactions.map(({ body }) => {
-      emojis.innerHTML = body;
+      emojis.innerHTML += body;
     });
     secondCol.append(emojis);
 
     const opinions = document.createElement("div");
     opinions.classList.add("text-small", "my-2");
     this.comments.map(({ symbol }) => {
-      opinions.innerHTML = symbol;
+      opinions.innerHTML += symbol;
     });
     secondCol.append(opinions);
   }
