@@ -21,109 +21,231 @@
     <header id="header"></header>
     <main class="bg-light">
       <div class="container">
+        <div
+        class="modal fade"
+        id="contacts-mobile"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="createPostMobileLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-fullscreen-sm-down">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Contacts</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div role="navigation">
+                <ul class="nav nav-tabs" id="contacts-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="contact-list-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#contact-list"
+                      type="button"
+                      role="tab"
+                      aria-controls="contact-list"
+                      aria-selected="true"
+                    >
+                      following
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="suggested-contacts-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#suggested-contacts"
+                      type="button"
+                      role="tab"
+                      aria-controls="suggested-contacts"
+                      aria-selected="false"
+                    >
+                      followers
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="contact-tab-contents">
+                  <div
+                    class="tab-pane fade show active"
+                    id="contact-list"
+                    role="tabpanel"
+                    aria-labelledby="contact-list-tab"
+                  >
+                    <ul
+                      class="container border-start border-end border-bottom"
+                    >
+                      <li class="row py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">iman alcón</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_remove
+                          </span>
+                        </div>
+                      </li>
+                      <li class="row py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/karina-lago-G7Y2mEMcsvI-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">lucas castillo</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_remove
+                          </span>
+                        </div>
+                      </li>
+                      <li class="row d py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">teodora milhavi</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_remove
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="suggested-contacts"
+                    role="tabpanel"
+                    aria-labelledby="suggested-contacts-tab"
+                  >
+                    <ul
+                      class="container bg-body border-start border-end border-bottom"
+                    >
+                      <li class="row py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/rick-gebhardt-3faX71BaNe0-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">rick wandel</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_add
+                          </span>
+                        </div>
+                      </li>
+                      <li class="row py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">marcia mccarthy</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_add
+                          </span>
+                        </div>
+                      </li>
+                      <li class="row py-2">
+                        <div class="col-3">
+                          <img
+                            src="src/img/jacob-townsend-4OzZru1zewE-unsplash.png"
+                            class="img-fluid"
+                            alt="user placeholder"
+                          />
+                        </div>
+                        <div class="col-6">adam farmer</div>
+                        <div class="col-2">
+                          <span
+                            class="material-symbols-outlined text-secondary"
+                          >
+                            person_add
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="py-5 bg-light">
-              <ul class="container card" id="contacts-desktop">
-                <li class="list-unstyled">
-                  <h2 class="h5 text-primary">contacts</h2>
+              <div class="card">
+                <ul class="nav flex-column">
+                <li class="nav-item my-2">
+                  <a
+                    class="nav-link text-secondary d-flex align-items-start gap-3"
+                    aria-current="page"
+                    href="./home.html"
+                  >
+                    <span class="material-symbols-outlined"> home </span>Home</a
+                  >
                 </li>
-                <li class="row py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">iman alcón</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2">
+                  <a
+                    class="nav-link text-secondary d-flex align-items-start gap-3"
+                    href="./profile.html"
+                    ><span class="material-symbols-outlined"> person </span
+                    >Profile</a
+                  >
                 </li>
-                <li class="row py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/karina-lago-G7Y2mEMcsvI-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">lucas castillo</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2">
+                  <a
+                    class="nav-link text-secondary d-flex align-items-start gap-3"
+                    href="#"
+                    aria-label="contacts"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contacts-mobile"
+                  >
+                    <span class="material-symbols-outlined"> contacts </span
+                    >Contacts</a
+                  >
                 </li>
-                <li class="row d py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">teodora milhavi</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2">
+                  <a class="nav-link text-secondary d-flex align-items-start gap-3"" href="#"
+                    ><span class="material-symbols-outlined"> logout </span>Log
+                    out</a
+                  >
                 </li>
-              </ul>
-              <ul class="container card" id="suggested-contacts-desktop">
-                <li class="list-unstyled">
-                  <h2 class="h5 text-primary">suggestions</h2>
-                </li>
-                <li class="row py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/rick-gebhardt-3faX71BaNe0-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">rick wandel</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-                <li class="row py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">marcia mccarthy</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-                <li class="row py-2">
-                  <div class="col-3">
-                    <img
-                      src="src/img/jacob-townsend-4OzZru1zewE-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">adam farmer</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="col-lg-9" id="single-post-container">
@@ -134,6 +256,11 @@
         </div>
       </div>
     </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <script src="./src/js/components/specificPost.mjs" type="module"></script>
   </body>
 </html>
