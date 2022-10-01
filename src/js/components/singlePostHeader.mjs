@@ -27,7 +27,7 @@ export function renderSinglePostHeader(container) {
     "col-md-12",
     "d-flex",
     "justify-content-start",
-    "align-items-baseline"
+    "align-items-end"
   );
   row.append(secondCol);
 

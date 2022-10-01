@@ -41,9 +41,9 @@ const postItem = new Post(
   updated
 );
 
-const main = document.querySelector("main");
+const singlePostContainer = document.querySelector("#single-post-container");
 
-postItem.renderSinglePost(main);
+postItem.renderSinglePost(singlePostContainer);
 
 //render header
 const header = document.querySelector("#header");
