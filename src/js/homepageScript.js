@@ -1,6 +1,6 @@
 import { renderHomepageHeader } from "./components/homepageHeader.mjs";
 import { fetchPosts, createPost, viewProfile } from "./commonFunctions/api.mjs";
-import { accessToken } from "./constants/storedKeys.mjs";
+import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 
@@ -106,3 +106,12 @@ function searchPosts(queryString) {
 
   renderListOfPosts(filteredPosts);
 }
+
+//logout functionality
+const logoutButton = document.querySelector("#logout");
+
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("username");
+  location.replace("index.html");
+});

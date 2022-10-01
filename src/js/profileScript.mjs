@@ -118,3 +118,12 @@ CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
 
   createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
+
+//logout functionality
+const logoutButton = document.querySelector("#logout");
+
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("username");
+  location.replace("index.html");
+});
