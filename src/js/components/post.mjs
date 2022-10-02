@@ -58,12 +58,12 @@ export class Post {
                               <p class="ps-2" id="view-single-post">
                               ${this.body}
                               </p>
+                              <img
+                              src=${this.media}
+                              class="img-fluid"
+                              alt=" "
+                              />
                           </a>
-                          <img
-                          src=${this.media}
-                          class="img-fluid"
-                          alt=" "
-                          />
                           <div class="row my-2">
                               <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
                                   <div class="d-flex flex-column align-items-center">
@@ -178,12 +178,12 @@ export class Post {
                                             <p class="ps-2">
                                                 ${this.body}
                                             </p>
+                                            <img
+                                            src=${this.media}
+                                            class="img-fluid"
+                                            alt=" "
+                                            />
                                         </a>
-                                        <img
-                                        src=${this.media}
-                                        class="img-fluid"
-                                        alt=" "
-                                        />
                                         <div class="row my-2">
                                             <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
                                                 <div class="d-flex flex-column align-items-center">
