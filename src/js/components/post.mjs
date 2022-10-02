@@ -320,15 +320,20 @@ export class Post {
     secondCol.append(emojis);
 
     const commentsBox = document.createElement("div");
-    commentsBox.classList.add("text-small", "my-3");
+    commentsBox.classList.add("my-3");
     this.reactions.map(({ body, owner }) => {
       const userComment = document.createElement("div");
-      userComment.classList.add("mt-2", "fw-bold", "border-top");
+      userComment.classList.add("mt-2", "border-top");
       userComment.innerHTML = body;
       commentsBox.append(userComment);
 
       const commentOwner = document.createElement("div");
-      commentOwner.classList.add("text-secondary", "ms-3", "border-bottom");
+      commentOwner.classList.add(
+        "text-small",
+        "text-secondary",
+        "ms-3",
+        "fst-italic"
+      );
       commentOwner.innerHTML = `from ${owner}`;
       commentsBox.append(commentOwner);
     });
