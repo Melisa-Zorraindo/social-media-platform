@@ -3,6 +3,7 @@ import { viewSpecificPost } from "./commonFunctions/api.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
+import logout from "./commonFunctions/logout.mjs";
 
 const parameterString = window.location.search;
 const searchParams = new URLSearchParams(parameterString);
@@ -53,7 +54,5 @@ renderSinglePostHeader(header, avatar, name);
 const logoutButton = document.querySelector("#logout");
 
 logoutButton.addEventListener("click", () => {
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("username");
-  location.replace("index.html");
+  logout();
 });
