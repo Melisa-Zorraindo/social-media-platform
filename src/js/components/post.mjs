@@ -2,6 +2,7 @@ import parser from "../tools/parser.mjs";
 import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
 import { deletePost, updatePost } from "../commonFunctions/api.mjs";
+import { getRandomImage } from "../tools/imagePicker.mjs";
 
 export class Post {
   constructor(
@@ -23,6 +24,11 @@ export class Post {
     const formattedDate = formatDate(date);
 
     const formattedEditionDate = formatDate(editionDate);
+
+    let assignedProfilePicture = getRandomImage();
+    if (avatar.length === 0) {
+      avatar = assignedProfilePicture;
+    }
 
     this.avatar = avatar;
     this.username = username;
