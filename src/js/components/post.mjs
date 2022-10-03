@@ -84,26 +84,24 @@ export class Post {
                           <div class="row my-2">
                               <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
                                   <div class="d-flex flex-column align-items-center">
-                                      <button
-                                      type="button"
-                                      class="btn-custom text-secondary"
+                                      <span
+                                      class="text-secondary me-2"
                                       >
-                                          <span class="material-symbols-outlined">
-                                              add_reaction
-                                          </span>
-                                      </button>
+                                        <span class="material-symbols-outlined">
+                                              favorite
+                                        </span>
+                                      </span>
                                       <span class="text-small text-secondary">${this.totalReactions}</span>
                                   </div>
                                   <div class="d-flex flex-column align-items-center">
-                                      <button
-                                          type="button"
-                                          class="btn-custom text-secondary"
-                                      >
-                                          <span class="material-symbols-outlined">
-                                          chat_bubble
-                                          </span>
-                                      </button>
-                                      <span class="text-small text-secondary">${this.totalComments}</span>
+                                    <span
+                                      class="text-secondary mx-2"
+                                  >
+                                        <span class="material-symbols-outlined">
+                                        chat_bubble
+                                        </span>
+                                    </span>
+                                    <span class="text-small text-secondary">${this.totalComments}</span>
                                   </div>
                               </div>
                           </div>
@@ -197,27 +195,25 @@ export class Post {
                                             />
                                         </a>
                                         <div class="row my-2">
-                                            <div class="col d-flex justify-content-start gap-lg-5 gap-md-3">
+                                            <div class="col d-flex justify-content-start">
                                                 <div class="d-flex flex-column align-items-center">
-                                                    <button
-                                                    type="button"
-                                                    class="btn btn-custom text-secondary"
+                                                    <span
+                                                    class="text-secondary me-2"
                                                     >
-                                                        <span class="material-symbols-outlined">
+                                                      <span class="material-symbols-outlined">
                                                             favorite
-                                                        </span>
-                                                    </button>
+                                                      </span>
+                                                    </span>
                                                     <span class="text-small text-secondary">${this.totalReactions}</span>
                                                 </div>
                                                 <div class="d-flex flex-column align-items-center">
-                                                    <button
-                                                        type="button"
-                                                        class="btn btn-custom text-secondary"
+                                                    <span
+                                                        class="text-secondary mx-2"
                                                     >
                                                         <span class="material-symbols-outlined">
                                                         chat_bubble
                                                         </span>
-                                                    </button>
+                                                    </span>
                                                     <span class="text-small text-secondary">${this.totalComments}</span>
                                                 </div>
                                                 <div class="dropup">
