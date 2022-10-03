@@ -107,6 +107,13 @@ export async function fetchPosts(accessToken) {
   }
 }
 
+/**
+ * Sends a POST request to create a new
+ * post on the API
+ * @param {string} accessToken
+ * @param {string} postText
+ * @param {string} mediaUrl
+ */
 export async function createPost(accessToken, postText, mediaUrl) {
   const options = {
     method: "POST",
@@ -162,6 +169,14 @@ export async function deletePost(accessToken, id) {
   }
 }
 
+/**
+ * Sends a PUT request to edit
+ * a post on the API
+ * @param {string} accessToken
+ * @param {string} editedContent
+ * @param {url} editedMedia
+ * @param {number} id
+ */
 export async function updatePost(accessToken, editedContent, editedMedia, id) {
   const options = {
     method: "PUT",
@@ -182,8 +197,7 @@ export async function updatePost(accessToken, editedContent, editedMedia, id) {
       `${BASE_URL}/api/v1/social/posts/${id}`,
       options
     );
-    const data = await response.json();
-    console.log(data);
+    await response.json();
     location.reload();
   } catch (error) {
     console.log(error);
@@ -212,13 +226,20 @@ export async function viewSpecificPost(accessToken, id) {
       options
     );
     const data = await response.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
   }
 }
 
+/**
+ * Makes a GET request to fetch
+ * a specific profile from API
+ * @param {string} accessToken
+ * @param {string} name
+ * @returns profile in API that matches the name
+ * param passed in
+ */
 export async function viewProfile(accessToken, name) {
   const options = {
     method: "GET",
@@ -240,6 +261,14 @@ export async function viewProfile(accessToken, name) {
   }
 }
 
+/**
+ * Makes a POST request to
+ * allow the user to comment on
+ * an existing post entry
+ * @param {string} accessToken
+ * @param {string} commentBody
+ * @param {number} id
+ */
 export async function commentOnPost(accessToken, commentBody, id) {
   const options = {
     method: "POST",
