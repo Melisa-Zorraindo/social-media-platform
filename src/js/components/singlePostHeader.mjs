@@ -1,3 +1,7 @@
+/**
+ * Creates HTML header for single post page
+ * @param {HTMLElement} container
+ */
 export function renderSinglePostHeader(container) {
   const outestDiv = document.createElement("div");
   outestDiv.classList.add("container", "mt-2");

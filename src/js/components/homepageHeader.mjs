@@ -1,3 +1,8 @@
+/**
+ * Creates HTML header for homepage
+ * @param {HTMLElement} container
+ * @param {string} profilePicture
+ */
 export function renderHomepageHeader(container, profilePicture) {
   const outestDiv = document.createElement("div");
   outestDiv.classList.add("container", "mt-2");

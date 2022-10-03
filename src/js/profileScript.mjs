@@ -58,6 +58,12 @@ if (avatar.length === 0) {
 const header = document.querySelector("#header");
 renderProfileHeader(header, avatar, name);
 
+/**
+ *  Creates the html to be displayed
+ * on profile page for each post entry
+ * using the Post class
+ * @param {Array} arr
+ */
 function renderUserPosts(arr) {
   arr.map((post) => {
     let {

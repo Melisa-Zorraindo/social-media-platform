@@ -1,10 +1,10 @@
-export function renderProfileHeader(
-  container,
-  profilePicture,
-  username,
-  userinfoOne,
-  userInfoTwo
-) {
+/**
+ * Creates HTML header for profile page
+ * @param {HTMLElement} container
+ * @param {string} profilePicture
+ * @param {string} username
+ */
+export function renderProfileHeader(container, profilePicture, username) {
   const outestDiv = document.createElement("div");
   outestDiv.classList.add("container", "mt-2");
   container.append(outestDiv);

@@ -23,6 +23,12 @@ if (avatar.length === 0) {
 const header = document.querySelector("#header");
 renderHomepageHeader(header, avatar);
 
+/**
+ * Creates the html to be displayed
+ * on homepage for each post entry using
+ * the Post class
+ * @param {array} arr
+ */
 function renderListOfPosts(arr) {
   arr.map((post) => {
     const {
@@ -95,6 +101,13 @@ sideSearchBar.addEventListener("keyup", () => {
   searchPosts(query);
 });
 
+/**
+ * Uses the string passed in by the user
+ * in the search bar to filter posts which
+ * include the string either in the body
+ * or in the username
+ * @param {string} queryString
+ */
 function searchPosts(queryString) {
   const filteredPosts = listOfPosts.filter(({ body, author: { name } }) => {
     return (
