@@ -8,6 +8,7 @@ import {
 const LOGIN_EMAIL_FIELD = document.querySelector("#login-email");
 const LOGIN_EMAIL_ERROR = document.querySelector("#login-email-error");
 
+//display errors or hide error messages on key up
 LOGIN_EMAIL_FIELD.addEventListener("keyup", () => {
   if (checkEmail(LOGIN_EMAIL_FIELD.value)) {
     removeError(LOGIN_EMAIL_FIELD, LOGIN_EMAIL_ERROR);

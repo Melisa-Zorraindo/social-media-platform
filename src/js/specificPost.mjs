@@ -5,11 +5,13 @@ import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
+//get string param to display single post
 const parameterString = window.location.search;
 const searchParams = new URLSearchParams(parameterString);
 
 const postId = searchParams.get("id");
 
+//create and display single post from class
 let {
   author: { avatar, name },
   body,
@@ -22,6 +24,7 @@ let {
   updated,
 } = await viewSpecificPost(accessToken, postId);
 
+//assign random profile picture if avatar is an empty string
 let assignedProfilePicture = getRandomImage();
 
 if (avatar.length === 0) {
@@ -50,7 +53,7 @@ postItem.renderSinglePost(singlePostContainer);
 const header = document.querySelector("#header");
 renderSinglePostHeader(header, avatar, name);
 
-//logout functionality
+//logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
 
 logoutButton.addEventListener("click", () => {

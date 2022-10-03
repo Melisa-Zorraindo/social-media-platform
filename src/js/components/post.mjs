@@ -8,6 +8,8 @@ import {
 } from "../commonFunctions/api.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
 
+//create template for post entry
+//with all functions related to it
 export class Post {
   constructor(
     avatar,
@@ -22,6 +24,7 @@ export class Post {
     id,
     updated
   ) {
+    //format dates
     const date = new Date(created);
     const editionDate = new Date(updated);
 
@@ -29,6 +32,7 @@ export class Post {
 
     const formattedEditionDate = formatDate(editionDate);
 
+    //assign random profile picture if avatar is an empty string
     let assignedProfilePicture = getRandomImage();
     if (avatar.length === 0) {
       avatar = assignedProfilePicture;
@@ -47,6 +51,7 @@ export class Post {
     this.updated = formattedEditionDate;
   }
 
+  //html template for homepage
   generalPostTemplate() {
     return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
                   <div class="row">
@@ -105,6 +110,7 @@ export class Post {
               </div>`;
   }
 
+  //html template for profile page
   userPostTemplate() {
     return `
                 <div class="modal fade"
@@ -250,6 +256,7 @@ export class Post {
                             </div>`;
   }
 
+  //html for single post page
   renderSinglePost(container) {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("container", "mt-5");
@@ -369,24 +376,29 @@ export class Post {
     });
     secondCol.append(commentsBox);
 
+    //call API to comment on post entry
     addCommentButton.addEventListener("click", () => {
       commentOnPost(accessToken, addCommentInput.value, this.id);
     });
   }
 
+  //render html template for homepage
   renderGeneralTimeline(container) {
     const postHTML = parser(this.generalPostTemplate());
 
     container.append(postHTML.documentElement);
   }
 
+  //render html template for profile page
   renderUserTimeline(container) {
     const postHTML = parser(this.userPostTemplate());
 
+    //call function to remove post from API
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
       this.removePost();
     });
 
+    //call function to edit an existing post
     postHTML.querySelector("#edit-button").addEventListener("click", () => {
       const editPostTextarea = document.querySelector("#edit-post-textarea");
       const editPostPhoto = document.querySelector("#input");
@@ -407,10 +419,12 @@ export class Post {
     container.append(postHTML.documentElement);
   }
 
+  //call API to delete post
   removePost() {
     deletePost(accessToken, this.id);
   }
 
+  //call API to edit post
   editPost(editedText, editedPhoto, id) {
     updatePost(accessToken, editedText, editedPhoto, id);
   }

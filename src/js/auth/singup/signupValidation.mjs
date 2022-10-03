@@ -9,6 +9,7 @@ import {
 } from "../../commonFunctions/errorHandling.mjs";
 import { handleSubmission } from "./submission.mjs";
 
+//display errors or hide error messages on key up
 const USERNAME_FIELD = document.querySelector("#username");
 const USERNAME_ERROR = document.querySelector("#username-error");
 

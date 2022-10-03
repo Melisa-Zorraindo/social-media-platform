@@ -63,6 +63,7 @@ function renderListOfPosts(arr) {
 
 renderListOfPosts(listOfPosts);
 
+//create a new post from desktop
 const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
 const CREATE_POST_BUTTON = document.querySelector(
@@ -75,6 +76,7 @@ CREATE_POST_BUTTON.addEventListener("click", (event) => {
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
 });
 
+//create a new post from mobile
 const POST_FIELD_MOBILE = document.querySelector("#user-post-mobile");
 const MEDIA_UPLOAD_MOBILE = document.querySelector("#media-upload-mobile");
 const CREATE_POST_BUTTON_MOBILE = document.querySelector(
@@ -87,6 +89,7 @@ CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
   createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
 
+//search posts from mobile
 const topSearchBar = document.querySelector("#top-search-bar");
 
 topSearchBar.addEventListener("keyup", () => {
@@ -94,6 +97,7 @@ topSearchBar.addEventListener("keyup", () => {
   searchPosts(query);
 });
 
+//search posts from desktop
 const sideSearchBar = document.querySelector("#side-search-bar");
 
 sideSearchBar.addEventListener("keyup", () => {
@@ -121,7 +125,7 @@ function searchPosts(queryString) {
   renderListOfPosts(filteredPosts);
 }
 
-//logout functionality
+//logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
 
 logoutButton.addEventListener("click", () => {
