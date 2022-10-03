@@ -59,7 +59,7 @@ export class Post {
                   <div class="row">
                       <div class="col col-md-2">
                           <img
-                          src=${this.avatar}
+                          src="${this.avatar}"
                           class="img-fluid rounded-circle p-1"
                           alt="user image"
                           />
@@ -76,7 +76,7 @@ export class Post {
                               ${this.body}
                               </p>
                               <img
-                              src=${this.media}
+                              src="${this.media}"
                               class="img-fluid"
                               alt=" "
                               />
@@ -172,7 +172,7 @@ export class Post {
                                 <div class="row">
                                     <div class="col col-md-2">
                                         <img
-                                        src=${this.avatar}
+                                        src="${this.avatar}"
                                         class="img-fluid rounded-circle p-1"
                                         alt="user image"
                                         />
@@ -189,7 +189,7 @@ export class Post {
                                                 ${this.body}
                                             </p>
                                             <img
-                                            src=${this.media}
+                                            src="${this.media}"
                                             class="img-fluid"
                                             alt=" "
                                             />
