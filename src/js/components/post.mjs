@@ -306,7 +306,11 @@ export class Post {
     secondCol.append(postBody);
 
     const image = document.createElement("img");
-    image.setAttribute("src", this.media);
+    image.setAttribute(
+      "src",
+      this.media ||
+        "https://i.picsum.photos/id/114/20/20.jpg?hmac=DaP11emH8RMUac2zfSlS_Fe6q0SX3v_iLW2wPcCqFWI"
+    );
     image.setAttribute("alt", "image uploaded by user");
     image.classList.add("img-fluid");
     secondCol.append(image);
