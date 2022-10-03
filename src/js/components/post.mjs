@@ -5,8 +5,10 @@ import {
   deletePost,
   updatePost,
   commentOnPost,
+  reactToPost,
 } from "../commonFunctions/api.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
+import { EmojiPicker } from "../tools/vanillaEmojiPicker.mjs";
 
 //create template for post entry
 //with all functions related to it
@@ -323,6 +325,32 @@ export class Post {
     }
     secondCol.append(image);
 
+    const addEmojiBox = document.createElement("div");
+    secondCol.append(addEmojiBox);
+
+    const wrapper = document.createElement("form");
+    wrapper.classList.add("input-group");
+    addEmojiBox.append(wrapper);
+
+    const addEmojiButton = document.createElement("button");
+    addEmojiButton.setAttribute("type", "button");
+    addEmojiButton.setAttribute("aria-label", "react to this post");
+    addEmojiButton.classList.add(
+      "first-btn",
+      "input-group-text",
+      "material-symbols-outlined",
+      "bg-primary",
+      "text-white",
+      "mt-4"
+    );
+    addEmojiButton.innerHTML = "add_reaction";
+    wrapper.append(addEmojiButton);
+
+    const addEmojiInput = document.createElement("input");
+    addEmojiInput.setAttribute("type", "text");
+    addEmojiInput.classList.add("one", "text-small", "form-control", "mt-4");
+    wrapper.append(addEmojiInput);
+
     const addCommentBox = document.createElement("div");
     secondCol.append(addCommentBox);
 
@@ -375,6 +403,24 @@ export class Post {
       commentsBox.append(commentOwner);
     });
     secondCol.append(commentsBox);
+
+    //emoji picker
+    new EmojiPicker({
+      trigger: [
+        {
+          selector: ".first-btn",
+          insertInto: [".one"],
+        },
+      ],
+      closeButton: true,
+      //specialButtons: green
+    });
+
+    //send reaction to API
+    wrapper.addEventListener("submit", (e) => {
+      e.preventDefault();
+      reactToPost(accessToken, this.id, addEmojiInput.value);
+    });
 
     //call API to comment on post entry
     addCommentButton.addEventListener("click", () => {

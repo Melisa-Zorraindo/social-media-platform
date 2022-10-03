@@ -290,3 +290,35 @@ export async function commentOnPost(accessToken, commentBody, id) {
     console.log(error);
   }
 }
+
+/**
+ * Sends a PUT request to
+ * allow the user to react to
+ * a post entry
+ * @param {string} accessToken
+ * @param {number} id
+ * @param {string} symbol
+ */
+export async function reactToPost(accessToken, id, symbol) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      body: symbol,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}/react/${symbol}`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
