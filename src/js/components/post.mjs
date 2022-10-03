@@ -1,7 +1,11 @@
 import parser from "../tools/parser.mjs";
 import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
-import { deletePost, updatePost } from "../commonFunctions/api.mjs";
+import {
+  deletePost,
+  updatePost,
+  commentOnPost,
+} from "../commonFunctions/api.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
 
 export class Post {
@@ -312,6 +316,32 @@ export class Post {
     }
     secondCol.append(image);
 
+    const addCommentBox = document.createElement("div");
+    secondCol.append(addCommentBox);
+
+    const addCommentForm = document.createElement("form");
+    addCommentForm.classList.add("input-group", "my-4");
+    addCommentBox.append(addCommentForm);
+
+    const addCommentInput = document.createElement("input");
+    addCommentInput.setAttribute("type", "text");
+    addCommentInput.setAttribute("placeholder", "leave a comment");
+    addCommentInput.setAttribute("aria-label", "leave a comment");
+    addCommentInput.setAttribute("id", "comment-text");
+    addCommentInput.classList.add("text-small", "form-control");
+    addCommentForm.append(addCommentInput);
+
+    const addCommentButton = document.createElement("button");
+    addCommentButton.setAttribute("type", "button");
+    addCommentButton.classList.add(
+      "input-group-text",
+      "material-symbols-outlined",
+      "bg-primary",
+      "text-white"
+    );
+    addCommentButton.innerHTML = "send";
+    addCommentForm.append(addCommentButton);
+
     const emojis = document.createElement("div");
     emojis.classList.add("text-small", "my-2");
     this.comments.map(({ symbol }) => {
@@ -338,6 +368,10 @@ export class Post {
       commentsBox.append(commentOwner);
     });
     secondCol.append(commentsBox);
+
+    addCommentButton.addEventListener("click", () => {
+      commentOnPost(accessToken, addCommentInput.value, this.id);
+    });
   }
 
   renderGeneralTimeline(container) {

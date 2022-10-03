@@ -239,3 +239,27 @@ export async function viewProfile(accessToken, name) {
     console.log(error);
   }
 }
+
+export async function commentOnPost(accessToken, commentBody, id) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      body: commentBody,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}/comment`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
