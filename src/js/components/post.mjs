@@ -318,11 +318,7 @@ export class Post {
     const image = document.createElement("img");
     image.setAttribute("src", this.media);
     image.setAttribute("alt", "image uploaded by user");
-    if (image.src === "") {
-      image.classList.add("hidden");
-    } else {
-      image.classList.add("img-fluid");
-    }
+    image.classList.add("img-fluid");
     secondCol.append(image);
 
     const addEmojiBox = document.createElement("div");

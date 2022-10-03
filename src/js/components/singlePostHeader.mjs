@@ -36,9 +36,12 @@ export function renderSinglePostHeader(container) {
   row.append(secondCol);
 
   const goBackButton = document.createElement("a");
-  goBackButton.setAttribute("href", "home.html");
+  goBackButton.setAttribute("type", "button");
   goBackButton.classList.add("btn-custom", "d-flex", "text-decoration-none");
   secondCol.append(goBackButton);
+  goBackButton.addEventListener("click", () => {
+    history.back();
+  });
 
   const goBackButtonContent = document.createElement("span");
   goBackButtonContent.classList.add("material-symbols-outlined");
