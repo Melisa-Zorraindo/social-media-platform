@@ -95,7 +95,7 @@ export async function fetchPosts(accessToken) {
 
   try {
     const response = await fetch(
-      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`,
+      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true&limit=100000`,
       options
     );
     const data = await response.json();
@@ -123,7 +123,9 @@ export async function createPost(accessToken, postText, mediaUrl) {
       title: " ",
       body: postText,
       tags: [" "],
-      media: mediaUrl,
+      media:
+        mediaUrl ||
+        "https://i.picsum.photos/id/114/20/20.jpg?hmac=DaP11emH8RMUac2zfSlS_Fe6q0SX3v_iLW2wPcCqFWI",
     }),
   };
 

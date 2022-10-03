@@ -78,6 +78,7 @@ function renderUserPosts(arr) {
       updated,
     } = post;
 
+    //assing random profile pic if no avatar
     if (avatar.length === 0) {
       avatar = assignedProfilePicture;
     }
@@ -124,7 +125,6 @@ const CREATE_POST_BUTTON_MOBILE = document.querySelector(
 
 CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
   event.preventDefault();
-
   createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
 

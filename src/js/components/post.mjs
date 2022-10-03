@@ -413,7 +413,6 @@ export class Post {
         },
       ],
       closeButton: true,
-      //specialButtons: green
     });
 
     //send reaction to API
