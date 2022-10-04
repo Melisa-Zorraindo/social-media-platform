@@ -367,7 +367,7 @@ export class Post {
     addCommentForm.append(addCommentButton);
 
     const emojis = document.createElement("div");
-    emojis.classList.add("text-small", "my-2");
+    emojis.classList.add("text-small", "my-3");
     this.comments.map(({ symbol }) => {
       emojis.innerHTML += symbol;
     });
@@ -375,9 +375,12 @@ export class Post {
 
     const commentsBox = document.createElement("div");
     commentsBox.classList.add("my-3");
-    this.reactions.map(({ body, owner }) => {
+    this.reactions.map(({ body, owner, created }) => {
+      const creationDate = new Date(created);
+      const styledDate = formatDate(creationDate);
+
       const userComment = document.createElement("div");
-      userComment.classList.add("mt-2", "border-top");
+      userComment.classList.add("mt-3", "border-top");
       userComment.innerHTML = body;
       commentsBox.append(userComment);
 
@@ -388,7 +391,7 @@ export class Post {
         "ms-3",
         "fst-italic"
       );
-      commentOwner.innerHTML = `from ${owner}`;
+      commentOwner.innerHTML = `from ${owner} on ${styledDate}`;
       commentsBox.append(commentOwner);
     });
     secondCol.append(commentsBox);
