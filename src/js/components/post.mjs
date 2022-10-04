@@ -356,7 +356,7 @@ export class Post {
     addCommentForm.append(addCommentInput);
 
     const addCommentButton = document.createElement("button");
-    addCommentButton.setAttribute("type", "button");
+    addCommentButton.setAttribute("type", "submit");
     addCommentButton.classList.add(
       "input-group-text",
       "material-symbols-outlined",
