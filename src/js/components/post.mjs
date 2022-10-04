@@ -375,7 +375,10 @@ export class Post {
 
     const commentsBox = document.createElement("div");
     commentsBox.classList.add("my-3");
-    this.reactions.map(({ body, owner, created }) => {
+    //sort comments by newest with reverse() applied to copy of reactions array
+    const reactionsCopy = [...this.reactions];
+    reactionsCopy.reverse();
+    reactionsCopy.map(({ body, owner, created }) => {
       const creationDate = new Date(created);
       const styledDate = formatDate(creationDate);
 
