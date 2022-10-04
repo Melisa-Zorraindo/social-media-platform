@@ -412,7 +412,8 @@ export class Post {
     });
 
     //call API to comment on post entry
-    addCommentButton.addEventListener("click", () => {
+    addCommentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
       commentOnPost(accessToken, addCommentInput.value, this.id);
     });
   }
