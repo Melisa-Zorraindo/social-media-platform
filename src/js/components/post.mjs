@@ -380,19 +380,14 @@ export class Post {
       const styledDate = formatDate(creationDate);
 
       const userComment = document.createElement("div");
-      userComment.classList.add("mt-3", "border-top");
-      userComment.innerHTML = body;
+      userComment.classList.add("mt-3", "border-top", "text-small");
+      userComment.innerHTML = `<b>${owner}</b> ${body}`;
       commentsBox.append(userComment);
 
-      const commentOwner = document.createElement("div");
-      commentOwner.classList.add(
-        "text-small",
-        "text-secondary",
-        "ms-3",
-        "fst-italic"
-      );
-      commentOwner.innerHTML = `from ${owner} on ${styledDate}`;
-      commentsBox.append(commentOwner);
+      const commentDate = document.createElement("div");
+      commentDate.classList.add("text-small", "text-secondary");
+      commentDate.innerHTML = styledDate;
+      userComment.append(commentDate);
     });
     secondCol.append(commentsBox);
 
