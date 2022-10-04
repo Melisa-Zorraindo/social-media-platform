@@ -49,6 +49,10 @@ const singlePostContainer = document.querySelector("#single-post-container");
 
 postItem.renderSinglePost(singlePostContainer);
 
+//display title dinamically
+const newTitle = document.querySelector("title");
+newTitle.innerHTML = `Socials | Post by ${postItem.username}`;
+
 //render header
 const header = document.querySelector("#header");
 renderSinglePostHeader(header, avatar, name);
