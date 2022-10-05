@@ -127,16 +127,26 @@ function searchPosts(queryString) {
 
 //filter functionality (available only on desktop)
 const todaysPostsRadioBtn = document.querySelector("#todays-posts");
+const yesterdaysPostsRadioBtn = document.querySelector("#yesterdays-posts");
 const lastWeeksPostsRadioBtn = document.querySelector("#last-weeks-posts");
 const olderPostsRadioBtn = document.querySelector("#older-posts");
 const clearFiltersRadioBtn = document.querySelector("#clear-filter");
 
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
 todaysPostsRadioBtn.addEventListener("change", () => {
-  console.log(todaysPostsRadioBtn.value);
   const today = new Date();
   filterByDate(today);
 });
 
+yesterdaysPostsRadioBtn.addEventListener("change", () => {
+  const today = new Date();
+  const yesterday = new Date(today - day);
+  filterByDate(yesterday);
+});
 lastWeeksPostsRadioBtn.addEventListener("change", () => {
   console.log(lastWeeksPostsRadioBtn.value);
 });
@@ -151,18 +161,13 @@ clearFiltersRadioBtn.addEventListener("change", () => {
 });
 
 function filterByDate(searchDate) {
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-
   const filteredPostsByDate = listOfPosts.filter(({ created, updated }) => {
     const creationDate = new Date(created);
     const updatedDate = new Date(updated);
     return searchDate - creationDate <= day || searchDate - updatedDate <= day;
   });
 
-  //display older posts first
+  //display older posts first by reversing the array (mostly for user experience, there are so many posts that it'll be hard to realise your filter worked if you're still seeing the latests posts)
   const reversedFilteredPostsByDate = filteredPostsByDate.reverse();
 
   listOfPostsContainer.innerHTML = "";
