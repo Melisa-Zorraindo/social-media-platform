@@ -125,6 +125,51 @@ function searchPosts(queryString) {
   renderListOfPosts(filteredPosts);
 }
 
+//filter functionality (available only on desktop)
+const todaysPostsRadioBtn = document.querySelector("#todays-posts");
+const lastWeeksPostsRadioBtn = document.querySelector("#last-weeks-posts");
+const olderPostsRadioBtn = document.querySelector("#older-posts");
+const clearFiltersRadioBtn = document.querySelector("#clear-filter");
+
+todaysPostsRadioBtn.addEventListener("change", () => {
+  console.log(todaysPostsRadioBtn.value);
+  const today = new Date();
+  filterByDate(today);
+});
+
+lastWeeksPostsRadioBtn.addEventListener("change", () => {
+  console.log(lastWeeksPostsRadioBtn.value);
+});
+
+olderPostsRadioBtn.addEventListener("change", () => {
+  console.log(olderPostsRadioBtn.value);
+});
+
+clearFiltersRadioBtn.addEventListener("change", () => {
+  listOfPostsContainer.innerHTML = "";
+  renderListOfPosts(listOfPosts);
+});
+
+function filterByDate(searchDate) {
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const filteredPostsByDate = listOfPosts.filter(({ created, updated }) => {
+    const creationDate = new Date(created);
+    const updatedDate = new Date(updated);
+    return searchDate - creationDate <= day || searchDate - updatedDate <= day;
+  });
+
+  //display older posts first
+  const reversedFilteredPostsByDate = filteredPostsByDate.reverse();
+
+  listOfPostsContainer.innerHTML = "";
+
+  renderListOfPosts(reversedFilteredPostsByDate);
+}
+
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
 
