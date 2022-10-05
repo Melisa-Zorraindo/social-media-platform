@@ -89,19 +89,19 @@ export class Post {
                           </a>
                           <div class="row my-2">
                               <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
-                                  <div class="d-flex flex-column align-items-center">
+                                  <div class="d-flex flex-column align-items-center me-2">
                                       <span
-                                      class="text-secondary me-2"
+                                      class="text-secondary"
                                       >
                                         <span class="material-symbols-outlined">
-                                              favorite
+                                              emoji_flags
                                         </span>
                                       </span>
                                       <span class="text-small text-secondary">${this.totalReactions}</span>
                                   </div>
-                                  <div class="d-flex flex-column align-items-center">
+                                  <div class="d-flex flex-column align-items-center me-2">
                                     <span
-                                      class="text-secondary mx-2"
+                                      class="text-secondary"
                                   >
                                         <span class="material-symbols-outlined">
                                         chat_bubble
@@ -203,19 +203,19 @@ export class Post {
                                         </a>
                                         <div class="row my-2">
                                             <div class="col d-flex justify-content-start">
-                                                <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex flex-column align-items-center me-2">
                                                     <span
-                                                    class="text-secondary me-2"
+                                                    class="text-secondary"
                                                     >
                                                       <span class="material-symbols-outlined">
-                                                            favorite
+                                                            emoji_flags
                                                       </span>
                                                     </span>
                                                     <span class="text-small text-secondary">${this.totalReactions}</span>
                                                 </div>
-                                                <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex flex-column align-items-center me-2">
                                                     <span
-                                                        class="text-secondary mx-2"
+                                                        class="text-secondary"
                                                     >
                                                         <span class="material-symbols-outlined">
                                                         chat_bubble
@@ -235,17 +235,28 @@ export class Post {
                                                     </span>
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <li><button
-                                                            class="dropdown-item"
+                                                        <li class="my-2 text-small">
+                                                        <button
+                                                            class="dropdown-item d-flex align-items-center"
                                                             type="button"
                                                             id="edit-button"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#edit-post-modal-window"
                                                             >
+                                                                <span class="material-symbols-outlined me-2">
+                                                                edit
+                                                                </span>
                                                                 edit post
                                                             </button>
                                                         </li>
-                                                        <li><button class="dropdown-item" id="delete-button">delete post</button></li>
+                                                        <li class="my-2 text-small">
+                                                          <button class="dropdown-item d-flex align-items-center" id="delete-button">
+                                                              <span class="material-symbols-outlined me-2">
+                                                                delete
+                                                              </span>
+                                                            delete post
+                                                          </button>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
