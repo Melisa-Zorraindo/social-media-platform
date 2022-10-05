@@ -51,6 +51,10 @@ export class Post {
     this.comments = comments;
     this.id = id;
     this.updated = formattedEditionDate;
+
+    /* if (this.media.length === 0) {
+      delete this.media;
+    } */
   }
 
   //html template for homepage
@@ -76,6 +80,7 @@ export class Post {
                               ${this.body}
                               </p>
                               <img
+                              id="media"
                               src="${this.media}"
                               class="img-fluid"
                               alt=" "
@@ -189,6 +194,7 @@ export class Post {
                                                 ${this.body}
                                             </p>
                                             <img
+                                            id="media"
                                             src="${this.media}"
                                             class="img-fluid"
                                             alt=" "
@@ -422,12 +428,28 @@ export class Post {
   renderGeneralTimeline(container) {
     const postHTML = parser(this.generalPostTemplate());
 
+    //hide images if they're empty
+    const attachment = document.querySelectorAll("#media");
+    for (let i = 0; i < attachment.length; i++) {
+      if (attachment[i].currentSrc === "") {
+        attachment[i].classList.add("d-none");
+      }
+    }
+
     container.append(postHTML.documentElement);
   }
 
   //render html template for profile page
   renderUserTimeline(container) {
     const postHTML = parser(this.userPostTemplate());
+
+    //hide images if they're empty
+    const attachment = document.querySelectorAll("#media");
+    for (let i = 0; i < attachment.length; i++) {
+      if (attachment[i].currentSrc === "") {
+        attachment[i].classList.add("d-none");
+      }
+    }
 
     //call function to remove post from API
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
