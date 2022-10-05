@@ -136,23 +136,28 @@ const second = 1000;
 const minute = second * 60;
 const hour = minute * 60;
 const day = hour * 24;
+const week = day * 7;
+const fortnight = day * 14;
+
+const today = new Date();
 
 todaysPostsRadioBtn.addEventListener("change", () => {
-  const today = new Date();
   filterByDate(today);
 });
 
 yesterdaysPostsRadioBtn.addEventListener("change", () => {
-  const today = new Date();
   const yesterday = new Date(today - day);
   filterByDate(yesterday);
 });
+
 lastWeeksPostsRadioBtn.addEventListener("change", () => {
-  console.log(lastWeeksPostsRadioBtn.value);
+  const lastWeek = new Date(today - week);
+  filterByDate(lastWeek);
 });
 
 olderPostsRadioBtn.addEventListener("change", () => {
-  console.log(olderPostsRadioBtn.value);
+  const twoWeeks = new Date(today - fortnight);
+  filterByDate(twoWeeks);
 });
 
 clearFiltersRadioBtn.addEventListener("change", () => {
@@ -173,6 +178,7 @@ function filterByDate(searchDate) {
   listOfPostsContainer.innerHTML = "";
 
   renderListOfPosts(reversedFilteredPostsByDate);
+  console.log(reversedFilteredPostsByDate);
 }
 
 //logout functionality for desktop
