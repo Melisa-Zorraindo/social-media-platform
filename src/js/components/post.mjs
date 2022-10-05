@@ -187,7 +187,7 @@ export class Post {
                                         <p class="fw-bold text-primary mb-0 ps-2">
                                         ${this.username}
                                         </p>
-                                            <p class="text-secondary ps-2 mb-0 text-small">
+                                            <p class="text-secondary ps-2 text-small">
                                             ${this.date}
                                             </p>
                                         <a href="specific-post.html?id=${this.id}" class="text-decoration-none text-body" id="view-post">
