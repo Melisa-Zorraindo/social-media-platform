@@ -165,6 +165,11 @@ clearFiltersRadioBtn.addEventListener("change", () => {
   renderListOfPosts(listOfPosts);
 });
 
+/**
+ * Filters posts according to
+ * the date passed in
+ * @param {string} searchDate
+ */
 function filterByDate(searchDate) {
   const filteredPostsByDate = listOfPosts.filter(({ created, updated }) => {
     const creationDate = new Date(created);
@@ -178,7 +183,6 @@ function filterByDate(searchDate) {
   listOfPostsContainer.innerHTML = "";
 
   renderListOfPosts(reversedFilteredPostsByDate);
-  console.log(reversedFilteredPostsByDate);
 }
 
 //logout functionality for desktop

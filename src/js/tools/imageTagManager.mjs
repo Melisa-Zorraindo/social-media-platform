@@ -1,7 +1,13 @@
-export default function imageContainerManager(tag) {
-  for (let i = 0; i < tag.length; i++) {
-    if (tag[i].currentSrc === "") {
-      tag[i].classList.add("d-none");
+/**
+ * Hides from interface
+ * HTML elements whose
+ * currentScr attributes are empty
+ * @param {string} tag
+ */
+export default function imageContainerManager(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].currentSrc === "") {
+      arr[i].classList.add("d-none");
     }
   }
 }
