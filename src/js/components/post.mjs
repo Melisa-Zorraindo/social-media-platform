@@ -9,6 +9,7 @@ import {
 } from "../commonFunctions/api.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
 import { EmojiPicker } from "../tools/vanillaEmojiPicker.mjs";
+import imageContainerManager from "../tools/imageTagManager.mjs";
 
 //create template for post entry
 //with all functions related to it
@@ -194,7 +195,7 @@ export class Post {
                                                 ${this.body}
                                             </p>
                                             <img
-                                            id="media"
+                                            id="media-attachment"
                                             src="${this.media}"
                                             class="img-fluid"
                                             alt=" "
@@ -430,11 +431,7 @@ export class Post {
 
     //hide images if they're empty
     const attachment = document.querySelectorAll("#media");
-    for (let i = 0; i < attachment.length; i++) {
-      if (attachment[i].currentSrc === "") {
-        attachment[i].classList.add("d-none");
-      }
-    }
+    imageContainerManager(attachment);
 
     container.append(postHTML.documentElement);
   }
@@ -444,12 +441,8 @@ export class Post {
     const postHTML = parser(this.userPostTemplate());
 
     //hide images if they're empty
-    const attachment = document.querySelectorAll("#media");
-    for (let i = 0; i < attachment.length; i++) {
-      if (attachment[i].currentSrc === "") {
-        attachment[i].classList.add("d-none");
-      }
-    }
+    const mediaAttachment = document.querySelectorAll("#media-attachment");
+    imageContainerManager(mediaAttachment);
 
     //call function to remove post from API
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
