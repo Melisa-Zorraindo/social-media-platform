@@ -29,7 +29,8 @@ export function renderProfileHeader(container, profilePicture, username) {
   const secondCol = document.createElement("div");
   secondCol.classList.add(
     "col",
-    "col-9",
+    "col-lg-9",
+    "col-md-12",
     "d-sm-flex",
     "justify-content-start",
     "align-items-start"
@@ -52,11 +53,17 @@ export function renderProfileHeader(container, profilePicture, username) {
   anchorProfile.append(profileImage);
 
   const secondNestedCol = document.createElement("div");
-  secondNestedCol.classList.add("ms-sm-5");
+  secondNestedCol.classList.add(
+    "ms-sm-5",
+    "col",
+    "d-flex",
+    "justify-content-between",
+    "align-items-end"
+  );
   secondCol.append(secondNestedCol);
 
   const userInfo = document.createElement("div");
-  userInfo.classList.add("d-flex");
+  // userInfo.classList.add("d-flex");
   secondNestedCol.append(userInfo);
 
   const h1 = document.createElement("h1");
@@ -64,25 +71,46 @@ export function renderProfileHeader(container, profilePicture, username) {
   h1.innerHTML = username;
   userInfo.append(h1);
 
-  const editProfileButton = document.createElement("button");
-  editProfileButton.setAttribute("type", "button");
-  editProfileButton.setAttribute("id", "edit-user-btn");
-  editProfileButton.setAttribute("aria-label", "edit user");
-  editProfileButton.classList.add("btn-custom");
-  userInfo.append(editProfileButton);
-
-  const editIcon = document.createElement("span");
-  editIcon.classList.add("material-symbols-outlined", "text-secondary");
-  editIcon.innerHTML = "edit";
-  editProfileButton.append(editIcon);
-
   const infoLine1 = document.createElement("p");
   infoLine1.classList.add("my-0", "text-black", "fw-light");
   infoLine1.innerHTML = "🐱 lover";
-  secondNestedCol.append(infoLine1);
+  userInfo.append(infoLine1);
 
   const infoLine2 = document.createElement("p");
   infoLine2.classList.add("my-0", "text-black", "fw-light");
   infoLine2.innerHTML = "🌎 wanderer";
-  secondNestedCol.append(infoLine2);
+  userInfo.append(infoLine2);
+
+  const editProfileButtonMobile = document.createElement("a");
+  editProfileButtonMobile.setAttribute("href", "edit-profile.html");
+  editProfileButtonMobile.setAttribute("id", "edit-user-btn-mobile");
+  editProfileButtonMobile.setAttribute("aria-label", "edit user");
+  editProfileButtonMobile.classList.add("btn-custom", "d-md-none");
+  secondNestedCol.append(editProfileButtonMobile);
+
+  const editIcon = document.createElement("span");
+  editIcon.classList.add("material-symbols-outlined", "text-secondary");
+  editIcon.innerHTML = "edit";
+  editProfileButtonMobile.append(editIcon);
+
+  const editProfileButtonDesktop = document.createElement("a");
+  editProfileButtonDesktop.setAttribute("href", "edit-profile.html");
+  editProfileButtonDesktop.setAttribute("id", "edit-user-btn-desktop");
+  editProfileButtonDesktop.setAttribute("aria-label", "edit user");
+  editProfileButtonDesktop.classList.add(
+    "btn",
+    "btn-primary",
+    "d-none",
+    "d-md-block"
+  );
+  secondNestedCol.append(editProfileButtonDesktop);
+
+  const editIconDesktop = document.createElement("span");
+  editIconDesktop.classList.add("material-symbols-outlined", "me-2");
+  editIconDesktop.innerHTML = "edit";
+  editProfileButtonDesktop.append(editIconDesktop);
+
+  const editButtonText = document.createElement("span");
+  editButtonText.innerHTML = "edit profile";
+  editProfileButtonDesktop.append(editButtonText);
 }
