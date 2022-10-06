@@ -1,3 +1,4 @@
+import { loggedUser, userEmail } from "../constants/storedKeys.mjs";
 /**
  * Creates HTML header for profile page
  * @param {HTMLElement} container
@@ -118,9 +119,17 @@ export function renderProfileHeader(container, profilePicture, username) {
 
   editProfileButtonMobile.addEventListener("click", () => {
     console.log("button mobile is working");
+    const profileName = document.querySelector("#profile-name");
+    const email = document.querySelector("#user-email");
+    profileName.setAttribute("placeholder", loggedUser);
+    email.setAttribute("placeholder", userEmail);
   });
 
   editProfileButtonDesktop.addEventListener("click", () => {
     console.log("button desktop is working");
+    const profileName = document.querySelector("#profile-name");
+    const email = document.querySelector("#user-email");
+    profileName.setAttribute("placeholder", loggedUser);
+    email.setAttribute("placeholder", userEmail);
   });
 }

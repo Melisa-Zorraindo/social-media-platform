@@ -66,10 +66,11 @@ export async function authoriseUser() {
       options
     );
     const data = await response.json();
-    const { name, accessToken, message } = data;
+    const { name, email, accessToken, message } = data;
     if (response.status === 200) {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("username", name);
+      localStorage.setItem("userEmail", email);
       window.location.assign("profile.html");
     } else {
       LOGIN_ERROR_MESSAGE.innerHTML = message;
@@ -316,6 +317,40 @@ export async function reactToPost(accessToken, id, symbol) {
   try {
     const response = await fetch(
       `${BASE_URL}/api/v1/social/posts/${id}/react/${symbol}`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Sends a PUT request to
+ * allow the user to update
+ * their profile images
+ * @param {string} accessToken
+ * @param {string} urlOne
+ * @param {string} urlTwo
+ * @param {string} name
+ */
+export async function updateProfile(accessToken, urlOne, urlTwo, name) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      banner: urlOne,
+      avatar: urlTwo,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/profiles/${name}/media`,
       options
     );
     await response.json();

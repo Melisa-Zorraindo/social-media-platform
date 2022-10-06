@@ -1,6 +1,11 @@
 import { renderProfileHeader } from "./components/userHeader.mjs";
-import { fetchPosts, createPost, viewProfile } from "./commonFunctions/api.mjs";
-import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
+import {
+  fetchPosts,
+  createPost,
+  viewProfile,
+  updateProfile,
+} from "./commonFunctions/api.mjs";
+import { accessToken, loggedUser, userEmail } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
@@ -138,4 +143,22 @@ logoutButton.addEventListener("click", () => {
 const logoutMobile = document.querySelector("#logout-mobile");
 logoutMobile.addEventListener("click", () => {
   logout();
+});
+
+//edit profile
+const profilePreferancesForm = document.querySelector("#profile-preferances");
+
+profilePreferancesForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const userBanner = document.querySelector("#user-banner");
+
+  const userProfilePicture = document.querySelector("#user-profile-picture");
+
+  updateProfile(
+    accessToken,
+    userBanner.value,
+    userProfilePicture.value,
+    loggedUser
+  );
 });

@@ -294,7 +294,7 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <form action="" class="p-2">
+                <form action="" class="p-2" id="profile-preferances">
                   <div class="container">
                     <div class="row mt-3 mb-1">
                       <div class="input-group mb-3">
@@ -305,9 +305,10 @@
                         </span>
                         <input
                           type="text"
-                          placeholder="username"
+                          placeholder=""
                           class="text-small form-control"
-                          id=""
+                          id="profile-name"
+                          disabled
                         />
                       </div>
                       <div class="input-group mb-3">
@@ -318,9 +319,38 @@
                         </span>
                         <input
                           type="email"
-                          placeholder="email"
+                          placeholder=""
                           class="text-small form-control"
-                          id=""
+                          id="user-email"
+                          disabled
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          vrpano
+                        </span>
+                        <input
+                          type="url"
+                          placeholder="banner"
+                          class="text-small form-control"
+                          id="user-banner"
+                          required
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          account_box
+                        </span>
+                        <input
+                          type="url"
+                          placeholder="avatar"
+                          class="text-small form-control"
+                          id="user-profile-picture"
+                          required
                         />
                       </div>
                     </div>
@@ -329,7 +359,6 @@
                     <button
                       type="submit"
                       class="btn btn-primary"
-                      id=""
                     >
                       Save
                     </button>
