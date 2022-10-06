@@ -125,7 +125,7 @@ export async function createPost(accessToken, postText, mediaUrl) {
       tags: [" "],
       media:
         mediaUrl ||
-        "https://i.picsum.photos/id/114/20/20.jpg?hmac=DaP11emH8RMUac2zfSlS_Fe6q0SX3v_iLW2wPcCqFWI",
+        "https://i.picsum.photos/id/1048/200/1.jpg?hmac=KGIl00eqsBbeWUGyRK2yCG5FWAJrl_7Ecq_Vf-cxXMo",
     }),
   };
 

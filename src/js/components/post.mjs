@@ -319,7 +319,7 @@ export class Post {
     dates.append(edited);
 
     const postBody = document.createElement("p");
-    postBody.classList.add("ps-2");
+    postBody.classList.add("ps-2", "mt-2");
     postBody.innerHTML = this.body;
     secondCol.append(postBody);
 
@@ -440,9 +440,9 @@ export class Post {
   renderGeneralTimeline(container) {
     const postHTML = parser(this.generalPostTemplate());
 
-    //hide images if they're empty
-    const attachment = document.querySelectorAll("#media");
-    imageContainerManager(attachment);
+    //hide images if they're empty (not working properly)
+    /* const attachment = document.querySelectorAll("#media");
+    imageContainerManager(attachment); */
 
     container.append(postHTML.documentElement);
   }
@@ -451,9 +451,9 @@ export class Post {
   renderUserTimeline(container) {
     const postHTML = parser(this.userPostTemplate());
 
-    //hide images if they're empty
-    const mediaAttachment = document.querySelectorAll("#media-attachment");
-    imageContainerManager(mediaAttachment);
+    //hide images if they're empty (not working properly)
+    /* const mediaAttachment = document.querySelectorAll("#media-attachment");
+    imageContainerManager(mediaAttachment); */
 
     //call function to remove post from API
     postHTML.querySelector("#delete-button").addEventListener("click", () => {
