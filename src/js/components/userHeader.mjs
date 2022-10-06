@@ -81,9 +81,10 @@ export function renderProfileHeader(container, profilePicture, username) {
   infoLine2.innerHTML = "🌎 wanderer";
   userInfo.append(infoLine2);
 
-  const editProfileButtonMobile = document.createElement("a");
-  editProfileButtonMobile.setAttribute("href", "edit-profile.html");
-  editProfileButtonMobile.setAttribute("id", "edit-user-btn-mobile");
+  const editProfileButtonMobile = document.createElement("button");
+  editProfileButtonMobile.setAttribute("type", "button");
+  editProfileButtonMobile.setAttribute("data-bs-toggle", "modal");
+  editProfileButtonMobile.setAttribute("data-bs-target", "#edit-profile");
   editProfileButtonMobile.setAttribute("aria-label", "edit user");
   editProfileButtonMobile.classList.add("btn-custom", "d-md-none");
   secondNestedCol.append(editProfileButtonMobile);
@@ -93,9 +94,10 @@ export function renderProfileHeader(container, profilePicture, username) {
   editIcon.innerHTML = "edit";
   editProfileButtonMobile.append(editIcon);
 
-  const editProfileButtonDesktop = document.createElement("a");
-  editProfileButtonDesktop.setAttribute("href", "edit-profile.html");
-  editProfileButtonDesktop.setAttribute("id", "edit-user-btn-desktop");
+  const editProfileButtonDesktop = document.createElement("button");
+  editProfileButtonDesktop.setAttribute("type", "button");
+  editProfileButtonDesktop.setAttribute("data-bs-toggle", "modal");
+  editProfileButtonDesktop.setAttribute("data-bs-target", "#edit-profile");
   editProfileButtonDesktop.setAttribute("aria-label", "edit user");
   editProfileButtonDesktop.classList.add(
     "btn",
@@ -113,4 +115,12 @@ export function renderProfileHeader(container, profilePicture, username) {
   const editButtonText = document.createElement("span");
   editButtonText.innerHTML = "edit profile";
   editProfileButtonDesktop.append(editButtonText);
+
+  editProfileButtonMobile.addEventListener("click", () => {
+    console.log("button mobile is working");
+  });
+
+  editProfileButtonDesktop.addEventListener("click", () => {
+    console.log("button desktop is working");
+  });
 }
