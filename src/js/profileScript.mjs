@@ -151,14 +151,7 @@ const profilePreferancesForm = document.querySelector("#profile-preferances");
 profilePreferancesForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const userBanner = document.querySelector("#user-banner");
-
   const userProfilePicture = document.querySelector("#user-profile-picture");
 
-  updateProfile(
-    accessToken,
-    userBanner.value,
-    userProfilePicture.value,
-    loggedUser
-  );
+  updateProfile(accessToken, userProfilePicture.value, loggedUser);
 });

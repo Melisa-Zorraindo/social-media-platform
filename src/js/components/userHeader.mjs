@@ -118,7 +118,6 @@ export function renderProfileHeader(container, profilePicture, username) {
   editProfileButtonDesktop.append(editButtonText);
 
   editProfileButtonMobile.addEventListener("click", () => {
-    console.log("button mobile is working");
     const profileName = document.querySelector("#profile-name");
     const email = document.querySelector("#user-email");
     profileName.setAttribute("placeholder", loggedUser);
@@ -126,7 +125,6 @@ export function renderProfileHeader(container, profilePicture, username) {
   });
 
   editProfileButtonDesktop.addEventListener("click", () => {
-    console.log("button desktop is working");
     const profileName = document.querySelector("#profile-name");
     const email = document.querySelector("#user-email");
     profileName.setAttribute("placeholder", loggedUser);

@@ -329,13 +329,14 @@ export async function reactToPost(accessToken, id, symbol) {
 /**
  * Sends a PUT request to
  * allow the user to update
- * their profile images
+ * their profile picture
+ * Sets a default banner image required
+ * by the API, but it won't be used
  * @param {string} accessToken
  * @param {string} urlOne
- * @param {string} urlTwo
  * @param {string} name
  */
-export async function updateProfile(accessToken, urlOne, urlTwo, name) {
+export async function updateProfile(accessToken, urlOne, name) {
   const options = {
     method: "PUT",
     headers: {
@@ -343,8 +344,9 @@ export async function updateProfile(accessToken, urlOne, urlTwo, name) {
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({
-      banner: urlOne,
-      avatar: urlTwo,
+      banner:
+        "https://i.picsum.photos/id/1048/200/1.jpg?hmac=KGIl00eqsBbeWUGyRK2yCG5FWAJrl_7Ecq_Vf-cxXMo",
+      avatar: urlOne,
     }),
   };
 
