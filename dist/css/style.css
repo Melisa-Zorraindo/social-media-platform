@@ -46,8 +46,8 @@
   }
 }
 .profile-pic {
-  max-width: 6rem;
-  max-height: 6rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 /*!

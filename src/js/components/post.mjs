@@ -65,7 +65,7 @@ export class Post {
                       <div class="col col-md-2">
                           <img
                           src="${this.avatar}"
-                          class="img-fluid rounded-circle p-1"
+                          class="profile-pic rounded-circle p-1"
                           alt="user image"
                           />
                       </div>
@@ -179,7 +179,7 @@ export class Post {
                                     <div class="col col-md-2">
                                         <img
                                         src="${this.avatar}"
-                                        class="img-fluid rounded-circle p-1"
+                                        class="profile-pic rounded-circle p-1"
                                         alt="user image"
                                         />
                                     </div>
@@ -287,7 +287,7 @@ export class Post {
     const profilePic = document.createElement("img");
     profilePic.setAttribute("src", this.avatar);
     profilePic.setAttribute("alt", "profile picture");
-    profilePic.classList.add("img-fluid", "rounded-circle", "p-1");
+    profilePic.classList.add("profile-pic", "rounded-circle", "p-1");
     firstCol.append(profilePic);
 
     const secondCol = document.createElement("div");
