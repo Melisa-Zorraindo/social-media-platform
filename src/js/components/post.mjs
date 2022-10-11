@@ -52,68 +52,130 @@ export class Post {
     this.comments = comments;
     this.id = id;
     this.updated = formattedEditionDate;
-
-    /* if (this.media.length === 0) {
-      delete this.media;
-    } */
   }
 
   //html template for homepage
-  generalPostTemplate() {
-    return `<div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                  <div class="row">
-                      <div class="col col-md-2">
-                          <img
-                          src="${this.avatar}"
-                          class="profile-pic rounded-circle p-1"
-                          alt="user image"
-                          />
-                      </div>
-                      <div class="col col-md-10 col-sm-9 col-9">
-                          <p class="fw-bold text-primary mb-0 ps-2">
-                          ${this.username}
-                          </p>
-                          <p class="text-secondary ps-2 text-small">
-                          ${this.date}
-                          </p>
-                          <a href="specific-post.html?id=${this.id}" class="text-decoration-none text-body">
-                              <p class="ps-2" id="view-single-post">
-                              ${this.body}
-                              </p>
-                              <img
-                              id="media"
-                              src="${this.media}"
-                              class="img-fluid"
-                              alt=" "
-                              />
-                          </a>
-                          <div class="row my-2">
-                              <div class="col d-flex justify-content-start gap-lg-5 gap-md-3" id="interaction-buttons">
-                                  <div class="d-flex flex-column align-items-center me-2">
-                                      <span
-                                      class="text-secondary"
-                                      >
-                                        <span class="material-symbols-outlined">
-                                              emoji_flags
-                                        </span>
-                                      </span>
-                                      <span class="text-small text-secondary">${this.totalReactions}</span>
-                                  </div>
-                                  <div class="d-flex flex-column align-items-center me-2">
-                                    <span
-                                      class="text-secondary"
-                                  >
-                                        <span class="material-symbols-outlined">
-                                        chat_bubble
-                                        </span>
-                                    </span>
-                                    <span class="text-small text-secondary">${this.totalComments}</span>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>`;
+  renderHomepagePosts(container) {
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("container", "mt-5");
+    container.append(cardContainer);
+
+    const card = document.createElement("div");
+    card.classList.add("card", "my-lg-3", "my-md-2", "my-sm-1", "my-1", "pe-3");
+    cardContainer.append(card);
+
+    const row = document.createElement("div");
+    row.classList.add("row");
+    card.append(row);
+
+    const firstCol = document.createElement("div");
+    firstCol.classList.add("col", "col-md-2");
+    row.append(firstCol);
+
+    const profilePic = document.createElement("img");
+    profilePic.setAttribute("src", this.avatar);
+    profilePic.setAttribute("alt", "profile picture");
+    profilePic.classList.add("profile-pic", "rounded-circle", "p-1");
+    firstCol.append(profilePic);
+
+    const secondCol = document.createElement("div");
+    secondCol.classList.add("col", "col-md-10", "col-sm-9", "col-9");
+    row.append(secondCol);
+
+    const name = document.createElement("p");
+    name.classList.add("fw-bold", "text-primary", "mb-0", "ps-2");
+    name.innerHTML = this.username;
+    secondCol.append(name);
+
+    const dates = document.createElement("div");
+    dates.classList.add("d-sm-flex");
+    secondCol.append(dates);
+
+    const published = document.createElement("p");
+    published.classList.add("text-secondary", "ps-2", "mb-0", "text-small");
+    published.innerHTML = this.date;
+    dates.append(published);
+
+    const edited = document.createElement("p");
+    edited.innerHTML = this.updated;
+    if (edited.innerHTML === published.innerHTML) {
+      edited.classList.add("hidden");
+    } else {
+      edited.classList.add("text-secondary", "ps-2", "text-small");
+      edited.innerHTML = `<b> · </b> edited ${this.updated}`;
+    }
+    dates.append(edited);
+
+    const linkToSinglePost = document.createElement("a");
+    linkToSinglePost.setAttribute("href", `specific-post.html?id=${this.id}`);
+    linkToSinglePost.classList.add("text-decoration-none", "text-body");
+    secondCol.append(linkToSinglePost);
+
+    const postBody = document.createElement("p");
+    postBody.classList.add("ps-2", "mt-2");
+    postBody.innerHTML = this.body;
+    linkToSinglePost.append(postBody);
+
+    const image = document.createElement("img");
+    image.setAttribute("src", this.media);
+    image.setAttribute("alt", "image uploaded by user");
+    if (!this.media) {
+      image.classList.add("d-none");
+    }
+    image.classList.add("img-fluid");
+    linkToSinglePost.append(image);
+
+    const insideRow = document.createElement("div");
+    insideRow.classList.add("row", "my-2");
+    secondCol.append(insideRow);
+
+    const interactionsContainer = document.createElement("div");
+    interactionsContainer.classList.add(
+      "col",
+      "d-flex",
+      "justify-content-start",
+      "gap-lg-5",
+      "gap-md-3"
+    );
+    insideRow.append(interactionsContainer);
+
+    const reactionsCountWrapper = document.createElement("div");
+    reactionsCountWrapper.classList.add(
+      "d-flex",
+      "flex-column",
+      "align-items-center",
+      "me-2"
+    );
+    interactionsContainer.append(reactionsCountWrapper);
+
+    const reactionsIcon = document.createElement("span");
+    reactionsIcon.classList.add("text-secondary", "material-symbols-outlined");
+    reactionsIcon.innerHTML = "emoji_flags";
+    reactionsCountWrapper.append(reactionsIcon);
+
+    const reactionsCount = document.createElement("span");
+    reactionsCount.classList.add("text-small", "text-secondary");
+    reactionsCount.innerHTML = this.totalReactions;
+    reactionsCountWrapper.append(reactionsCount);
+
+    const commentsCountWrapper = document.createElement("div");
+    commentsCountWrapper.classList.add(
+      "d-flex",
+      "flex-column",
+      "align-items-center",
+      "me-2"
+    );
+    interactionsContainer.append(commentsCountWrapper);
+
+    const commentsIcon = document.createElement("span");
+    commentsIcon.classList.add("text-secondary", "material-symbols-outlined");
+    commentsIcon.innerHTML = "chat_bubble";
+    commentsCountWrapper.append(commentsIcon);
+
+    const commentsCount = document.createElement("span");
+    commentsCount.classList.add("text-small", "text-secondary");
+    commentsCount.innerHTML = this.totalComments;
+    commentsCountWrapper.append(commentsCount);
   }
 
   //html template for profile page
@@ -437,16 +499,16 @@ export class Post {
   }
 
   //render html template for homepage
-  renderGeneralTimeline(container) {
-    const postHTML = parser(this.generalPostTemplate());
+  /* renderGeneralTimeline(container) {
+    const postHTML = parser(this.generalPostTemplate()); */
 
-    //hide images if they're empty (not working properly)
-    /* const attachment = document.querySelectorAll("#media");
+  //hide images if they're empty (not working properly)
+  /* const attachment = document.querySelectorAll("#media");
     imageContainerManager(attachment); */
 
-    container.append(postHTML.documentElement);
+  /*     container.append(postHTML.documentElement);
   }
-
+ */
   //render html template for profile page
   renderUserTimeline(container) {
     const postHTML = parser(this.userPostTemplate());

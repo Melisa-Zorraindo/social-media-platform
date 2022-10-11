@@ -57,7 +57,7 @@ function renderListOfPosts(arr) {
       updated
     );
 
-    postItem.renderGeneralTimeline(listOfPostsContainer);
+    postItem.renderHomepagePosts(listOfPostsContainer);
   });
 }
 
