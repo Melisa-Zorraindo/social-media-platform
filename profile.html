@@ -272,6 +272,64 @@
           </div>
         </div>
 
+        <!--modal edit post-->
+        <div class="modal fade"
+        id="edit-post-modal-window"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="editPostModalWindow"
+        aria-hidden="true"
+      >
+          <div class="modal-dialog modal-fullscreen-sm-down">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Edit post</h5>
+                      <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close">
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="" class="p-2" id="edit-user-post">
+                          <div class="form-floating">
+                              <textarea
+                                  name=""
+                                  class="form-control h-100"
+                                  placeholder="share your thoughts"
+                                  id="edit-post-textarea"
+                              ></textarea>
+                              <label for="user-post"></label>
+                          </div>
+                          <div class="modal-footer">
+                              <div class="col input-group">
+                                  <span
+                                  class="material-symbols-outlined input-group-text"
+                                  >
+                                      add_photo_alternate
+                                  </span>
+                                  <input
+                                      type="text"
+                                      placeholder=""
+                                      class="text-small form-control"
+                                      id="input"
+                                  />
+                              </div>
+                              <button type="button"
+                              class="btn btn-primary"
+                              id="save-update">
+                                Save
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <!--end mobile edit post-->
+
         <!--modal edit profile-->
         <div
           class="modal fade"
@@ -356,6 +414,7 @@
           </div>
         </div>
         <!--end modal edit profile-->
+
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="py-5">

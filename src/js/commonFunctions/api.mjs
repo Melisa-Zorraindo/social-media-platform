@@ -189,7 +189,9 @@ export async function updatePost(accessToken, editedContent, editedMedia, id) {
       title: " ",
       body: `${editedContent}`,
       tags: [" "],
-      media: `${editedMedia}`,
+      media:
+        `${editedMedia}` ||
+        "https://i.picsum.photos/id/1048/200/1.jpg?hmac=KGIl00eqsBbeWUGyRK2yCG5FWAJrl_7Ecq_Vf-cxXMo",
     }),
   };
 

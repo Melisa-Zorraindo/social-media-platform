@@ -102,7 +102,7 @@ function renderUserPosts(arr) {
       updated
     );
 
-    postItem.renderUserTimeline(loggedUserPostsContainer);
+    postItem.renderPost(loggedUserPostsContainer);
   });
 }
 

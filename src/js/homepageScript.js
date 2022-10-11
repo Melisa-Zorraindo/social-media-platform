@@ -57,7 +57,7 @@ function renderListOfPosts(arr) {
       updated
     );
 
-    postItem.renderHomepagePosts(listOfPostsContainer);
+    postItem.renderPost(listOfPostsContainer);
   });
 }
 

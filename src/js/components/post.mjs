@@ -54,8 +54,8 @@ export class Post {
     this.updated = formattedEditionDate;
   }
 
-  //html template for homepage
-  renderHomepagePosts(container) {
+  //create html for post
+  renderPost(container) {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("container", "mt-5");
     container.append(cardContainer);
@@ -176,156 +176,100 @@ export class Post {
     commentsCount.classList.add("text-small", "text-secondary");
     commentsCount.innerHTML = this.totalComments;
     commentsCountWrapper.append(commentsCount);
-  }
 
-  //html template for profile page
-  userPostTemplate() {
-    return `
-                <div class="modal fade"
-                  id="edit-post-modal-window"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="editPostModalWindow"
-                  aria-hidden="true"
-                >
-                    <div class="modal-dialog modal-fullscreen-sm-down">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Edit post</h5>
-                                <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close">
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" class="p-2" id="edit-user-post">
-                                    <div class="form-floating">
-                                        <textarea
-                                            name=""
-                                            class="form-control h-100"
-                                            placeholder="share your thoughts"
-                                            id="edit-post-textarea"
-                                        ></textarea>
-                                        <label for="user-post"></label>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="col input-group">
-                                            <span
-                                            class="material-symbols-outlined input-group-text"
-                                            >
-                                                add_photo_alternate
-                                            </span>
-                                            <input
-                                                type="text"
-                                                placeholder=""
-                                                class="text-small form-control"
-                                                id="input"
-                                            />
-                                        </div>
-                                        <button type="button"
-                                        class="btn btn-primary"
-                                        id="save-update">
-                                          Save
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                                <div class="row">
-                                    <div class="col col-md-2">
-                                        <img
-                                        src="${this.avatar}"
-                                        class="profile-pic rounded-circle p-1"
-                                        alt="user image"
-                                        />
-                                    </div>
-                                    <div class="col col-md-10 col-sm-9 col-9">
-                                        <p class="fw-bold text-primary mb-0 ps-2">
-                                        ${this.username}
-                                        </p>
-                                            <p class="text-secondary ps-2 text-small">
-                                            ${this.date}
-                                            </p>
-                                        <a href="specific-post.html?id=${this.id}" class="text-decoration-none text-body" id="view-post">
-                                            <p class="ps-2">
-                                                ${this.body}
-                                            </p>
-                                            <img
-                                            id="media-attachment"
-                                            src="${this.media}"
-                                            class="img-fluid"
-                                            alt=" "
-                                            />
-                                        </a>
-                                        <div class="row my-2">
-                                            <div class="col d-flex justify-content-start">
-                                                <div class="d-flex flex-column align-items-center me-2">
-                                                    <span
-                                                    class="text-secondary"
-                                                    >
-                                                      <span class="material-symbols-outlined">
-                                                            emoji_flags
-                                                      </span>
-                                                    </span>
-                                                    <span class="text-small text-secondary">${this.totalReactions}</span>
-                                                </div>
-                                                <div class="d-flex flex-column align-items-center me-2">
-                                                    <span
-                                                        class="text-secondary"
-                                                    >
-                                                        <span class="material-symbols-outlined">
-                                                        chat_bubble
-                                                        </span>
-                                                    </span>
-                                                    <span class="text-small text-secondary">${this.totalComments}</span>
-                                                </div>
-                                                <div class="dropup">
-                                                    <button 
-                                                    class="btn btn-custom text-secondary" 
-                                                    type="button"
-                                                    id="more actions"
-                                                    data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                    <span class="material-symbols-outlined">
-                                                        more_horiz
-                                                    </span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <li class="my-2 text-small">
-                                                        <button
-                                                            class="dropdown-item d-flex align-items-center"
-                                                            type="button"
-                                                            id="edit-button"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#edit-post-modal-window"
-                                                            >
-                                                                <span class="material-symbols-outlined me-2">
-                                                                edit
-                                                                </span>
-                                                                edit post
-                                                            </button>
-                                                        </li>
-                                                        <li class="my-2 text-small">
-                                                          <button class="dropdown-item d-flex align-items-center" id="delete-button">
-                                                              <span class="material-symbols-outlined me-2">
-                                                                delete
-                                                              </span>
-                                                            delete post
-                                                          </button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`;
+    //hide the entire dropup if user is on homepage
+    const userLocation = window.location.pathname;
+
+    const dropupContainer = document.createElement("div");
+    userLocation === "/home.html"
+      ? dropupContainer.classList.add("hidden")
+      : dropupContainer.classList.add("dropup");
+    interactionsContainer.append(dropupContainer);
+
+    const dropupButton = document.createElement("button");
+    dropupButton.setAttribute("type", "button");
+    dropupButton.setAttribute("data-bs-toggle", "dropdown");
+    dropupButton.setAttribute("aria-expanded", "false");
+    dropupButton.setAttribute("id", "more-actions");
+    dropupButton.classList.add("btn", "btn-custom", "text-secondary");
+    dropupContainer.append(dropupButton);
+
+    const dropupIcon = document.createElement("span");
+    dropupIcon.classList.add(
+      "material-symbols-outlined",
+      "text-primary",
+      "fw-bold"
+    );
+    dropupIcon.innerHTML = "more_horiz";
+    dropupButton.append(dropupIcon);
+
+    const ulDropup = document.createElement("ul");
+    ulDropup.setAttribute("aria-labelledby", "dropdownMenuButton");
+    ulDropup.classList.add("dropdown-menu");
+    dropupContainer.append(ulDropup);
+
+    const liOne = document.createElement("li");
+    liOne.classList.add("my-2", "text-small");
+    ulDropup.append(liOne);
+
+    const editButton = document.createElement("button");
+    editButton.setAttribute("type", "button");
+    editButton.setAttribute("data-bs-toggle", "modal");
+    editButton.setAttribute("data-bs-target", "#edit-post-modal-window");
+    editButton.setAttribute("id", "edit-button");
+    editButton.classList.add("dropdown-item", "d-flex", "align-items-center");
+    liOne.append(editButton);
+
+    const editButtonIcon = document.createElement("span");
+    editButtonIcon.classList.add("material-symbols-outlined", "me-2");
+    editButtonIcon.innerHTML = "edit";
+    editButton.append(editButtonIcon);
+
+    const editButtonText = document.createElement("span");
+    editButtonText.innerHTML = "edit post";
+    editButton.append(editButtonText);
+
+    const liTwo = document.createElement("li");
+    liTwo.classList.add("my-2", "text-small");
+    ulDropup.append(liTwo);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("id", "delete-button");
+    deleteButton.classList.add("dropdown-item", "d-flex", "align-items-center");
+    liTwo.append(deleteButton);
+
+    const deleteButtonIcon = document.createElement("span");
+    deleteButtonIcon.classList.add("material-symbols-outlined", "me-2");
+    deleteButtonIcon.innerHTML = "delete";
+    deleteButton.append(deleteButtonIcon);
+
+    const deleteButtonText = document.createElement("span");
+    deleteButtonText.innerHTML = "delete post";
+    deleteButton.append(deleteButtonText);
+
+    //edit button functionality
+    editButton.addEventListener("click", () => {
+      const editPostTextarea = document.querySelector("#edit-post-textarea");
+      const editPostPhoto = document.querySelector("#input");
+      const saveButton = document.querySelector("#save-update");
+
+      editPostTextarea.innerHTML = this.body;
+      editPostPhoto.value = this.media;
+
+      saveButton.addEventListener("click", () => {
+        const editedText = editPostTextarea.value;
+        const editedPhoto = editPostPhoto.value;
+        const postIdentifier = this.id;
+
+        this.editPost(editedText, editedPhoto, postIdentifier);
+      });
+    });
+
+    //delete button functionality
+    deleteButton.addEventListener("click", () => {
+      this.removePost();
+    });
   }
 
   //html for single post page
@@ -496,51 +440,6 @@ export class Post {
       e.preventDefault();
       commentOnPost(accessToken, addCommentInput.value, this.id);
     });
-  }
-
-  //render html template for homepage
-  /* renderGeneralTimeline(container) {
-    const postHTML = parser(this.generalPostTemplate()); */
-
-  //hide images if they're empty (not working properly)
-  /* const attachment = document.querySelectorAll("#media");
-    imageContainerManager(attachment); */
-
-  /*     container.append(postHTML.documentElement);
-  }
- */
-  //render html template for profile page
-  renderUserTimeline(container) {
-    const postHTML = parser(this.userPostTemplate());
-
-    //hide images if they're empty (not working properly)
-    /* const mediaAttachment = document.querySelectorAll("#media-attachment");
-    imageContainerManager(mediaAttachment); */
-
-    //call function to remove post from API
-    postHTML.querySelector("#delete-button").addEventListener("click", () => {
-      this.removePost();
-    });
-
-    //call function to edit an existing post
-    postHTML.querySelector("#edit-button").addEventListener("click", () => {
-      const editPostTextarea = document.querySelector("#edit-post-textarea");
-      const editPostPhoto = document.querySelector("#input");
-      const saveButton = document.querySelector("#save-update");
-
-      editPostTextarea.innerHTML = this.body;
-      editPostPhoto.value = this.media;
-
-      saveButton.addEventListener("click", () => {
-        const editedText = editPostTextarea.value;
-        const editedPhoto = editPostPhoto.value;
-        const postIdentifier = this.id;
-
-        this.editPost(editedText, editedPhoto, postIdentifier);
-      });
-    });
-
-    container.append(postHTML.documentElement);
   }
 
   //call API to delete post
