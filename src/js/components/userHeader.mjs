@@ -109,7 +109,8 @@ export function renderProfileHeader(container, profilePicture, username) {
     "btn",
     "btn-primary",
     "d-none",
-    "d-md-block"
+    "d-md-block",
+    "mb-2"
   );
   secondNestedCol.append(editProfileButtonDesktop);
 
