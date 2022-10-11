@@ -4,6 +4,9 @@
  * @param {string} profilePicture
  */
 export function renderHomepageHeader(container, profilePicture) {
+
+  alert("Since you have an HTML parsing utility, you could store this as a string template and use that to turn it into real HTML. This is fine if the content is not coming from the API because you control it.")
+
   const outestDiv = document.createElement("div");
   outestDiv.classList.add("container", "mt-2");
   container.append(outestDiv);
