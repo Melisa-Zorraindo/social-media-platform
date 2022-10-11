@@ -50,7 +50,12 @@ export function renderProfileHeader(container, profilePicture, username) {
   const profileImage = document.createElement("img");
   profileImage.setAttribute("src", profilePicture);
   profileImage.setAttribute("alt", "profile picture");
-  profileImage.classList.add("img-fluid", "rounded-circle");
+  profileImage.classList.add(
+    "profile-pic",
+    "img-fluid",
+    "rounded-circle",
+    "mb-2"
+  );
   anchorProfile.append(profileImage);
 
   const secondNestedCol = document.createElement("div");
