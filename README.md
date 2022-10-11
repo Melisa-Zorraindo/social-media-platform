@@ -20,6 +20,7 @@ To use this project:
 - User can create a comment on a post
 - User can react to a post content item
 - User can edit profile media
+- User can log out
 
 # Development plan
 
