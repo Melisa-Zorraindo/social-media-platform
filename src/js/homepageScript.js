@@ -78,7 +78,7 @@ function searchPosts(queryString) {
 
   listOfPostsContainer.innerHTML = "";
 
-  renderListOfPosts(filteredPosts);
+  renderListOfPosts(filteredPosts, listOfPostsContainer);
 }
 
 //filter functionality (available only on desktop)
@@ -88,10 +88,7 @@ const lastWeeksPostsRadioBtn = document.querySelector("#last-weeks-posts");
 const olderPostsRadioBtn = document.querySelector("#older-posts");
 const clearFiltersRadioBtn = document.querySelector("#clear-filter");
 
-const second = 1000;
-const minute = second * 60;
-const hour = minute * 60;
-const day = hour * 24;
+const day = 1000 * 60 * 60 * 24;
 const week = day * 7;
 const fortnight = day * 14;
 
@@ -118,7 +115,7 @@ olderPostsRadioBtn.addEventListener("change", () => {
 
 clearFiltersRadioBtn.addEventListener("change", () => {
   listOfPostsContainer.innerHTML = "";
-  renderListOfPosts(listOfPosts);
+  renderListOfPosts(listOfPosts, listOfPostsContainer);
 });
 
 /**
@@ -135,10 +132,8 @@ function filterByDate(searchDate) {
 
   //display older posts first by reversing the array (mostly for user experience, there are so many posts that it'll be hard to realise your filter worked if you're still seeing the latests posts)
   const reversedFilteredPostsByDate = filteredPostsByDate.reverse();
-
   listOfPostsContainer.innerHTML = "";
-
-  renderListOfPosts(reversedFilteredPostsByDate);
+  renderListOfPosts(reversedFilteredPostsByDate, listOfPostsContainer);
 }
 
 //logout functionality for desktop

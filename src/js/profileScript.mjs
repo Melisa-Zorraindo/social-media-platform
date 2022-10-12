@@ -99,8 +99,6 @@ const profilePreferancesForm = document.querySelector("#profile-preferances");
 
 profilePreferancesForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const userProfilePicture = document.querySelector("#user-profile-picture");
-
   updateProfile(accessToken, userProfilePicture.value, loggedUser);
 });
