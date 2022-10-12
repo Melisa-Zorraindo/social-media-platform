@@ -5,6 +5,8 @@ import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
+alert("This is a very large and complicated file with a lot of responsibility. Consider breaking this file up into smaller chunks to make it easier to debug.")
+
 const listOfPosts = await fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
