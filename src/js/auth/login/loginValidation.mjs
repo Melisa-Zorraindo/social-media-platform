@@ -21,7 +21,7 @@ LOGIN_EMAIL_FIELD.addEventListener("keyup", () => {
  * Authorises user if login data
  * passes validation, displays errors
  * if it doesn't
- * @param {submit} event
+ * @param {SubmitEvent} event
  */
 export function validateLogin(event) {
   event.preventDefault();
