@@ -1,5 +1,5 @@
 /**
- * Simulates logging out of
+ * Logs the user out of
  * the app by removing key value pairs
  * stored in local storage.
  * Redirects user to login page
