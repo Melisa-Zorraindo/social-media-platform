@@ -5,7 +5,7 @@ import {
   viewProfile,
   updateProfile,
 } from "./commonFunctions/api.mjs";
-import { accessToken, loggedUser, userEmail } from "./constants/storedKeys.mjs";
+import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";

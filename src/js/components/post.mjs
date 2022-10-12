@@ -1,4 +1,3 @@
-import parser from "../tools/parser.mjs";
 import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
 import {
@@ -9,7 +8,6 @@ import {
 } from "../commonFunctions/api.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
 import { EmojiPicker } from "../tools/vanillaEmojiPicker.mjs";
-import imageContainerManager from "../tools/imageTagManager.mjs";
 
 //create template for post entry
 //with all functions related to it
