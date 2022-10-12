@@ -47,7 +47,8 @@ const postItem = new Post(
 
 const singlePostContainer = document.querySelector("#single-post-container");
 
-postItem.renderSinglePost(singlePostContainer);
+postItem.renderPost(singlePostContainer);
+postItem.renderSinglePostComponents();
 
 //display title dinamically
 const newTitle = document.querySelector("title");

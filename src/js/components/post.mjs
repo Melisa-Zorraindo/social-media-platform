@@ -79,6 +79,7 @@ export class Post {
     firstCol.append(profilePic);
 
     const secondCol = document.createElement("div");
+    secondCol.setAttribute("id", "second-col");
     secondCol.classList.add("col", "col-md-10", "col-sm-9", "col-9");
     row.append(secondCol);
 
@@ -181,7 +182,7 @@ export class Post {
     const userLocation = window.location.pathname;
 
     const dropupContainer = document.createElement("div");
-    userLocation === "/home.html"
+    userLocation !== "/profile.html"
       ? dropupContainer.classList.add("hidden")
       : dropupContainer.classList.add("dropup");
     interactionsContainer.append(dropupContainer);
@@ -273,70 +274,8 @@ export class Post {
   }
 
   //html for single post page
-  renderSinglePost(container) {
-    const cardContainer = document.createElement("div");
-    cardContainer.classList.add("container", "mt-5");
-    container.append(cardContainer);
-
-    const card = document.createElement("div");
-    card.classList.add("card", "my-lg-3", "my-md-2", "my-sm-1", "my-1", "pe-3");
-    cardContainer.append(card);
-
-    const row = document.createElement("div");
-    row.classList.add("row");
-    card.append(row);
-
-    const firstCol = document.createElement("div");
-    firstCol.classList.add("col", "col-md-2");
-    row.append(firstCol);
-
-    const profilePic = document.createElement("img");
-    profilePic.setAttribute("src", this.avatar);
-    profilePic.setAttribute("alt", "profile picture");
-    profilePic.classList.add("profile-pic", "rounded-circle", "p-1");
-    firstCol.append(profilePic);
-
-    const secondCol = document.createElement("div");
-    secondCol.classList.add("col", "col-md-10", "col-sm-9", "col-9");
-    row.append(secondCol);
-
-    const name = document.createElement("p");
-    name.classList.add("fw-bold", "text-primary", "mb-0", "ps-2");
-    name.innerHTML = this.username;
-    secondCol.append(name);
-
-    const dates = document.createElement("div");
-    dates.classList.add("d-sm-flex");
-    secondCol.append(dates);
-
-    const published = document.createElement("p");
-    published.classList.add("text-secondary", "ps-2", "mb-0", "text-small");
-    published.innerHTML = this.date;
-    dates.append(published);
-
-    const edited = document.createElement("p");
-    edited.innerHTML = this.updated;
-    if (edited.innerHTML === published.innerHTML) {
-      edited.classList.add("hidden");
-    } else {
-      edited.classList.add("text-secondary", "ps-2", "text-small");
-      edited.innerHTML = `<b> · </b> edited ${this.updated}`;
-    }
-    dates.append(edited);
-
-    const postBody = document.createElement("p");
-    postBody.classList.add("ps-2", "mt-2");
-    postBody.innerHTML = this.body;
-    secondCol.append(postBody);
-
-    const image = document.createElement("img");
-    image.setAttribute("src", this.media);
-    image.setAttribute("alt", "image uploaded by user");
-    if (!this.media) {
-      image.classList.add("d-none");
-    }
-    image.classList.add("img-fluid");
-    secondCol.append(image);
+  renderSinglePostComponents() {
+    const secondCol = document.querySelector("#second-col");
 
     const addEmojiBox = document.createElement("div");
     secondCol.append(addEmojiBox);
