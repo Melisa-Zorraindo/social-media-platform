@@ -364,6 +364,22 @@ export class Post {
     addEmojiInput.classList.add("one", "text-small", "form-control", "mt-4");
     wrapper.append(addEmojiInput);
 
+    //emoji picker
+    new EmojiPicker({
+      trigger: [
+        {
+          selector: ".first-btn",
+          insertInto: [".one"],
+        },
+      ],
+      closeButton: true,
+    });
+
+    //send reaction to API
+    addEmojiInput.addEventListener("focus", () => {
+      reactToPost(accessToken, this.id, addEmojiInput.value);
+    });
+
     const addCommentBox = document.createElement("div");
     secondCol.append(addCommentBox);
 
@@ -417,23 +433,6 @@ export class Post {
       userComment.append(commentDate);
     });
     secondCol.append(commentsBox);
-
-    //emoji picker
-    new EmojiPicker({
-      trigger: [
-        {
-          selector: ".first-btn",
-          insertInto: [".one"],
-        },
-      ],
-      closeButton: true,
-    });
-
-    //send reaction to API
-    wrapper.addEventListener("submit", (e) => {
-      e.preventDefault();
-      reactToPost(accessToken, this.id, addEmojiInput.value);
-    });
 
     //call API to comment on post entry
     addCommentForm.addEventListener("submit", (e) => {
