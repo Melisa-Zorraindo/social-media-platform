@@ -1,7 +1,7 @@
 import { renderHomepageHeader } from "./components/homepageHeader.mjs";
+import { renderListOfPosts } from "./commonFunctions/postRendering.mjs";
 import { fetchPosts, createPost, viewProfile } from "./commonFunctions/api.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
-import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
@@ -14,7 +14,6 @@ let { avatar } = await viewProfile(accessToken, signedInUser);
 
 //select avatar randomly if user's avatar is an empty string
 let assignedProfilePicture = getRandomImage();
-
 if (avatar.length === 0) {
   avatar = assignedProfilePicture;
 }
@@ -23,69 +22,26 @@ if (avatar.length === 0) {
 const header = document.querySelector("#header");
 renderHomepageHeader(header, avatar);
 
-/**
- * Creates the html to be displayed
- * on homepage for each post entry using
- * the Post class
- * @param {array} arr
- */
-function renderListOfPosts(arr) {
-  arr.map((post) => {
-    const {
-      author: { avatar, name },
-      created,
-      body,
-      media,
-      _count: { reactions: totalReactions, comments: totalComments },
-      id,
-      comments,
-      reactions,
-      updated,
-    } = post;
-
-    const postItem = new Post(
-      avatar,
-      name,
-      created,
-      body,
-      media,
-      totalReactions,
-      totalComments,
-      reactions,
-      comments,
-      id,
-      updated
-    );
-
-    postItem.renderPost(listOfPostsContainer);
-  });
-}
-
-renderListOfPosts(listOfPosts);
+//render posts
+renderListOfPosts(listOfPosts, listOfPostsContainer);
 
 //create a new post from desktop
-const POST_BODY_FIELD = document.querySelector("#user-post-desktop");
+const POST_FORM_DESKTOP = document.querySelector("#post-form-desktop");
+const POST_BODY_FIELD = document.querySelector("#post-body-desktop");
 const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
-const CREATE_POST_BUTTON = document.querySelector(
-  "#create-post-button-desktop"
-);
 
-CREATE_POST_BUTTON.addEventListener("click", (event) => {
+POST_FORM_DESKTOP.addEventListener("submit", (event) => {
   event.preventDefault();
-
   createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
 });
 
 //create a new post from mobile
-const POST_FIELD_MOBILE = document.querySelector("#user-post-mobile");
+const POST_FORM_MOBILE = document.querySelector("#post-form-mobile");
+const POST_FIELD_MOBILE = document.querySelector("#post-body-mobile");
 const MEDIA_UPLOAD_MOBILE = document.querySelector("#media-upload-mobile");
-const CREATE_POST_BUTTON_MOBILE = document.querySelector(
-  "#create-post-button-mobile"
-);
 
-CREATE_POST_BUTTON_MOBILE.addEventListener("click", (event) => {
+POST_FORM_MOBILE.addEventListener("submit", (event) => {
   event.preventDefault();
-
   createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
 
