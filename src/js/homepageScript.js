@@ -1,19 +1,22 @@
 import { renderHomepageHeader } from "./components/homepageHeader.mjs";
 import { renderListOfPosts } from "./commonFunctions/postRendering.mjs";
 import * as posts from "./commonFunctions/api/posts/index.mjs";
-import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
+import * as profiles from "./commonFunctions/api/profiles/read.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import searchPosts from "./commonFunctions/search.mjs";
 import filterByDate from "./commonFunctions/filter.mjs";
+import renderUsers from "./commonFunctions/profileRendering.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
 const listOfPosts = await posts.fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
+const users = await profiles.fetchProfiles();
+
 //destructure user to display information in the header
 const signedInUser = localStorage.getItem("username");
-let { avatar } = await viewProfile(accessToken, signedInUser);
+let { avatar } = await profiles.viewProfile(accessToken, signedInUser);
 
 //select avatar randomly if user's avatar is an empty string
 let assignedProfilePicture = getRandomImage();
@@ -108,6 +111,13 @@ clearFiltersRadioBtn.addEventListener("change", () => {
   listOfPostsContainer.innerHTML = "";
   renderListOfPosts(listOfPosts, listOfPostsContainer);
 });
+
+//render contacts dinamically
+const SOCIALS_USERS_CONTAINER = document.querySelector(
+  "#socials-users-container"
+);
+
+await renderUsers(users, SOCIALS_USERS_CONTAINER);
 
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");

@@ -1,4 +1,26 @@
 import { BASE_URL } from "../../../constants/apiUrl.mjs";
+import { accessToken } from "../../../constants/storedKeys.mjs";
+
+/**
+ * Makes a GET request to fetch
+ * registered users in the API
+ */
+export async function fetchProfiles() {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(`${BASE_URL}/api/v1/social/profiles`, options);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 /**
  * Makes a GET request to fetch

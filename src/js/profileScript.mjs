@@ -2,15 +2,18 @@ import { renderProfileHeader } from "./components/userHeader.mjs";
 import { renderListOfPosts } from "./commonFunctions/postRendering.mjs";
 import { fetchPosts } from "./commonFunctions/api/posts/read.mjs";
 import { createPost } from "./commonFunctions/api/posts/create.mjs";
-import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
+import * as profiles from "./commonFunctions/api/profiles/read.mjs";
 import { updateProfile } from "./commonFunctions/api/profiles/update.mjs";
 import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
+import renderUsers from "./commonFunctions/profileRendering.mjs";
 import logout from "./commonFunctions/logout.mjs";
+
+const users = await profiles.fetchProfiles();
 
 //fetch only the logged user's posts to display in their timeline
 const signedInUser = localStorage.getItem("username");
-const userInformation = await viewProfile(accessToken, signedInUser);
+const userInformation = await profiles.viewProfile(accessToken, signedInUser);
 const allPosts = await fetchPosts(accessToken);
 const loggedUserPosts = allPosts.filter(({ author: { name } }) => {
   return name === loggedUser;
@@ -84,6 +87,22 @@ POST_FORM_MOBILE.addEventListener("submit", (event) => {
   createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
 });
 
+//edit profile
+const profilePreferancesForm = document.querySelector("#profile-preferances");
+
+profilePreferancesForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const userProfilePicture = document.querySelector("#user-profile-picture");
+  updateProfile(accessToken, userProfilePicture.value, loggedUser);
+});
+
+//render contacts dinamically
+const SOCIALS_USERS_CONTAINER = document.querySelector(
+  "#socials-users-container"
+);
+
+await renderUsers(users, SOCIALS_USERS_CONTAINER);
+
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
 logoutButton.addEventListener("click", () => {
@@ -94,13 +113,4 @@ logoutButton.addEventListener("click", () => {
 const logoutMobile = document.querySelector("#logout-mobile");
 logoutMobile.addEventListener("click", () => {
   logout();
-});
-
-//edit profile
-const profilePreferancesForm = document.querySelector("#profile-preferances");
-
-profilePreferancesForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const userProfilePicture = document.querySelector("#user-profile-picture");
-  updateProfile(accessToken, userProfilePicture.value, loggedUser);
 });
