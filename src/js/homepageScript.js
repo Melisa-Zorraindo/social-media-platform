@@ -4,6 +4,7 @@ import * as posts from "./commonFunctions/api/posts/index.mjs";
 import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
+import searchPosts from "./commonFunctions/search.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
 const listOfPosts = await posts.fetchPosts(accessToken);
@@ -59,7 +60,7 @@ const topSearchBar = document.querySelector("#top-search-bar");
 
 topSearchBar.addEventListener("keyup", () => {
   let query = topSearchBar.value;
-  searchPosts(query);
+  searchPosts(listOfPosts, query, listOfPostsContainer);
 });
 
 //search posts from desktop
@@ -67,28 +68,8 @@ const sideSearchBar = document.querySelector("#side-search-bar");
 
 sideSearchBar.addEventListener("keyup", () => {
   let query = sideSearchBar.value;
-  searchPosts(query);
+  searchPosts(listOfPosts, query, listOfPostsContainer);
 });
-
-/**
- * Uses the string passed in by the user
- * in the search bar to filter posts which
- * include the string either in the body
- * or in the username
- * @param {string} queryString
- */
-function searchPosts(queryString) {
-  const filteredPosts = listOfPosts.filter(({ body, author: { name } }) => {
-    return (
-      body.toLowerCase().includes(queryString.toLowerCase()) ||
-      name.toLowerCase().includes(queryString.toLowerCase())
-    );
-  });
-
-  listOfPostsContainer.innerHTML = "";
-
-  renderListOfPosts(filteredPosts, listOfPostsContainer);
-}
 
 //filter functionality (available only on desktop)
 const todaysPostsRadioBtn = document.querySelector("#todays-posts");
