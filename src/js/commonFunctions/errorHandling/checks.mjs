@@ -40,25 +40,3 @@ export function checkPasswordLength(password) {
 export function checkPasswordsMatch(passwordOne, passwordTwo) {
   return passwordOne === passwordTwo;
 }
-
-/**
- * Updates field styles to convey
- * field is free of errors
- * @param {HTMLInputElement} inputFieldOne
- * @param {HTMLParagraphElement} inputFieldTwo
- */
-export function removeError(inputFieldOne, inputFieldTwo) {
-  inputFieldOne.classList.remove("border-danger");
-  inputFieldTwo.classList.remove("text-danger");
-}
-
-/**
- * Changes field styles to convey
- * field contains errors
- * @param {HTMLInputElement} inputFieldOne
- * @param {HTMLParagraphElement} inputFieldTwo
- */
-export function displayError(inputFieldOne, inputFieldTwo) {
-  inputFieldOne.classList.add("border-danger");
-  inputFieldTwo.classList.add("text-danger");
-}
