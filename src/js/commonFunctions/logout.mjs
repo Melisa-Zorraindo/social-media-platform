@@ -8,5 +8,6 @@
 export default function logout() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("username");
+  localStorage.removeItem("userEmail");
   location.replace("index.html");
 }

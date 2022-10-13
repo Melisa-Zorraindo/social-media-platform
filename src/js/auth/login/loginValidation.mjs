@@ -1,4 +1,4 @@
-import { authoriseUser } from "../../commonFunctions/api.mjs";
+import { authoriseUser } from "../../commonFunctions/api/auth/login.mjs";
 import {
   checkEmail,
   displayError,

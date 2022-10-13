@@ -1,5 +1,5 @@
 import { renderSinglePostHeader } from "./components/singlePostHeader.mjs";
-import { viewSpecificPost } from "./commonFunctions/api.mjs";
+import { viewSpecificPost } from "./commonFunctions/api/posts/read.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { Post } from "./components/post.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";

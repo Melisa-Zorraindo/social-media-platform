@@ -1,4 +1,4 @@
-import { authenticateUser } from "../../commonFunctions/api.mjs";
+import { authenticateUser } from "../../commonFunctions/api/auth/signup.mjs";
 import {
   checkUsername,
   checkEmail,

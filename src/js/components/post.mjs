@@ -1,11 +1,7 @@
 import formatDate from "../tools/dateStyler.mjs";
 import { accessToken } from "../constants/storedKeys.mjs";
-import {
-  deletePost,
-  updatePost,
-  commentOnPost,
-  reactToPost,
-} from "../commonFunctions/api.mjs";
+import { deletePost } from "../commonFunctions/api/posts/delete.mjs";
+import * as posts from "../commonFunctions/api/posts/update.mjs";
 import { getRandomImage } from "../tools/imagePicker.mjs";
 import { EmojiPicker } from "../tools/vanillaEmojiPicker.mjs";
 
@@ -314,7 +310,7 @@ export class Post {
 
     //send reaction to API
     addEmojiInput.addEventListener("focus", () => {
-      reactToPost(accessToken, this.id, addEmojiInput.value);
+      posts.reactToPost(accessToken, this.id, addEmojiInput.value);
     });
 
     const addCommentBox = document.createElement("div");
@@ -374,7 +370,7 @@ export class Post {
     //call API to comment on post entry
     addCommentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      commentOnPost(accessToken, addCommentInput.value, this.id);
+      posts.commentOnPost(accessToken, addCommentInput.value, this.id);
     });
   }
 
@@ -385,6 +381,6 @@ export class Post {
 
   //call API to edit post
   editPost(editedText, editedPhoto, id) {
-    updatePost(accessToken, editedText, editedPhoto, id);
+    posts.updatePost(accessToken, editedText, editedPhoto, id);
   }
 }

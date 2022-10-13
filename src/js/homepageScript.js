@@ -1,11 +1,12 @@
 import { renderHomepageHeader } from "./components/homepageHeader.mjs";
 import { renderListOfPosts } from "./commonFunctions/postRendering.mjs";
-import { fetchPosts, createPost, viewProfile } from "./commonFunctions/api.mjs";
+import * as posts from "./commonFunctions/api/posts/index.mjs";
+import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
-const listOfPosts = await fetchPosts(accessToken);
+const listOfPosts = await posts.fetchPosts(accessToken);
 const listOfPostsContainer = document.querySelector("#list-of-posts-container");
 
 //destructure user to display information in the header
@@ -32,7 +33,11 @@ const IMAGE_UPLOAD_FIELD = document.querySelector("#media-upload");
 
 POST_FORM_DESKTOP.addEventListener("submit", (event) => {
   event.preventDefault();
-  createPost(accessToken, POST_BODY_FIELD.value, IMAGE_UPLOAD_FIELD.value);
+  posts.createPost(
+    accessToken,
+    POST_BODY_FIELD.value,
+    IMAGE_UPLOAD_FIELD.value
+  );
 });
 
 //create a new post from mobile
@@ -42,7 +47,11 @@ const MEDIA_UPLOAD_MOBILE = document.querySelector("#media-upload-mobile");
 
 POST_FORM_MOBILE.addEventListener("submit", (event) => {
   event.preventDefault();
-  createPost(accessToken, POST_FIELD_MOBILE.value, MEDIA_UPLOAD_MOBILE.value);
+  posts.createPost(
+    accessToken,
+    POST_FIELD_MOBILE.value,
+    MEDIA_UPLOAD_MOBILE.value
+  );
 });
 
 //search posts from mobile
@@ -138,7 +147,6 @@ function filterByDate(searchDate) {
 
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
-
 logoutButton.addEventListener("click", () => {
   logout();
 });

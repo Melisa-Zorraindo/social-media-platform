@@ -1,11 +1,9 @@
 import { renderProfileHeader } from "./components/userHeader.mjs";
 import { renderListOfPosts } from "./commonFunctions/postRendering.mjs";
-import {
-  fetchPosts,
-  createPost,
-  viewProfile,
-  updateProfile,
-} from "./commonFunctions/api.mjs";
+import { fetchPosts } from "./commonFunctions/api/posts/read.mjs";
+import { createPost } from "./commonFunctions/api/posts/create.mjs";
+import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
+import { updateProfile } from "./commonFunctions/api/profiles/update.mjs";
 import { accessToken, loggedUser } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import logout from "./commonFunctions/logout.mjs";
@@ -39,7 +37,14 @@ if (loggedUserPosts.length === 0) {
 let { avatar, name, posts } = userInformation;
 
 //display if user has yet to publish to timeline
-let promptToPublishMessage = `<div class="text-center"> <p> Your timeline is empty</p> <p> Share with your followers what you're thinking </p> </div>`;
+let promptToPublishMessage = `<div class="text-center">
+                                 <p> Your timeline is empty</p>
+                                 <p> Share with your followers what you're thinking </p>
+                              </div>`;
+
+const loggedUserPostsContainer = document.querySelector(
+  "#logged-user-posts-container"
+);
 
 if (posts.length === 0) {
   loggedUserPostsContainer.innerHTML = promptToPublishMessage;
@@ -57,9 +62,6 @@ const header = document.querySelector("#header");
 renderProfileHeader(header, avatar, name);
 
 //render posts
-const loggedUserPostsContainer = document.querySelector(
-  "#logged-user-posts-container"
-);
 renderListOfPosts(loggedUserPosts, loggedUserPostsContainer);
 
 //create new post from desktop
