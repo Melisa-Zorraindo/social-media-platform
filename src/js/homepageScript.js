@@ -5,6 +5,7 @@ import { viewProfile } from "./commonFunctions/api/profiles/read.mjs";
 import { accessToken } from "./constants/storedKeys.mjs";
 import { getRandomImage } from "./tools/imagePicker.mjs";
 import searchPosts from "./commonFunctions/search.mjs";
+import filterByDate from "./commonFunctions/filter.mjs";
 import logout from "./commonFunctions/logout.mjs";
 
 const listOfPosts = await posts.fetchPosts(accessToken);
@@ -85,46 +86,28 @@ const fortnight = day * 14;
 const today = new Date();
 
 todaysPostsRadioBtn.addEventListener("change", () => {
-  filterByDate(today);
+  filterByDate(listOfPosts, today, listOfPostsContainer);
 });
 
 yesterdaysPostsRadioBtn.addEventListener("change", () => {
   const yesterday = new Date(today - day);
-  filterByDate(yesterday);
+  filterByDate(listOfPosts, yesterday, listOfPostsContainer);
 });
 
 lastWeeksPostsRadioBtn.addEventListener("change", () => {
   const lastWeek = new Date(today - week);
-  filterByDate(lastWeek);
+  filterByDate(listOfPosts, lastWeek, listOfPostsContainer);
 });
 
 olderPostsRadioBtn.addEventListener("change", () => {
   const twoWeeks = new Date(today - fortnight);
-  filterByDate(twoWeeks);
+  filterByDate(listOfPosts, twoWeeks, listOfPostsContainer);
 });
 
 clearFiltersRadioBtn.addEventListener("change", () => {
   listOfPostsContainer.innerHTML = "";
   renderListOfPosts(listOfPosts, listOfPostsContainer);
 });
-
-/**
- * Filters posts according to
- * the date passed in
- * @param {string} searchDate
- */
-function filterByDate(searchDate) {
-  const filteredPostsByDate = listOfPosts.filter(({ created, updated }) => {
-    const creationDate = new Date(created);
-    const updatedDate = new Date(updated);
-    return searchDate - creationDate <= day || searchDate - updatedDate <= day;
-  });
-
-  //display older posts first by reversing the array (mostly for user experience, there are so many posts that it'll be hard to realise your filter worked if you're still seeing the latests posts)
-  const reversedFilteredPostsByDate = filteredPostsByDate.reverse();
-  listOfPostsContainer.innerHTML = "";
-  renderListOfPosts(reversedFilteredPostsByDate, listOfPostsContainer);
-}
 
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");
