@@ -117,7 +117,7 @@ export class Post {
     if (!this.media) {
       image.classList.add("d-none");
     }
-    image.classList.add("img-fluid");
+    image.classList.add("img-fluid", "ps-2");
     linkToSinglePost.append(image);
 
     const insideRow = document.createElement("div");
@@ -139,7 +139,8 @@ export class Post {
       "d-flex",
       "flex-column",
       "align-items-center",
-      "me-2"
+      "me-2",
+      "ps-2"
     );
     interactionsContainer.append(reactionsCountWrapper);
 
