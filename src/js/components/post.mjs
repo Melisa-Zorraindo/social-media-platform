@@ -273,6 +273,7 @@ export class Post {
     const secondCol = document.querySelector("#second-col");
 
     const addEmojiBox = document.createElement("div");
+    addEmojiBox.classList.add("ps-2");
     secondCol.append(addEmojiBox);
 
     const wrapper = document.createElement("form");
@@ -315,6 +316,7 @@ export class Post {
     });
 
     const addCommentBox = document.createElement("div");
+    addCommentBox.classList.add("ps-2");
     secondCol.append(addCommentBox);
 
     const addCommentForm = document.createElement("form");
@@ -341,14 +343,14 @@ export class Post {
     addCommentForm.append(addCommentButton);
 
     const emojis = document.createElement("div");
-    emojis.classList.add("text-small", "my-3");
+    emojis.classList.add("text-small", "my-3", "ps-2");
     this.comments.map(({ symbol }) => {
       emojis.innerHTML += symbol;
     });
     secondCol.append(emojis);
 
     const commentsBox = document.createElement("div");
-    commentsBox.classList.add("my-3");
+    commentsBox.classList.add("my-3", "ps-2");
     //sort comments by newest with reverse() applied to copy of reactions array
     const reactionsCopy = [...this.reactions];
     reactionsCopy.reverse();
