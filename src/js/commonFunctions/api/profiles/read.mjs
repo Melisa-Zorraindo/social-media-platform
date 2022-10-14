@@ -44,8 +44,7 @@ export async function viewProfile(accessToken, name) {
       `${BASE_URL}/api/v1/social/profiles/${name}?_posts=true&_following=true&_followers=true`,
       options
     );
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.log(error);
   }

@@ -16,7 +16,10 @@ const users = await profiles.fetchProfiles();
 
 //destructure user to display information in the header
 const signedInUser = localStorage.getItem("username");
-let { avatar } = await profiles.viewProfile(accessToken, signedInUser);
+let { avatar, followers, following } = await profiles.viewProfile(
+  accessToken,
+  signedInUser
+);
 
 //select avatar randomly if user's avatar is an empty string
 let assignedProfilePicture = getRandomImage();
@@ -118,6 +121,16 @@ const SOCIALS_USERS_CONTAINER = document.querySelector(
 );
 
 await renderUsers(users, SOCIALS_USERS_CONTAINER);
+
+//render followers dynamically
+const FOLLOWERS_CONTAINER = document.querySelector("#followers-container");
+
+await renderUsers(followers, FOLLOWERS_CONTAINER);
+
+//render following dynamically
+const FOLLOWING_CONTAINER = document.querySelector("#following-container");
+
+await renderUsers(following, FOLLOWING_CONTAINER);
 
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");

@@ -96,12 +96,24 @@ profilePreferancesForm.addEventListener("submit", (e) => {
   updateProfile(accessToken, userProfilePicture.value, loggedUser);
 });
 
-//render contacts dinamically
+//render contacts dynamically
 const SOCIALS_USERS_CONTAINER = document.querySelector(
   "#socials-users-container"
 );
 
 await renderUsers(users, SOCIALS_USERS_CONTAINER);
+
+//render followers dynamically
+const FOLLOWERS_CONTAINER = document.querySelector("#followers-container");
+const { followers } = userInformation;
+
+await renderUsers(followers, FOLLOWERS_CONTAINER);
+
+//render following dynamically
+const FOLLOWING_CONTAINER = document.querySelector("#following-container");
+const { following } = userInformation;
+
+await renderUsers(following, FOLLOWING_CONTAINER);
 
 //logout functionality for desktop
 const logoutButton = document.querySelector("#logout");

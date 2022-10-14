@@ -115,6 +115,66 @@
         </div>
         <!-- end socials users modal-->
 
+        <!--followers modal-->
+        <div
+        class="modal fade"
+        id="followers"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="followers"
+        aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Followers</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="container" id="followers-container">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end followers modal-->
+
+        <!--following modal-->
+        <div
+        class="modal fade"
+        id="following"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="following"
+        aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Following</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="container" id="following-container">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end following modal-->
+
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
             <div class="py-5">
@@ -212,7 +272,7 @@
                       href="#"
                       aria-label="following"
                       data-bs-toggle="modal"
-                      data-bs-target="#"
+                      data-bs-target="#following"
                     >
                       <span class="material-symbols-outlined"> accessibility_new </span
                       >Following</a
@@ -222,7 +282,7 @@
                       href="#"
                       aria-label="followers"
                       data-bs-toggle="modal"
-                      data-bs-target="#"
+                      data-bs-target="#followers"
                     >
                       <span class="material-symbols-outlined"> emoji_people </span
                       >Followers</a

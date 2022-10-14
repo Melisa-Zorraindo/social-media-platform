@@ -35,3 +35,67 @@ export async function updateProfile(accessToken, urlOne, name) {
     console.log(error);
   }
 }
+
+/**
+ * Makes a PUT request to follow
+ * a registered user
+ * @param {string} accessToken
+ * @param {string} name
+ * @returns
+ */
+export async function followProfile(accessToken, name) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({}),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/profiles/${name}/follow`,
+      options
+    );
+    await response.json();
+    if (response.status === 200) {
+      alert(`You're now following ${name}`);
+      location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Makes a PUT request to unfollow
+ * a registered user
+ * @param {string} accessToken
+ * @param {string} name
+ * @returns
+ */
+export async function unfollowProfile(accessToken, name) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({}),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/profiles/${name}/unfollow`,
+      options
+    );
+    await response.json();
+    if (response.status === 200) {
+      alert(`You've unfollowed ${name}`);
+      location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
