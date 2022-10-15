@@ -479,19 +479,50 @@
                 </span>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item dropup">
               <button
                 type="button"
                 class="btn-custom"
-                aria-label="socials-users"
+                aria-label="contacts"
                 id="contacts-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#socials-users"
+                data-bs-toggle="dropdown"
               >
                 <span class="material-symbols-outlined text-secondary">
                   contacts
                 </span>
               </button>
+              <ul aria-labelledby="dropDownMenuButton" class="dropdown-menu">
+                <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="socials-users"
+                      data-bs-toggle="modal"
+                      data-bs-target="#socials-users"
+                    >
+                      <span class="material-symbols-outlined"> diversity_3 </span
+                      >Socials users</a
+                    ></li>
+                    <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="following"
+                      data-bs-toggle="modal"
+                      data-bs-target="#following"
+                    >
+                      <span class="material-symbols-outlined"> accessibility_new </span
+                      >Following</a
+                    ></li>
+                    <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="followers"
+                      data-bs-toggle="modal"
+                      data-bs-target="#followers"
+                    >
+                      <span class="material-symbols-outlined"> emoji_people </span
+                      >Followers</a
+                    ></li>
+              </ul>
             </li>
             <li class="nav-item">
               <button
