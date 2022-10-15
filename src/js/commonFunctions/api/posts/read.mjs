@@ -3,7 +3,7 @@ import { BASE_URL } from "../../../constants/apiUrl.mjs";
  * Makes a GET request to fetch
  * all posts from API
  * @param {string} accessToken
- * @returns
+ * @returns posts from API
  */
 export async function fetchPosts(accessToken) {
   const options = {

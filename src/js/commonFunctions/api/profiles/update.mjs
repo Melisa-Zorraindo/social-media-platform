@@ -41,7 +41,7 @@ export async function updateProfile(accessToken, urlOne, name) {
  * a registered user
  * @param {string} accessToken
  * @param {string} name
- * @returns
+ * @returns profile followed
  */
 export async function followProfile(accessToken, name) {
   const options = {
@@ -73,7 +73,7 @@ export async function followProfile(accessToken, name) {
  * a registered user
  * @param {string} accessToken
  * @param {string} name
- * @returns
+ * @returns profile unfollowed
  */
 export async function unfollowProfile(accessToken, name) {
   const options = {

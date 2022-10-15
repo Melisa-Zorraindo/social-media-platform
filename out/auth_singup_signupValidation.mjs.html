@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: auth/singup/signupValidation.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: auth/singup/signupValidation.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { authenticateUser } from "../../commonFunctions/api/auth/signup.mjs";
+import * as validation from "../../commonFunctions/errorHandling/index.mjs";
+import { handleSubmission } from "./submission.mjs";
+
+//display errors or hide error messages on key up
+const USERNAME_FIELD = document.querySelector("#username");
+const USERNAME_ERROR = document.querySelector("#username-error");
+
+const EMAIL_FIELD = document.querySelector("#email");
+const EMAIL_ERROR = document.querySelector("#email-error");
+
+const PASSWORD_FIELD = document.querySelector("#password");
+const PASSWORD_ERROR = document.querySelector("#pass-error");
+
+const PASSWORD_REPEAT_FIELD = document.querySelector("#password-repeat");
+const PASSWORD_MATCH_ERROR = document.querySelector("#pass-match-error");
+
+USERNAME_FIELD.addEventListener("keyup", () => {
+  if (validation.checkUsername(USERNAME_FIELD.value)) {
+    validation.removeError(USERNAME_FIELD, USERNAME_ERROR);
+  }
+});
+
+EMAIL_FIELD.addEventListener("keyup", () => {
+  if (validation.checkEmail(EMAIL_FIELD.value)) {
+    validation.removeError(EMAIL_FIELD, EMAIL_ERROR);
+  }
+});
+
+PASSWORD_FIELD.addEventListener("keyup", () => {
+  if (validation.checkPasswordLength(PASSWORD_FIELD.value)) {
+    validation.removeError(PASSWORD_FIELD, PASSWORD_ERROR);
+  }
+});
+
+PASSWORD_REPEAT_FIELD.addEventListener("keyup", () => {
+  if (
+    validation.checkPasswordsMatch(
+      PASSWORD_FIELD.value,
+      PASSWORD_REPEAT_FIELD.value
+    )
+  ) {
+    PASSWORD_REPEAT_FIELD.classList.remove("border-danger");
+    PASSWORD_MATCH_ERROR.classList.add("hidden");
+  }
+});
+
+/**
+ * If values entered pass validation,
+ * it calls API to register new user
+ * @param {*} event
+ */
+export function validateSignup(event) {
+  event.preventDefault();
+
+  if (
+    validation.checkUsername(USERNAME_FIELD.value) &amp;&amp;
+    validation.checkEmail(EMAIL_FIELD.value) &amp;&amp;
+    validation.checkPasswordLength(PASSWORD_FIELD.value) &amp;&amp;
+    validation.checkPasswordsMatch(
+      PASSWORD_FIELD.value,
+      PASSWORD_REPEAT_FIELD.value
+    )
+  ) {
+    authenticateUser();
+    handleSubmission();
+  } else {
+    if (validation.checkUsername(USERNAME_FIELD.value)) {
+      validation.removeError(USERNAME_FIELD, USERNAME_ERROR);
+    } else {
+      validation.displayError(USERNAME_FIELD, USERNAME_ERROR);
+    }
+
+    if (validation.checkEmail(EMAIL_FIELD.value)) {
+      validation.removeError(EMAIL_FIELD, EMAIL_ERROR);
+    } else {
+      validation.displayError(EMAIL_FIELD, EMAIL_ERROR);
+    }
+
+    if (validation.checkPasswordLength(PASSWORD_FIELD.value)) {
+      validation.removeError(PASSWORD_FIELD, PASSWORD_ERROR);
+    } else {
+      validation.displayError(PASSWORD_FIELD, PASSWORD_ERROR);
+    }
+
+    if (
+      validation.checkPasswordsMatch(
+        PASSWORD_FIELD.value,
+        PASSWORD_REPEAT_FIELD.value
+      )
+    ) {
+      PASSWORD_REPEAT_FIELD.classList.remove("border-danger");
+      PASSWORD_MATCH_ERROR.classList.add("hidden");
+    } else {
+      PASSWORD_REPEAT_FIELD.classList.add("border-danger");
+      PASSWORD_MATCH_ERROR.classList.remove("hidden");
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authenticateUser">authenticateUser</a></li><li><a href="global.html#authoriseUser">authoriseUser</a></li><li><a href="global.html#checkEmail">checkEmail</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordsMatch">checkPasswordsMatch</a></li><li><a href="global.html#checkUsername">checkUsername</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#deletePost">deletePost</a></li><li><a href="global.html#displayError">displayError</a></li><li><a href="global.html#fetchPosts">fetchPosts</a></li><li><a href="global.html#fetchProfiles">fetchProfiles</a></li><li><a href="global.html#findFollowing">findFollowing</a></li><li><a href="global.html#followProfile">followProfile</a></li><li><a href="global.html#getRandomImage">getRandomImage</a></li><li><a href="global.html#getRandomNumber">getRandomNumber</a></li><li><a href="global.html#handleSubmission">handleSubmission</a></li><li><a href="global.html#reactToPost">reactToPost</a></li><li><a href="global.html#removeError">removeError</a></li><li><a href="global.html#renderAppropriateButton">renderAppropriateButton</a></li><li><a href="global.html#renderHomepageHeader">renderHomepageHeader</a></li><li><a href="global.html#renderListOfPosts">renderListOfPosts</a></li><li><a href="global.html#renderProfileHeader">renderProfileHeader</a></li><li><a href="global.html#renderSinglePostHeader">renderSinglePostHeader</a></li><li><a href="global.html#unfollowProfile">unfollowProfile</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#updateProfile">updateProfile</a></li><li><a href="global.html#validateLogin">validateLogin</a></li><li><a href="global.html#validateSignup">validateSignup</a></li><li><a href="global.html#viewProfile">viewProfile</a></li><li><a href="global.html#viewSpecificPost">viewSpecificPost</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Oct 15 2022 16:49:55 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
