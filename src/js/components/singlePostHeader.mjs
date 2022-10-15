@@ -40,7 +40,7 @@ export function renderSinglePostHeader(container) {
   goBackButton.classList.add("btn-custom", "d-flex", "text-decoration-none");
   secondCol.append(goBackButton);
   goBackButton.addEventListener("click", () => {
-    history.back();
+    window.location.assign("home.html");
   });
 
   const goBackButtonContent = document.createElement("span");
@@ -49,6 +49,6 @@ export function renderSinglePostHeader(container) {
   goBackButton.append(goBackButtonContent);
 
   const goBackButtonText = document.createElement("span");
-  goBackButtonText.innerHTML = "Go back";
+  goBackButtonText.innerHTML = "Back to homepage";
   goBackButton.append(goBackButtonText);
 }

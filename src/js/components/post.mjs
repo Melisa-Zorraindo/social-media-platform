@@ -248,12 +248,14 @@ export class Post {
     editButton.addEventListener("click", () => {
       const editPostTextarea = document.querySelector("#edit-post-textarea");
       const editPostPhoto = document.querySelector("#input");
-      const saveButton = document.querySelector("#save-update");
+      const saveEdition = document.querySelector("#edit-user-post");
 
       editPostTextarea.innerHTML = this.body;
       editPostPhoto.value = this.media;
 
-      saveButton.addEventListener("click", () => {
+      saveEdition.addEventListener("submit", (e) => {
+        e.preventDefault();
+
         const editedText = editPostTextarea.value;
         const editedPhoto = editPostPhoto.value;
         const postIdentifier = this.id;
