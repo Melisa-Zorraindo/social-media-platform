@@ -15,7 +15,7 @@ export async function fetchPosts(accessToken) {
 
   try {
     const response = await fetch(
-      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true&limit=100000`,
+      `${BASE_URL}/api/v1/social/posts?_author=true&_comments=true&_reactions=true`,
       options
     );
     const data = await response.json();

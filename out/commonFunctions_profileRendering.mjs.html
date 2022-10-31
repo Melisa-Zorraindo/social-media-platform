@@ -49,7 +49,7 @@ export default async function renderUsers(arr, container) {
 
     //assign profile picture if user doesn't have one
     let assignedAvatar = getRandomImage();
-    if (avatar.length === 0) {
+    if (!avatar) {
       avatar = assignedAvatar;
     }
 

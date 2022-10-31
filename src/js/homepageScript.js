@@ -23,7 +23,7 @@ let { avatar, followers, following } = await profiles.viewProfile(
 
 //select avatar randomly if user's avatar is an empty string
 let assignedProfilePicture = getRandomImage();
-if (avatar.length === 0) {
+if (!avatar) {
   avatar = assignedProfilePicture;
 }
 

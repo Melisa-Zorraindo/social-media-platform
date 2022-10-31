@@ -29,7 +29,7 @@ let {
 //assign random profile picture if avatar is an empty string
 let assignedProfilePicture = getRandomImage();
 
-if (avatar.length === 0) {
+if (!avatar) {
   avatar = assignedProfilePicture;
 }
 
