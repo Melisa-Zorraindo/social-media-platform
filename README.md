@@ -1,10 +1,10 @@
 # Social media clone
 
 To use this project:
-- run `npm install bootstrap`
-- run `npm run watch`
-- if you already have a profile, open a live server at the `index.html` page
-- if you don't have a profile, open a live server at the `new-user.html` page and create one
+- clone the repository
+- run `npm install` to install package dependencies
+- run `npm run watch` to preview the site live
+- if you don't have a profile, create one by clicking on `sign up`
 
 # App features
 
@@ -21,7 +21,3 @@ To use this project:
 - User can react to a post content item
 - User can edit profile media
 - User can log out
-
-# Development plan
-
-Visit https://trello.com/b/jb9CK1Js/social-media-platform
