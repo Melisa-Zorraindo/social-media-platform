@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: commonFunctions/profileRendering.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: commonFunctions/profileRendering.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getRandomImage } from "../tools/imagePicker.mjs";
+import { viewProfile } from "./api/profiles/read.mjs";
+import { accessToken, loggedUser } from "../constants/storedKeys.mjs";
+import { followProfile, unfollowProfile } from "./api/profiles/update.mjs";
+
+/**
+ * Creates HTML to display
+ * a list of users
+ * @param {array} arr
+ * @param {HTMLDivElement} container
+ */
+export default async function renderUsers(arr, container) {
+  arr.forEach(async ({ avatar, name }) => {
+    const li = document.createElement("li");
+    li.classList.add("row", "py-2", "align-items-center");
+    container.append(li);
+
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("col-3");
+    li.append(imageContainer);
+
+    //assign profile picture if user doesn't have one
+    let assignedAvatar = getRandomImage();
+    if (!avatar) {
+      avatar = assignedAvatar;
+    }
+
+    const profilePicture = document.createElement("img");
+    profilePicture.setAttribute("src", avatar);
+    profilePicture.setAttribute("alt", "user profile picture");
+    profilePicture.classList.add("profile-pic", "img-fluid", "rounded-circle");
+    imageContainer.append(profilePicture);
+
+    const userName = document.createElement("div");
+    userName.classList.add("col-6", "text-small");
+    userName.innerHTML = name;
+    li.append(userName);
+
+    await renderAppropriateButton(name, li);
+  });
+}
+
+//find followed users
+const user = await viewProfile(accessToken, loggedUser);
+const following = [];
+/**
+ * Creates an array of the
+ * users being followed by the logged in user
+ */
+function findFollowing() {
+  user.following.forEach((person) => {
+    following.push(person.name);
+  });
+}
+
+findFollowing();
+
+/**
+ * Renders either an add person button
+ * or a remove person button depending
+ * on said person being found in an array
+ * @param {string} name
+ * @param {HTMLLIElement} container
+ */
+async function renderAppropriateButton(name, container) {
+  const userBeingFollowed = following.find((element) => element === name);
+  if (userBeingFollowed) {
+    const removeUserButton = document.createElement("button");
+    removeUserButton.setAttribute("type", "button");
+    removeUserButton.setAttribute("id", "unfollow-user");
+    removeUserButton.classList.add("btn-custom", "text-primary", "col-3");
+    container.append(removeUserButton);
+
+    const removeUserIcon = document.createElement("span");
+    removeUserIcon.classList.add("material-symbols-outlined");
+    removeUserIcon.innerHTML = "person_remove";
+    removeUserButton.append(removeUserIcon);
+
+    removeUserButton.addEventListener("click", async () => {
+      await unfollowProfile(accessToken, name);
+    });
+  } else {
+    const addUserButton = document.createElement("button");
+    addUserButton.setAttribute("type", "button");
+    addUserButton.setAttribute("id", "follow-user");
+    addUserButton.classList.add("btn-custom", "text-primary", "col-3");
+    container.append(addUserButton);
+
+    const addUserIcon = document.createElement("span");
+    addUserIcon.classList.add("material-symbols-outlined");
+    addUserIcon.innerHTML = "person_add";
+    addUserButton.append(addUserIcon);
+
+    addUserButton.addEventListener("click", async () => {
+      await followProfile(accessToken, name);
+    });
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authenticateUser">authenticateUser</a></li><li><a href="global.html#authoriseUser">authoriseUser</a></li><li><a href="global.html#checkEmail">checkEmail</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordsMatch">checkPasswordsMatch</a></li><li><a href="global.html#checkUsername">checkUsername</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#deletePost">deletePost</a></li><li><a href="global.html#displayError">displayError</a></li><li><a href="global.html#fetchPosts">fetchPosts</a></li><li><a href="global.html#fetchProfiles">fetchProfiles</a></li><li><a href="global.html#findFollowing">findFollowing</a></li><li><a href="global.html#followProfile">followProfile</a></li><li><a href="global.html#getRandomImage">getRandomImage</a></li><li><a href="global.html#getRandomNumber">getRandomNumber</a></li><li><a href="global.html#handleSubmission">handleSubmission</a></li><li><a href="global.html#reactToPost">reactToPost</a></li><li><a href="global.html#removeError">removeError</a></li><li><a href="global.html#renderAppropriateButton">renderAppropriateButton</a></li><li><a href="global.html#renderHomepageHeader">renderHomepageHeader</a></li><li><a href="global.html#renderListOfPosts">renderListOfPosts</a></li><li><a href="global.html#renderProfileHeader">renderProfileHeader</a></li><li><a href="global.html#renderSinglePostHeader">renderSinglePostHeader</a></li><li><a href="global.html#unfollowProfile">unfollowProfile</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#updateProfile">updateProfile</a></li><li><a href="global.html#validateLogin">validateLogin</a></li><li><a href="global.html#validateSignup">validateSignup</a></li><li><a href="global.html#viewProfile">viewProfile</a></li><li><a href="global.html#viewSpecificPost">viewSpecificPost</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Oct 15 2022 16:49:55 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

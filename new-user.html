@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="register a new user to connect with others in socials"
+    />
+    <title>Socials | New user</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container" id="new-user-page">
+        <h1 class="text-center m-5">Register new user</h1>
+        <p
+          class="text-center text-light text-bg-danger"
+          id="signup-error-message"
+        ></p>
+        <form id="registration-form">
+          <div class="container-md custom-w">
+            <div class="input-group mt-3">
+              <span class="input-group-text">@</span>
+              <input
+                type="text"
+                class="form-control py-3"
+                id="username"
+                placeholder="username"
+                aria-label="username"
+              />
+            </div>
+            <p class="mt-1 ps-1 text-small" id="username-error">
+              Must not contain punctuation symbols apart from underscore (_)
+            </p>
+            <div class="input-group mt-3">
+              <span class="input-group-text material-symbols-outlined">
+                mail
+              </span>
+              <input
+                type="email"
+                class="form-control py-3"
+                id="email"
+                placeholder="email"
+                aria-label="email"
+              />
+            </div>
+            <p class="mt-1 ps-1 text-small" id="email-error">
+              Only users with @noroff.no or @stud.noroff.no email can register
+              profile
+            </p>
+            <div class="input-group mt-3">
+              <span class="input-group-text material-symbols-outlined">
+                key
+              </span>
+              <input
+                type="password"
+                class="form-control py-3"
+                id="password"
+                placeholder="password"
+                aria-label="password"
+              />
+            </div>
+            <p class="mt-1 ps-1 text-small" id="pass-error">
+              Must be at least 8 characters long
+            </p>
+            <div class="input-group my-1">
+              <span class="input-group-text material-symbols-outlined">
+                key
+              </span>
+              <input
+                type="password"
+                class="form-control py-3"
+                id="password-repeat"
+                placeholder="repeat password"
+                aria-label="password"
+              />
+            </div>
+            <p
+              class="mt-1 ps-1 text-small text-danger hidden"
+              id="pass-match-error"
+            >
+              Passwords don't match
+            </p>
+            <div class="d-grid mt-5 mb-1">
+              <button type="submit" class="btn btn-primary" id="sign-up">
+                sign up
+              </button>
+            </div>
+            <p class="text-center">or <a href="./index.html">log in</a></p>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="src/js/auth/singup/signup.mjs" type="module"></script>
+  </body>
+</html>

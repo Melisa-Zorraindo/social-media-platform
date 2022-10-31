@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: commonFunctions/api/posts/update.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: commonFunctions/api/posts/update.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { BASE_URL } from "../../../constants/apiUrl.mjs";
+
+/**
+ * Sends a PUT request to edit
+ * a post on the API
+ * @param {string} accessToken
+ * @param {string} editedContent
+ * @param {url} editedMedia
+ * @param {number} id
+ */
+export async function updatePost(accessToken, editedContent, editedMedia, id) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      title: " ",
+      body: `${editedContent}`,
+      tags: [" "],
+      media:
+        `${editedMedia}` ||
+        "https://i.picsum.photos/id/1048/200/1.jpg?hmac=KGIl00eqsBbeWUGyRK2yCG5FWAJrl_7Ecq_Vf-cxXMo",
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Makes a POST request to
+ * allow the user to comment on
+ * an existing post entry
+ * @param {string} accessToken
+ * @param {string} commentBody
+ * @param {number} id
+ */
+export async function commentOnPost(accessToken, commentBody, id) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      body: commentBody,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}/comment`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
+ * Sends a PUT request to
+ * allow the user to react to
+ * a post entry
+ * @param {string} accessToken
+ * @param {number} id
+ * @param {string} symbol
+ */
+export async function reactToPost(accessToken, id, symbol) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      body: symbol,
+    }),
+  };
+
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/v1/social/posts/${id}/react/${symbol}`,
+      options
+    );
+    await response.json();
+    location.reload();
+  } catch (error) {
+    console.log(error);
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authenticateUser">authenticateUser</a></li><li><a href="global.html#authoriseUser">authoriseUser</a></li><li><a href="global.html#checkEmail">checkEmail</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordsMatch">checkPasswordsMatch</a></li><li><a href="global.html#checkUsername">checkUsername</a></li><li><a href="global.html#commentOnPost">commentOnPost</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#deletePost">deletePost</a></li><li><a href="global.html#displayError">displayError</a></li><li><a href="global.html#fetchPosts">fetchPosts</a></li><li><a href="global.html#fetchProfiles">fetchProfiles</a></li><li><a href="global.html#findFollowing">findFollowing</a></li><li><a href="global.html#followProfile">followProfile</a></li><li><a href="global.html#getRandomImage">getRandomImage</a></li><li><a href="global.html#getRandomNumber">getRandomNumber</a></li><li><a href="global.html#handleSubmission">handleSubmission</a></li><li><a href="global.html#reactToPost">reactToPost</a></li><li><a href="global.html#removeError">removeError</a></li><li><a href="global.html#renderAppropriateButton">renderAppropriateButton</a></li><li><a href="global.html#renderHomepageHeader">renderHomepageHeader</a></li><li><a href="global.html#renderListOfPosts">renderListOfPosts</a></li><li><a href="global.html#renderProfileHeader">renderProfileHeader</a></li><li><a href="global.html#renderSinglePostHeader">renderSinglePostHeader</a></li><li><a href="global.html#unfollowProfile">unfollowProfile</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#updateProfile">updateProfile</a></li><li><a href="global.html#validateLogin">validateLogin</a></li><li><a href="global.html#validateSignup">validateSignup</a></li><li><a href="global.html#viewProfile">viewProfile</a></li><li><a href="global.html#viewSpecificPost">viewSpecificPost</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Oct 15 2022 16:49:55 GMT+0200 (hora de verano de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

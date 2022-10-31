@@ -21,202 +21,416 @@
     />
     <link rel="stylesheet" href="../../dist/css/style.css" />
   </head>
-  <body>
-    <header class="border-bottom">
-      <div class="container mt-2">
-        <div class="row">
-          <div class="col col-3 d-none d-lg-block">
-            <a href="home.html"
-              ><img src="src/img/socials-logo.png" alt="logo"
-            /></a>
-          </div>
-          <div class="col col-9 d-flex gap-3">
-            <div class="col col-sm-1 col-2">
-              <a href="profile.html" class="text-decoration-none">
-                <img
-                  src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
-                  class="img-fluid"
-                  alt="user placeholder"
-                />
-              </a>
-            </div>
-            <div>
-              <div class="d-flex">
-                <h1 class="h3 text-primary mb-0">ariadna eneri</h1>
+  <body class="bg-light min-vh-100 d-flex flex-column">
+    <header class="border-bottom bg-white" id="header"></header>
+    <main>
+      <div class="container">
+        <div
+          class="modal fade"
+          id="create-post-mobile"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="createPostMobileLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create a post</h5>
                 <button
                   type="button"
-                  class="btn-interaction"
-                  aria-label="edit user"
-                  id="edit-user-btn"
-                >
-                  <span class="material-symbols-outlined text-secondary">
-                    draw
-                  </span>
-                </button>
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
-
-              <p class="my-0 text-black">cat lover 🐱</p>
-              <p class="my-0 text-black">🌎 wanderer</p>
+              <div class="modal-body">
+                <form action="" class="p-2" id="post-form-mobile">
+                  <div class="form-floating">
+                    <textarea
+                      name=""
+                      id="post-body-mobile"
+                      class="form-control h-100"
+                      placeholder="share your thoughts"
+                      required
+                    ></textarea>
+                    <label for="user-post">share your thoughts</label>
+                  </div>
+                  <div class="container">
+                    <div class="row mt-3 mb-1">
+                      <div class="input-group">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          add_photo_alternate
+                        </span>
+                        <input
+                          type="url"
+                          placeholder="enter url"
+                          class="text-small form-control"
+                          id="media-upload-mobile"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      id="create-post-button-mobile"
+                    >
+                      Create post
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+        <!--socials users modal-->
+        <div
+        class="modal fade"
+        id="socials-users"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="socialsUsers"
+        aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Socials users</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="container" id="socials-users-container">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end socials users modal-->
+
+        <!--followers modal-->
+        <div
+        class="modal fade"
+        id="followers"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="followers"
+        aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Followers</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="container" id="followers-container">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end followers modal-->
+
+        <!--following modal-->
+        <div
+        class="modal fade"
+        id="following"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="following"
+        aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Following</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="container" id="following-container">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end following modal-->
+
+        <!--modal edit post-->
+        <div class="modal fade"
+        id="edit-post-modal-window"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="editPostModalWindow"
+        aria-hidden="true"
+      >
+          <div class="modal-dialog modal-fullscreen-sm-down">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Edit post</h5>
+                      <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close">
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="" class="p-2" id="edit-user-post">
+                          <div class="form-floating">
+                              <textarea
+                                  name=""
+                                  class="form-control h-100"
+                                  placeholder="share your thoughts"
+                                  id="edit-post-textarea"
+                              ></textarea>
+                              <label for="user-post"></label>
+                          </div>
+                          <div class="modal-footer">
+                              <div class="col input-group">
+                                  <span
+                                  class="material-symbols-outlined input-group-text"
+                                  >
+                                      add_photo_alternate
+                                  </span>
+                                  <input
+                                      type="text"
+                                      placeholder=""
+                                      class="text-small form-control"
+                                      id="input"
+                                  />
+                              </div>
+                              <button type="submit"
+                              class="btn btn-primary"
+                              id="save-update">
+                                Save
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
       </div>
-    </header>
-    <main class="bg-light">
-      <div class="container">
+        <!--end mobile edit post-->
+
+        <!--modal edit profile-->
+        <div
+          class="modal fade"
+          id="edit-profile"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="editProfileModalWindow"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit profile</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="" class="p-2" id="profile-preferances">
+                  <div class="container">
+                    <div class="row mt-3 mb-1">
+                      <div class="input-group mb-3">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          person
+                        </span>
+                        <input
+                          type="text"
+                          placeholder=""
+                          class="text-small form-control"
+                          id="profile-name"
+                          disabled
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          email
+                        </span>
+                        <input
+                          type="email"
+                          placeholder=""
+                          class="text-small form-control"
+                          id="user-email"
+                          disabled
+                        />
+                      </div>
+                      <div class="input-group mb-3">
+                        <span
+                          class="material-symbols-outlined input-group-text"
+                        >
+                          account_box
+                        </span>
+                        <input
+                          type="url"
+                          placeholder="avatar"
+                          class="text-small form-control"
+                          id="user-profile-picture"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end modal edit profile-->
+
         <div class="row">
           <div class="col-lg-3 d-none d-lg-block">
-            <div class="container py-5 bg-light">
-              <ul class="container bg-body card" id="contacts-desktop">
-                <li class="list-unstyled">
-                  <h2 class="h5 text-primary">contacts</h2>
+            <div class="py-5">
+              <div class="card">
+                <ul class="nav flex-column">
+                <li class="nav-item my-2">
+                  <a
+                    class="nav-link text-secondary d-flex align-items-start gap-3"
+                    aria-current="page"
+                    href="./home.html"
+                  >
+                    <span class="material-symbols-outlined"> home </span>Home</a
+                  >
                 </li>
-                <li class="row d-flex py-3 list-unstyled">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/yusron-el-jihan-YRJsMa72UDw-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">iman alcón</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2">
+                  <a
+                    class="nav-link text-primary d-flex align-items-start gap-3"
+                    href="./profile.html"
+                    ><span class="material-symbols-outlined"> person </span
+                    >Profile</a
+                  >
                 </li>
-                <li class="row d-flex py-3">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/karina-lago-G7Y2mEMcsvI-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">lucas castillo</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2">
+                  <ul class="nav">
+                    <li class="nav-item my-2 ms-3 text-secondary d-flex align-items-start" aria-label="contacts">
+                      <span class="material-symbols-outlined me-3"> contacts </span
+                      >Contacts
+                    </li>
+                    <li class="nav-item my-1"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="socials-users"
+                      data-bs-toggle="modal"
+                      data-bs-target="#socials-users"
+                    >
+                      <span class="material-symbols-outlined"> diversity_3 </span
+                      >Socials users</a
+                    ></li>
+                    <li class="nav-item my-1"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="following"
+                      data-bs-toggle="modal"
+                      data-bs-target="#following"
+                    >
+                      <span class="material-symbols-outlined"> accessibility_new </span
+                      >Following</a
+                    ></li>
+                    <li class="nav-item my-1"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="followers"
+                      data-bs-toggle="modal"
+                      data-bs-target="#followers"
+                    >
+                      <span class="material-symbols-outlined"> emoji_people </span
+                      >Followers</a
+                    ></li>
+                  </ul>
                 </li>
-                <li class="row d-flex py-3">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/teodora-popa-photographer-RyM6rOausco-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">teodora milhavi</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_remove
-                    </span>
-                  </div>
+                <li class="nav-item my-2" id="logout">
+                  <a class="nav-link text-secondary d-flex align-items-start gap-3"" href="#"
+                    ><span class="material-symbols-outlined"> logout </span>Log
+                    out</a
+                  >
                 </li>
-              </ul>
-              <ul
-                class="container bg-body card"
-                id="suggested-contacts-desktop"
-              >
-                <li class="list-unstyled">
-                  <h2 class="h5 text-primary">suggestions</h2>
-                </li>
-                <li class="row d-flex py-3 list-unstyled">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/rick-gebhardt-3faX71BaNe0-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">rick wandel</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-                <li class="row d-flex py-3">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/david-todd-mccarty-VGLImIsgs9A-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">marcia mccarthy</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-                <li class="row d-flex py-3">
-                  <div class="col-xl-2 col-lg-3 col-2">
-                    <img
-                      src="src/img/jacob-townsend-4OzZru1zewE-unsplash.png"
-                      class="img-fluid"
-                      alt="user placeholder"
-                    />
-                  </div>
-                  <div class="col-6">adam farmer</div>
-                  <div class="col-2">
-                    <span class="material-symbols-outlined text-secondary">
-                      person_add
-                    </span>
-                  </div>
-                </li>
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="col-lg-9">
             <div class="col col-lg-12">
-              <div class="container py-5 bg-light d-none d-lg-block">
-                <div class="card my-1 border-0">
-                  <form action="">
+              <div class="py-5 d-none d-lg-block">
+                <div class="card my-1">
+                  <form action="" class="p-2" id="post-form-desktop">
                     <div class="form-floating">
                       <textarea
                         name=""
-                        id="user-post-desktop"
-                        class="form-control w-100 h-100"
+                        id="post-body-desktop"
+                        class="form-control h-100"
                         placeholder="share your thoughts"
-                        minlength="10"
-                        required
                       ></textarea>
                       <label for="user-post">share your thoughts</label>
                     </div>
-                    <div class="d-flex mt-3 mb-1 justify-content-between">
-                      <div class="d-flex">
-                        <button
-                          type="button"
-                          class="btn-interaction text-secondary"
-                        >
-                          <span class="material-symbols-outlined">
-                            add_photo_alternate
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-interaction text-secondary"
-                        >
-                          <span class="material-symbols-outlined">
-                            add_reaction
-                          </span>
-                        </button>
-                      </div>
-                      <div>
-                        <button
-                          type="submit"
-                          class="btn btn-outline-primary d-lg-none"
-                        >
-                          close
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                          post
-                        </button>
+                    <div class="container">
+                      <div class="row mt-3 mb-1">
+                        <div class="col col-4">
+                          <div class="input-group">
+                            <span
+                              class="material-symbols-outlined input-group-text"
+                            >
+                              add_photo_alternate
+                            </span>
+                            <input
+                              type="url"
+                              placeholder="enter url"
+                              class="text-small form-control"
+                              id="media-upload"
+                            />
+                          </div>
+                        </div>
+                        <div class="col text-end">
+                          <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="create-post-button-desktop"
+                          >
+                            post
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </form>
@@ -224,160 +438,7 @@
               </div>
             </div>
             <div class="col col-lg-12 mb-5">
-              <div class="container py-1 bg-light">
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                  <div class="d-flex">
-                    <div class="col col-md-1 col-sm-2 col-2">
-                      <img
-                        src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
-                        class="img-fluid"
-                        alt="user placeholder"
-                      />
-                    </div>
-                    <div>
-                      <p class="fw-bold text-primary mb-0 ps-2">
-                        ariadna eneri
-                      </p>
-                      <p class="text-secondary ps-2 text-small">
-                        30 Aug 22 · 12:56
-                      </p>
-                      <p class="ps-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
-                        accusamus sed tempora pariatur cum autem aperiam minus
-                        explicabo, saepe odit quaerat doloremque!
-                      </p>
-                      <div class="d-flex gap-5">
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              favorite
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">1004</span>
-                        </div>
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              chat_bubble
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">52</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                  <div class="d-flex">
-                    <div class="col col-md-1 col-sm-2 col-2">
-                      <img
-                        src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
-                        class="img-fluid"
-                        alt="user placeholder"
-                      />
-                    </div>
-                    <div>
-                      <p class="fw-bold text-primary mb-0 ps-2">
-                        ariadna eneri
-                      </p>
-                      <p class="text-secondary ps-2 text-small">
-                        30 Aug 22 · 16:00
-                      </p>
-                      <p class="ps-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
-                        accusamus sed tempora pariatur cum autem aperiam minus
-                        explicabo, saepe odit quaerat doloremque!
-                      </p>
-                      <img
-                        src="src/img/elliott-engelmann-4xEfxMShEUM-unsplash.jpg"
-                        class="img-fluid"
-                        alt="joshua tree national park"
-                      />
-                      <div class="d-flex gap-5">
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              favorite
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">1004</span>
-                        </div>
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              chat_bubble
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">52</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card my-lg-3 my-md-2 my-sm-1 my-1 pe-3">
-                  <div class="d-flex">
-                    <div class="col col-md-1 col-sm-2 col-2">
-                      <img
-                        src="src/img/kirill-balobanov-2rIs8OH5ng0-unsplash.png"
-                        class="img-fluid"
-                        alt="user placeholder"
-                      />
-                    </div>
-                    <div>
-                      <p class="fw-bold text-primary mb-0 ps-2">
-                        ariadna eneri
-                      </p>
-                      <p class="text-secondary ps-2 text-small">
-                        15 Aug 22 · 15:48
-                      </p>
-                      <p class="ps-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Corrupti nemo ipsa quo nesciunt ex culpa quam repellat
-                        accusamus sed tempora pariatur cum autem aperiam minus
-                        explicabo, saepe odit quaerat doloremque!
-                      </p>
-                      <div class="d-flex gap-5">
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              favorite
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">1004</span>
-                        </div>
-                        <div class="d-flex flex-column align-items-center">
-                          <button
-                            type="button"
-                            class="btn-interaction text-secondary"
-                          >
-                            <span class="material-symbols-outlined">
-                              chat_bubble
-                            </span>
-                          </button>
-                          <span class="text-small text-secondary">52</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div class="py-1" id="logged-user-posts-container"></div>
             </div>
           </div>
         </div>
@@ -385,12 +446,12 @@
     </main>
     <footer class="footer d-lg-none">
       <div class="container">
-        <nav class="fixed-bottom border-top pt-3 bg-light">
+        <nav class="fixed-bottom border-top pt-3 bg-white">
           <ul class="nav justify-content-around">
             <li class="nav-item">
               <button
                 type="button"
-                class="btn-interaction"
+                class="btn-custom"
                 aria-label="home"
                 id="home-btn"
               >
@@ -404,32 +465,77 @@
             <li class="nav-item">
               <button
                 type="button"
-                class="btn-interaction"
+                class="btn-custom"
                 aria-label="add post"
                 id="add-post-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#create-post-mobile"
               >
-                <span class="material-symbols-outlined text-primary">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  id="add-post-btn-span"
+                >
                   add_circle
                 </span>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item dropup">
               <button
                 type="button"
-                class="btn-interaction"
+                class="btn-custom"
                 aria-label="contacts"
                 id="contacts-btn"
+                data-bs-toggle="dropdown"
               >
                 <span class="material-symbols-outlined text-secondary">
                   contacts
                 </span>
               </button>
+              <ul aria-labelledby="dropDownMenuButton" class="dropdown-menu">
+                <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="socials-users"
+                      data-bs-toggle="modal"
+                      data-bs-target="#socials-users"
+                    >
+                      <span class="material-symbols-outlined"> diversity_3 </span
+                      >Socials users</a
+                    ></li>
+                    <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="following"
+                      data-bs-toggle="modal"
+                      data-bs-target="#following"
+                    >
+                      <span class="material-symbols-outlined"> accessibility_new </span
+                      >Following</a
+                    ></li>
+                    <li class="nav-item my-1 text-small"><a
+                      class="nav-link text-secondary d-flex align-items-start gap-3 ms-3"
+                      href="#"
+                      aria-label="followers"
+                      data-bs-toggle="modal"
+                      data-bs-target="#followers"
+                    >
+                      <span class="material-symbols-outlined"> emoji_people </span
+                      >Followers</a
+                    ></li>
+              </ul>
             </li>
-            <!-- <li class="nav-item">
-              <span class="material-symbols-outlined text-secondary">
-                settings
-              </span>
-            </li> -->
+            <li class="nav-item">
+              <button
+                type="button"
+                class="btn-custom"
+                aria-label="logout"
+                id="logout-mobile"
+              >
+                <span class="material-symbols-outlined text-secondary">
+                  logout
+                </span>
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -439,6 +545,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="../../src/js/script.js" type="module"></script>
+    <script src="./src/js/profileScript.mjs" type="module"></script>
   </body>
 </html>

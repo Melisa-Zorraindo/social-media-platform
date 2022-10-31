@@ -1,0 +1,51 @@
+@import "variables";
+.btn-custom {
+  border: none;
+  background-color: transparent;
+}
+
+.blinking-btn {
+  animation: blink 2s infinite;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.span-btn {
+  padding: 0.2rem;
+}
+
+.blinking-btn-desktop {
+  animation: flashText 2s infinite;
+}
+
+@keyframes blink {
+  0% {
+    background-color: $primary;
+  }
+  50% {
+    background-color: #823cf3;
+  }
+
+  100% {
+    background-color: $primary;
+  }
+}
+
+@keyframes flashText {
+  0% {
+    background-color: $primary;
+    color: white;
+  }
+
+  50% {
+    background-color: white;
+    border-color: $primary;
+    color: $primary;
+  }
+
+  100% {
+    background-color: $primary;
+    color: white;
+  }
+}
